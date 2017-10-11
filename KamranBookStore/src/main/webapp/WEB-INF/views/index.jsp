@@ -6,7 +6,7 @@
 <h2>Kamran's BookStore</h2>
 ${message}
 <h3> Please login or register</h3>
-<h3> <a href="signup"> Register </a></h3>
+<h3> <a href="register"> Register </a></h3>
 <form action="home">
   Email Address :<br>
   <input type="text" name="emailAddress"><br>

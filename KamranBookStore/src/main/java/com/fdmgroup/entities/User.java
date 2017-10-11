@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fdmgroup.shoppingcart.Cart;
 import com.fdmgroup.shoppingcart.Order;
@@ -22,9 +23,12 @@ public class User {
 	@Id
 	private String emailAddress;
 	private String password;
+	@Transient
+	private String confirmPassword;
 	private String firstName;
 	private String lastName;
 	private String address;
+	
 	private String phoneNumber;
 	
 	@OneToOne(cascade=CascadeType.ALL)
@@ -114,5 +118,17 @@ public class User {
 		this.cart = cart;
 	}
 
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+	
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
 	
 }
+

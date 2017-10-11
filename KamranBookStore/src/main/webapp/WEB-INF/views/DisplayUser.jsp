@@ -8,13 +8,14 @@
 </head>
 <body>
 ${message}
-<h2> User Information </h2>
-First Name : ${profile.firstName}<br/>
-Last Name : ${profile.lastName}<br/>
-Gender : ${profile.gender}<br/>
-Profession : ${profile.profession}<br/>
-Hobbies : ${profile.hobbies}<br/>
+<h2> Author Information </h2>
+Email Address : ${user.emailAddress}<br/>
+First Name : ${user.firstName}<br/>
+Last Name : ${user.lastName}<br/>
+Address : ${user.address}<br/>
+Phone Number : ${user.phoneNumber}<br/>
 
-<a href="EditProfile"> Edit Profile </a>
+<br/><br/>
+<a href="editUser?emailAddress=${user.emailAddress}"> Edit Profile </a>
 </body>
 </html>

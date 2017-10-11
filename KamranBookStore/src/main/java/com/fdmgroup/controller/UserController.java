@@ -1,11 +1,14 @@
 package com.fdmgroup.controller;
 
+import java.security.Principal;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.daos.UserDaoImpl;
@@ -19,7 +22,7 @@ public class UserController {
 		return "ViewUser";
 	}
 	
-	@RequestMapping("/DisplayUser")
+	@RequestMapping("/displayUser")
 	public String goToDisplayUser(String emailAddress, Model model){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
 		
@@ -28,6 +31,16 @@ public class UserController {
 		model.addAttribute("user", user);
 		model.addAttribute("message", "User details for user with email address: " + emailAddress);
 		return "DisplayUser";
+	}
+	
+	@RequestMapping("/editUser")
+	public String goToEditUser(Model model,@RequestParam String emailAddress){
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
+		
+		UserDAO userDao = new UserDaoImpl(factory);
+		User user = userDao.getUser(emailAddress);
+		model.addAttribute("user", user);
+		return "EditUser";
 	}
 	
 	

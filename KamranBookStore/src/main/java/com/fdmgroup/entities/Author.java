@@ -20,7 +20,9 @@ public class Author extends User{
 	private Set<Book> books = new HashSet<Book>();
 	private double sales;
 	
-	public Author(){}
+	public Author(){
+		sales = 0.0;
+	}
 	
 	public Author(String firstName, String lastName){
 		super();
@@ -29,8 +31,8 @@ public class Author extends User{
 		setLastName(lastName);
 	}
 	
-	public Author(String userEmail, String firstName, String password, String lastName, String address, String gender) {
-		super(userEmail, password, firstName, lastName, address, gender);
+	public Author(String userEmail, String firstName, String password, String lastName, String address, String phoneNumber) {
+		super(userEmail, password, firstName, lastName, address, phoneNumber);
 	}
 
 	public Set<Book> getBooks() {
@@ -43,7 +45,6 @@ public class Author extends User{
 	
 	public void addBook(Book book){
 		books.add(book);
-		book.setAuthor(this);
 	}
 
 	public double getSales() {
