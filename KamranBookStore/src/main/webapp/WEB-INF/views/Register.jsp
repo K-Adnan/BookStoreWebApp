@@ -1,27 +1,16 @@
-<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Registration Home</title>
 </head>
 <body>
-	<sf:form method="post" action="doRegister" modelAttribute="user">
-		First Name : <sf:input type="text" path="firstName" /><br/>
-		Last Name : <sf:input type="text" path="lastName" /><br/>
-		Email Address : <sf:input type="text" path="emailAddress" /><br/>
-		Postal Address : <sf:input type="text" path="address" /><br/>
-		Phone Number : <sf:input type="text" path="phoneNumber" /><br/>
-		Password : <sf:input type="password" path="password" /><br/>
-		Confirm Password : <sf:input type="password" path="confirmPassword" /><br/>
-		<br /> <input type="submit" value="Register">
-	</sf:form>
+<h2> Registration Home</h2>
+<h3><a href="registerUser"> Register User </a></h3>
+<h3><a href="registerAuthor"> Register Author </a></h3>
+<h3><a href="registerAdmin"> Register Admin </a></h3>
+
 </body>
 </html>
-
-
-
-

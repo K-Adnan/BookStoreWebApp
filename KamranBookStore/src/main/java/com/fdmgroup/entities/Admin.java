@@ -21,5 +21,9 @@ public class Admin extends User{
 	public Admin(String userEmail, String firstName, String password, String lastName, String address, String phoneNumber) {
 		super(userEmail, password, firstName, lastName, address, phoneNumber);
 	}
+	
+	public void setEmailAddress(){
+		setUserEmail(getFirstName().toLowerCase() + "." + getLastName().toLowerCase() + "@books4u.com");
+	}
 
 }
