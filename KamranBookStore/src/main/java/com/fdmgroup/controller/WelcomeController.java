@@ -1,6 +1,8 @@
 package com.fdmgroup.controller;
 
 
+import java.security.Principal;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpSession;
@@ -28,14 +30,13 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping("/home")
-	public String goToHome(String emailAddress, HttpSession session){
-		session.setAttribute("emailAddress", emailAddress);
+	public String goToHome(String emailAddress, HttpSession session, Principal principal){
+		session.setAttribute("emailAddress", principal.getName());
 		return "Home";
 	}
 	
 	@RequestMapping("/logout")
 	public String doLogOut(Model model, HttpSession session){
-		model.addAttribute("message", "User '" + (String) session.getAttribute("emailAddress") + "' has been correctly logged out");
 		session.invalidate();
 		return "redirect:/";
 	}
@@ -50,6 +51,20 @@ public class WelcomeController {
 	@RequestMapping("/searchBook")
 	public String goToSearchBook(Model model){
 		return "SearchBook";
+	}
+	
+	@RequestMapping("/viewPersonalDetails")
+	public String goToViewPersonalDetails(Model model, Principal principal){
+		String emailAddress = principal.getName();
+		
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
+		UserDAO userDao = new UserDaoImpl(factory);
+		
+		User user = userDao.getUser(emailAddress);
+		
+		model.addAttribute("user", user);
+		
+		return "ViewPersonalDetails";
 	}
 	
 }

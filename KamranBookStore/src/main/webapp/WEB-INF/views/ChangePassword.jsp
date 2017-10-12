@@ -7,13 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3> ${emailAddress} <a href="viewPersonalDetails">Personal Details</a></h3>
-<h2> WELCOME TO KAMRANS BOOKSTORE </h2> 
-
-<h3> <a href="addUser"> Add New Author </a></h3>
-<h3> <a href="viewUser"> View User </a></h3>
-<h3> <a href="searchBook"> Search Book</a></h3>
-<h3> <a href="logout"> Log Out </a></h3>
-
+${message}
+<form method="post" action="updateNewPassword">
+<h2> Change Password </h2>
+	Password : <input size="50" name="password" type="password" value=""/><br/>
+	Confirm Password : <input size="50" name="confirmPassword" type="password"/><br/>
+<input type="submit" value="Go"/>
+</form>
 </body>
 </html>

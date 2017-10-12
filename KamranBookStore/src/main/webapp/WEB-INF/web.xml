@@ -21,7 +21,7 @@
 		<auth-method>FORM</auth-method>
 		<form-login-config>
 			<form-login-page>/WEB-INF/views/Login.jsp</form-login-page>
-			<form-error-page>/WEB-INF/views/Login.jsp</form-error-page>
+			<form-error-page>/WEB-INF/views/index.jsp</form-error-page>
 		</form-login-config>
 	</login-config>
 
@@ -35,12 +35,12 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Admin Pages</web-resource-name>
-			<url-pattern>/author/*</url-pattern>
+			<url-pattern>/admin/*</url-pattern>
 			<http-method>POST</http-method>
 			<http-method>GET</http-method>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>Author</role-name>
+			<role-name>Admin</role-name>
 		</auth-constraint>
 	</security-constraint>
 

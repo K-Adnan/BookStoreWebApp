@@ -11,7 +11,9 @@
 
 <h3> <a href="viewAllBooks"> View All Books</a></h3>
 <form action="displayBooks" method="get"><br/>
-	ISBN : <input name="isbn"/><br/>
+	Find Book using ISBN : <input name="isbn"/><br/>
+	<hr>
+	<h4>Advanced Search</h4>
 	Title : <input name="title"/><br/>
 	Author : <input name="author"/><br/>
 	Category : <input name="category"/><br/>

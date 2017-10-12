@@ -32,6 +32,13 @@ public class UserDaoImpl implements UserDAO {
 					+ "'. User already exists");
 		}
 	}
+	
+	public void updateUser(User user){
+		EntityManager manager = factory.createEntityManager();
+		manager.getTransaction().begin();
+		manager.merge(user);
+		manager.getTransaction().commit();
+	}
 
 	public User getUser(String emailAddress) {
 		EntityManager manager = factory.createEntityManager();

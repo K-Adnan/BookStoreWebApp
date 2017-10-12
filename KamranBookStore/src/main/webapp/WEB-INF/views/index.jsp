@@ -7,13 +7,14 @@
 ${message}
 <h3> Please login or register</h3>
 <h3> <a href="register"> Register </a></h3>
-<form action="home">
-  Email Address :<br>
-  <input type="text" name="emailAddress"><br>
-  Password : <br>
-  <input type="text" name="password"><br><br>
-  <input type="submit" value="Submit">
+
+<form action="j_security_check" method="post">
+       
+       Email Address : <input name="j_username" /> 
+       Password: <input type="password" name="j_password"/>
+       <input type="Submit" value="Login" />
 </form>
+
 <br/>
 </body>
 </html>

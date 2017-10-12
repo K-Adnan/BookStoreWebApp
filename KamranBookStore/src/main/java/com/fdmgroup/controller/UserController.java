@@ -1,5 +1,7 @@
 package com.fdmgroup.controller;
 
+import java.security.Principal;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -42,23 +44,61 @@ public class UserController {
 	}
 	
 	
-//	@RequestMapping("/addUser")
-//	public String goToAddUser(Model model){
-//		User user = new User();
-//		model.addAttribute("user", user);
-//		return "AddUser";
-//	}
-//	
-//	@RequestMapping("/processAddUser")
-//	public String processAddUser(User user, Model model){
-//		
-//		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
-//		UserDAO userDao = new UserDaoImpl(factory);
-//		
-//		userDao.addUser(user);
-//		model.addAttribute("message", "User added successfully");
-//		
-//		return "index";
-//	}
-
+	@RequestMapping("/editPersonalDetails")
+	public String goToEditPersonalDetails(Model model, Principal principal){
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
+		String emailAddress = principal.getName();
+		
+		UserDAO userDao = new UserDaoImpl(factory);
+		User user = userDao.getUser(emailAddress);
+		model.addAttribute("user", user);
+		return "EditPersonalDetails";
+	}
+	
+	@RequestMapping("/updatePersonalDetails")
+	public String doUpdatePersonalDetails(@RequestParam String password, User user, Principal principal, Model model){
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
+		UserDAO userDao = new UserDaoImpl(factory);
+		String emailAddress = principal.getName();
+		
+		// Retrieving old user, replacing its values with the new user's values, and then merging it.
+		User oldUser = userDao.getUser(emailAddress);
+		
+		oldUser.setFirstName(user.getFirstName());
+		oldUser.setLastName(user.getLastName());
+		oldUser.setAddress(user.getAddress());
+		oldUser.setPhoneNumber(user.getPhoneNumber());
+		
+		model.addAttribute("message", "User details have been successfully updated");
+		model.addAttribute("user", oldUser);
+		
+		userDao.updateUser(oldUser);
+		return "ViewPersonalDetails";
+	}
+	
+	@RequestMapping("/changePassword")
+	public String goToChangePassword(){
+		return "ChangePassword";
+	}
+	
+	@RequestMapping("/updateNewPassword")
+	public String doChangePassword(@RequestParam String password, @RequestParam String confirmPassword, Principal principal, Model model){
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
+		UserDAO userDao = new UserDaoImpl(factory);
+		String emailAddress = principal.getName();
+		
+		User user = userDao.getUser(emailAddress);
+		
+		if (password.equals(confirmPassword)){
+			user.setPassword(password);
+			userDao.updateUser(user);
+			model.addAttribute("user", user);
+			return "ViewPersonalDetails";
+		}else{
+			model.addAttribute("message", "Password and Confirm Password fields do not match");
+			return "ChangePassword";
+		}
+		
+	}
+	
 }

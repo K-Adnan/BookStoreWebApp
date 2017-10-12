@@ -21,6 +21,7 @@ table, th{
 			<th>ISBN</th>
 			<th>Author</th>
 			<th>Title</th>
+			<th>Category</th>
 			<th>Price</th>
 		</tr>
 	<c:forEach items="${booksList}" var="b">
@@ -32,6 +33,7 @@ table, th{
 					${a.firstName} ${a.lastName}<br/>
 				</c:forEach>
 			</th>
+			<th>${b.category}</th>
 			<th>£${b.price}</th>
 		</tr>
 	</c:forEach>

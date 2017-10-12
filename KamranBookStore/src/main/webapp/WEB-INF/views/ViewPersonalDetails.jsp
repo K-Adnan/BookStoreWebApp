@@ -7,13 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3> ${emailAddress} <a href="viewPersonalDetails">Personal Details</a></h3>
-<h2> WELCOME TO KAMRANS BOOKSTORE </h2> 
+${message}
+<h2> View Personal Details </h2>
+Email Address : ${user.emailAddress}<br/>
+First Name : ${user.firstName}<br/>
+Last Name : ${user.lastName}<br/>
+Address : ${user.address}<br/>
+Phone Number : ${user.phoneNumber}<br/>
 
-<h3> <a href="addUser"> Add New Author </a></h3>
-<h3> <a href="viewUser"> View User </a></h3>
-<h3> <a href="searchBook"> Search Book</a></h3>
-<h3> <a href="logout"> Log Out </a></h3>
-
+<br/><br/>
+<a href="editPersonalDetails"> Edit Profile </a>
 </body>
 </html>
