@@ -29,7 +29,7 @@ public class BookController {
 	}
 	
 	@RequestMapping("/displayBooks")
-	public String goToDisplayBooks(@RequestParam Long isbn, @RequestParam String title, @RequestParam String author, @RequestParam String category, Model model){
+	public String goToDisplayBooks(@RequestParam Long isbn, @RequestParam String title, @RequestParam String author, @RequestParam String category, @RequestParam Double min, @RequestParam Double max, Model model){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
 		BookDAO bookDao = new BookDaoImpl(factory);
 
@@ -40,7 +40,7 @@ public class BookController {
 			booksList.add(book);
 		}else{
 			System.out.println("Running Else part");
-			booksList = bookDao.getBooksByAllAttributes(title, author, category);
+			booksList = bookDao.getBooksByAllAttributes(title, author, category, min, max);
 		}
 		model.addAttribute("booksList", booksList);
 		return "ViewBooks";

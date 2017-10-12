@@ -41,7 +41,7 @@ public class SoloProjectRunner {
 //		book.setAuthor("Kamran");
 		BookDAO bookDao = new BookDaoImpl(factory);
 		
-		List <Book> booksList = bookDao.getBooksByAllAttributes("", "", "");
+		List <Book> booksList = bookDao.getBooksByAllAttributes("", "", "", 20.0, 22.0);
 		
 		factory.close();
 	}
