@@ -94,11 +94,12 @@ public class BookDaoImpl implements BookDAO {
 		return listOfBooks;
 	}
 	
-	public List<Book> getBooksByAuthor(Author author){
+	public List<Book> getBooksByAuthor(String name){
 		EntityManager manager = factory.createEntityManager();
 		
-		TypedQuery<Book> query = manager.createQuery("select b from Book as b where :author MEMBER of b.authors", Book.class);
-		query.setParameter("author", author);
+//		TypedQuery<Book> query = manager.createQuery("select b from Book as b where :author MEMBER of b.authors", Book.class);
+		TypedQuery<Book> query = manager.createQuery("select b from Book as b join fetch b.authors a where a.firstName = :name OR a.lastName = :name", Book.class);
+		query.setParameter("name", name);
 		List<Book> listOfBooks = query.getResultList();
 		
 		return listOfBooks;
@@ -137,11 +138,13 @@ public class BookDaoImpl implements BookDAO {
 		return listOfBooks;
 	}
 	
-	public List<Book> getBooksByAllAttributes(String title, String category){
+	public List<Book> getBooksByAllAttributes(String title, String author, String category){
 		EntityManager manager = factory.createEntityManager();
-		TypedQuery<Book> query = manager.createQuery("select b from Book b where lower(b.title) like ? AND lower(b.category) like ?", Book.class);
-		query.setParameter(1, "% " + title.toLowerCase() + " %");
-		query.setParameter(2, "%" + category.toLowerCase() + "%");
+		TypedQuery<Book> query = manager.createQuery("select b from Book b join fetch b.authors a where b.title like ? AND b.category like ? AND (a.firstName like ? OR a.lastName like ?)", Book.class);
+		query.setParameter(1, "%" + title + "%");
+		query.setParameter(2, "%" + category + "%");
+		query.setParameter(3, "%" + author + "%");
+		query.setParameter(4, "%" + author + "%");
 		List<Book> listOfBooks = query.getResultList();
 		System.out.println(listOfBooks);
 		return listOfBooks;

@@ -40,7 +40,7 @@ public class BookController {
 			booksList.add(book);
 		}else{
 			System.out.println("Running Else part");
-			booksList = bookDao.getBooksByAllAttributes(title, category);
+			booksList = bookDao.getBooksByAllAttributes(title, author, category);
 		}
 		model.addAttribute("booksList", booksList);
 		return "ViewBooks";

@@ -17,7 +17,5 @@
 	Category : <input name="category"/><br/><br/>
 	<input type="submit" value="Go"/>
 </form>
-
-
 </body>
 </html>

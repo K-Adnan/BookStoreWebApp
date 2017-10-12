@@ -37,20 +37,11 @@ public class SoloProjectRunner {
 //		AdminDAO adminDao = new AdminDaoImpl(factory);
 //		adminDao.addAdmin(admin);
 		
-		Author author = authorDao.getAuthor("kamran.adnan");
-		
-		
-		Book book = new Book(1234567890l, "Java for Dummies", "Technology", 420, 2014, 21.47);
-		book.setAuthor(author);
-		
+//		Book book = new Book(1234567890l, "Java for Dummies", "Technology", 420, 2014, 21.47);
+//		book.setAuthor("Kamran");
 		BookDAO bookDao = new BookDaoImpl(factory);
 		
-		try {
-			bookDao.addBook(book);
-			System.out.println("Book successfully added");
-		} catch (EntryAlreadyExistsException e) {
-			e.printStackTrace();
-		}
+		List <Book> booksList = bookDao.getBooksByAllAttributes("", "", "");
 		
 		factory.close();
 	}
