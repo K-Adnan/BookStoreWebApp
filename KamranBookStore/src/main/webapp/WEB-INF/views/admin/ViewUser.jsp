@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>View User</title>
 </head>
 <body>
+<h2> View Details for particular user </h2>
 <form action="displayUser" method="get">
 	Enter Email Address : <input name="emailAddress"/>
 	<input type="submit" value="Go"/>

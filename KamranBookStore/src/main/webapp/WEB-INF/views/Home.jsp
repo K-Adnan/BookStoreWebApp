@@ -11,7 +11,7 @@
 
 <h3> <a href="addUser"> Add New Author </a></h3>
 <h3> <a href="viewUser"> View User </a></h3>
-<h3> <a href="viewAllUsers"> View All Users </a></h3>
+<h3> <a href="searchBook"> Search Book</a></h3>
 <h3> <a href="logout"> Log Out </a></h3>
 
 </body>

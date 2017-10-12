@@ -1,7 +1,5 @@
 package com.fdmgroup.controller;
 
-import java.security.Principal;
-
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -19,18 +17,18 @@ public class UserController {
 	
 	@RequestMapping("/viewUser")
 	public String goToViewUser(){
-		return "ViewUser";
+		return "admin/ViewUser";
 	}
 	
 	@RequestMapping("/displayUser")
-	public String goToDisplayUser(String emailAddress, Model model){
+	public String goToDisplayUser(@RequestParam String emailAddress, Model model){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
 		
 		UserDAO userDao = new UserDaoImpl(factory);
 		User user = userDao.getUser(emailAddress);
 		model.addAttribute("user", user);
 		model.addAttribute("message", "User details for user with email address: " + emailAddress);
-		return "DisplayUser";
+		return "admin/DisplayUser";
 	}
 	
 	@RequestMapping("/editUser")

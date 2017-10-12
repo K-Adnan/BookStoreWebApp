@@ -25,5 +25,9 @@ public interface BookDAO {
 	public List<Book> getBooksByAuthor(Author author);
 	
 	public List<Book> getBooksByPrice(Double minimum, Double maximum);
+	
+	public List<Book> getBooksByTitle(String title);
+	
+	public List<Book> getBooksByAllAttributes(String title, String category);
 
 }

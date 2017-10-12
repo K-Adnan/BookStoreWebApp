@@ -28,6 +28,7 @@ public class Book {
 //                                referencedColumnName = "EMAILADDRESS", 
 //                               nullable = true)})
 	private Set<Author> authors = new HashSet<Author>();
+
 	private String category;
 	private int numberOfPages;
 	private double avgCustomerRating;
@@ -141,5 +142,50 @@ public class Book {
 	public void setYearOfRelease(int yearOfRelease) {
 		this.releaseYear = yearOfRelease;
 	}
+	
+	public Set<Author> getAuthors() {
+		return authors;
+	}
+	
+	public void setAuthors(Set<Author> authors) {
+		this.authors = authors;
+	}
+	
+	public int getNumberOfReviews() {
+		return numberOfReviews;
+	}
+	
+	public void setNumberOfReviews(int numberOfReviews) {
+		this.numberOfReviews = numberOfReviews;
+	}
+	
+	public int getReleaseYear() {
+		return releaseYear;
+	}
+	
+	public void setReleaseYear(int releaseYear) {
+		this.releaseYear = releaseYear;
+	}
+	
+	public void setIsbn(long isbn) {
+		this.isbn = isbn;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
+	public void setAvgCustomerRating(double avgCustomerRating) {
+		this.avgCustomerRating = avgCustomerRating;
+	}
+	
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 
 }
