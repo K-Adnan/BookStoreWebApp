@@ -27,7 +27,7 @@ table, th{
 	<c:forEach items="${booksList}" var="b">
 		<tr>
 			<th>${b.isbn}</th>
-			<th>${b.title}</th>
+			<th> <a href="displayBook?isbn=${b.isbn}"> ${b.title} </a> </th>
 			<th>
 				<c:forEach items="${b.authors}" var="a">
 					${a.firstName} ${a.lastName}<br/>

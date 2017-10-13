@@ -1,5 +1,6 @@
 package com.fdmgroup.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fdmgroup.daos.BookDAO;
 import com.fdmgroup.daos.BookDaoImpl;
+import com.fdmgroup.daos.UserDAO;
+import com.fdmgroup.daos.UserDaoImpl;
 import com.fdmgroup.entities.Book;
+import com.fdmgroup.entities.User;
+import com.fdmgroup.shoppingcart.Cart;
+import com.fdmgroup.shoppingcart.CartItem;
 
 @Controller
 public class BookController {
@@ -46,4 +52,44 @@ public class BookController {
 		return "ViewBooks";
 	}
 	
+	@RequestMapping("/displayBook")
+	public String goToDisplayBook(@RequestParam Long isbn, Model model){
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
+		BookDAO bookDao = new BookDaoImpl(factory);
+		
+		Book book = bookDao.getBook(isbn);
+		
+		model.addAttribute("book", book);
+		
+		return "ViewBook";
+	}
+	
+	@RequestMapping("/viewBooksByCategory")
+	public String goToViewBooksByCategory(@RequestParam String category, Model model){
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
+		BookDAO bookDao = new BookDaoImpl(factory);
+		
+		List<Book> booksList = bookDao.getBooksByCategory(category);
+		
+		model.addAttribute("booksList", booksList);
+		
+		return "ViewBooks";
+	}
+	
+	@RequestMapping("/addBookToBasket")
+	public String doAddBookToBasket(@RequestParam Long isbn, Model model, Principal principal){
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
+		BookDAO bookDao = new BookDaoImpl(factory);
+		UserDAO userDao = new UserDaoImpl(factory);
+		
+		User user = userDao.getUser(principal.getName());
+		Book book = bookDao.getBook(isbn);
+		
+		Cart cart = user.getCart();
+		cart.addCartItem(new CartItem(book, 1, cart));
+		
+		model.addAttribute("book", book);
+		
+		return "ViewBook";
+	}
 }

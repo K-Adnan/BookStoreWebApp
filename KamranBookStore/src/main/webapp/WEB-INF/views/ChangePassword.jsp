@@ -10,8 +10,9 @@
 ${message}
 <form method="post" action="updateNewPassword">
 <h2> Change Password </h2>
-	Password : <input size="50" name="password" type="password" value=""/><br/>
-	Confirm Password : <input size="50" name="confirmPassword" type="password"/><br/>
+	Current Password : <input size="15" name="currentPassword" type="password" value=""/><br/>
+	New Password : <input size="15" name="password" type="password" value=""/><br/>
+	Confirm New Password : <input size="15" name="confirmPassword" type="password"/><br/>
 <input type="submit" value="Go"/>
 </form>
 </body>

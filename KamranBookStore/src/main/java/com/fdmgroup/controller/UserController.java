@@ -56,7 +56,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/updatePersonalDetails")
-	public String doUpdatePersonalDetails(@RequestParam String password, User user, Principal principal, Model model){
+	public String doUpdatePersonalDetails(User user, Principal principal, Model model){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
 		UserDAO userDao = new UserDaoImpl(factory);
 		String emailAddress = principal.getName();
@@ -82,20 +82,26 @@ public class UserController {
 	}
 	
 	@RequestMapping("/updateNewPassword")
-	public String doChangePassword(@RequestParam String password, @RequestParam String confirmPassword, Principal principal, Model model){
+	public String doChangePassword(@RequestParam String currentPassword, @RequestParam String password, @RequestParam String confirmPassword, Principal principal, Model model){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
 		UserDAO userDao = new UserDaoImpl(factory);
 		String emailAddress = principal.getName();
 		
 		User user = userDao.getUser(emailAddress);
 		
-		if (password.equals(confirmPassword)){
-			user.setPassword(password);
-			userDao.updateUser(user);
-			model.addAttribute("user", user);
-			return "ViewPersonalDetails";
+		if (currentPassword.equals(user.getPassword())){
+		
+			if (password.equals(confirmPassword)){
+				user.setPassword(password);
+				userDao.updateUser(user);
+				model.addAttribute("user", user);
+				return "ViewPersonalDetails";
+			}else{
+				model.addAttribute("message", "Password and Confirm Password fields do not match");
+				return "ChangePassword";
+			}
 		}else{
-			model.addAttribute("message", "Password and Confirm Password fields do not match");
+			model.addAttribute("message", "Current password is incorrect");
 			return "ChangePassword";
 		}
 		

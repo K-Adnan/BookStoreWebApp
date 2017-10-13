@@ -21,7 +21,3 @@
 	</sf:form>
 </body>
 </html>
-
-
-
-

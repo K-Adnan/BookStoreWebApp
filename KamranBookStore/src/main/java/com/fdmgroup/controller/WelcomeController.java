@@ -67,4 +67,10 @@ public class WelcomeController {
 		return "ViewPersonalDetails";
 	}
 	
+	@RequestMapping("/adminCheck")
+	public String goToAdmin(Model model){
+		return "admin/AdminCheck";
+	}
+	
+	
 }

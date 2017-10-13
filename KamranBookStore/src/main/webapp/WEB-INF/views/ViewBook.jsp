@@ -14,30 +14,16 @@ table, th{
 </style>
 </head>
 <body>
-	<h3>LIST OF ALL BOOKS</h3>
-		
-	<table>
-		<tr>
-			<th>ISBN</th>
-			<th>Author</th>
-			<th>Title</th>
-			<th>Category</th>
-			<th>Price</th>
-		</tr>
-	<c:forEach items="${booksList}" var="b">
-		<tr>
-			<th>${b.isbn}</th>
-			<th> <a href="displayBook?isbn=${b.isbn}"> ${b.title} </a></th>
-			<th>
-				<c:forEach items="${b.authors}" var="a">
-					${a.firstName} ${a.lastName}<br/>
-				</c:forEach>
-			</th>
-			<th>${b.category}</th>
-			<th>£${b.price}</th>
-		</tr>
+${message}
+	<h2>${book.title}</h2>
+	By
+	<c:forEach items="${book.authors}" var="a">
+		${a.firstName} ${a.lastName}<br/>
 	</c:forEach>
-	</table>
-	
+	<h4> <a href="viewBooksByCategory?category=${book.category}"> ${book.category} </a></h4>
+	<h4>ISBN : ${book.isbn}</h4>
+	<h4>${book.numberOfPages} Pages</h4>
+	<h4>Price : £${book.price}</h4>
+	<h4><a href="addBookToBasket?isbn={book.isbn}">Add to Basket</a></h4>
 </body>
 </html>

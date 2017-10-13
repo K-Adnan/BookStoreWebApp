@@ -6,12 +6,12 @@
 <h2>Kamran's BookStore</h2>
 ${message}
 <h3> Please login or register</h3>
-<h3> <a href="register"> Register </a></h3>
+<h3> <a href="registerUser"> Register </a></h3>
 
 <form action="j_security_check" method="post">
        
-       Email Address : <input name="j_username" /> 
-       Password: <input type="password" name="j_password"/>
+       Email Address : <input name="j_username" /> <br/>
+       Password: <input type="password" name="j_password"/><br/>
        <input type="Submit" value="Login" />
 </form>
 
