@@ -41,4 +41,21 @@ public class CartController {
 		return "ViewCart";
 	}
 	
+	@RequestMapping("/updateQuantity")
+	public String doUpdateCartItem(@RequestParam int cartItemId, @RequestParam int quantity, Model model, Principal principal){
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
+		UserDAO userDao = new UserDaoImpl(factory);
+		User user = userDao.getUser(principal.getName());
+		CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
+		
+		CartItem cartItem = cartItemDao.getCartItem(cartItemId);
+		cartItem.setQuantity(quantity);
+		
+		cartItemDao.updateCartItem(cartItem);
+		
+		model.addAttribute("cart", user.getCart());
+		
+		return "ViewCart";
+	}
+	
 }

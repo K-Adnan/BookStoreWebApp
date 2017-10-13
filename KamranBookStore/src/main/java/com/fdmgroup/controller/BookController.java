@@ -83,33 +83,38 @@ public class BookController {
 	
 	@RequestMapping("/addBookToBasket")
 	public String doAddBookToBasket(@RequestParam Long isbn, @RequestParam Integer quantity, Model model, Principal principal){
+		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
 		UserDAO userDao = new UserDaoImpl(factory);
 		BookDAO bookDao = new BookDaoImpl(factory);
-		CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
-		CartDAO cartDao = new CartDaoImpl(factory);
-		
 		Book book = bookDao.getBook(isbn);
 		User user = userDao.getUser(principal.getName());
 		
-		Cart cart = null;
-		if (user.getCart() == null){
-			cart = new Cart();
-			cartDao.addCart(cart);
-			user.setCart(cart);
+		if (quantity <1){
+			model.addAttribute("message", "Quantity must be 1 or more");
 		}else{
-			cart = user.getCart();
+			CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
+			CartDAO cartDao = new CartDaoImpl(factory);
+			
+			
+			Cart cart = null;
+			if (user.getCart() == null){
+				cart = new Cart();
+				cartDao.addCart(cart);
+				user.setCart(cart);
+			}else{
+				cart = user.getCart();
+			}
+	
+			CartItem cartItem = new CartItem(book, quantity, cart);
+			cartItemDao.addCartItem(cartItem);
+			
+			cart.addCartItem(cartItem);
+			userDao.updateUser(user);
+			
+			model.addAttribute("message", "Successfully added to Shopping Cart");
 		}
-
-		CartItem cartItem = new CartItem(book, quantity, cart);
-		cartItemDao.addCartItem(cartItem);
-		
-		cart.addCartItem(cartItem);
-		userDao.updateUser(user);
-		
 		model.addAttribute("book", book);
-		model.addAttribute("message", "Successfully added to Shopping Cart");
-		
 		return "ViewBook";
 	}
 }

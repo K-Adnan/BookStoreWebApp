@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,7 +24,10 @@ ${message}
 		Title : ${c.book.title}<br/>
 		Price : £${c.book.price}<br/>
 		Subtotal : £${c.subTotal}<br/>
-		${c.quantity}<br/>
+		<form action="updateQuantity?cartItemId=${c.cartItemId}" method="post">
+			<input name="quantity" size="1" value="${c.quantity}">
+			<input type="Submit" value="Update" />
+		</form>
 		<hr>
 	</c:forEach>
 </body>
