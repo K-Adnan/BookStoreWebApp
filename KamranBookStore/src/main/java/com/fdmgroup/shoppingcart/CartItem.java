@@ -24,6 +24,7 @@ public class CartItem {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Book book;
 	private int quantity;
+	private double subTotal;
 	
 	public CartItem(){
 	}
@@ -32,6 +33,7 @@ public class CartItem {
 		this.book = book;
 		this.quantity = quantity;
 		this.cart = cart;
+		subTotal = quantity * book.getPrice();
 	}
 
 	public long getIsbn() {
@@ -48,6 +50,14 @@ public class CartItem {
 	
 	public void setQuantity(int quantity){
 		this.quantity = quantity;
+	}
+
+	public double getSubTotal() {
+		return subTotal;
+	}
+
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
 	}
 
 }

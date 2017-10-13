@@ -20,6 +20,22 @@ import com.fdmgroup.entities.User;
 @Table(name="TEST_CART")
 public class Cart {
 	
+	public int getCartId() {
+		return cartId;
+	}
+
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
+	}
+
+	public void setCartItems(Set<CartItem> cartItems) {
+		this.cartItems = cartItems;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
 	@Id
 	@GeneratedValue
 	private int cartId;

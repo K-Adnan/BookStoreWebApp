@@ -8,6 +8,7 @@
 </head>
 <body>
 <h3> ${emailAddress} <a href="viewPersonalDetails">Personal Details</a></h3>
+<a href="viewCart">View Cart</a>
 <h2> WELCOME TO KAMRANS BOOKSTORE </h2> 
 
 <h3> <a href="addUser"> Add New Author </a></h3>

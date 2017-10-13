@@ -108,6 +108,7 @@ public class BookController {
 		userDao.updateUser(user);
 		
 		model.addAttribute("book", book);
+		model.addAttribute("message", "Successfully added to Shopping Cart");
 		
 		return "ViewBook";
 	}

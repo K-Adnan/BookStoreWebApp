@@ -21,31 +21,31 @@ public class SoloProjectRunner {
 	
 	public static void main(String[] args) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
-		UserDAO userDao = new UserDaoImpl(factory);
-		BookDAO bookDao = new BookDaoImpl(factory);
-		CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
-		CartDAO cartDao = new CartDaoImpl(factory);
-		
-		Book book = bookDao.getBook(9780545227l);
-		User user = userDao.getUser("a");
-		
-		Cart cart = null;
-		if (user.getCart() == null){
-			cart = new Cart();
-			cartDao.addCart(cart);
-			user.setCart(cart);
-		}else{
-			cart = user.getCart();
-		}
-
-		CartItem cartItem = new CartItem(book, 1, cart);
-		cartItemDao.addCartItem(cartItem);
-		
-		cart.addCartItem(cartItem);
-		
-		userDao.updateUser(user);
-		
-		System.out.println(user);
+//		UserDAO userDao = new UserDaoImpl(factory);
+//		BookDAO bookDao = new BookDaoImpl(factory);
+//		CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
+//		CartDAO cartDao = new CartDaoImpl(factory);
+//		
+//		Book book = bookDao.getBook(9780545227l);
+//		User user = userDao.getUser("a");
+//		
+//		Cart cart = null;
+//		if (user.getCart() == null){
+//			cart = new Cart();
+//			cartDao.addCart(cart);
+//			user.setCart(cart);
+//		}else{
+//			cart = user.getCart();
+//		}
+//
+//		CartItem cartItem = new CartItem(book, 1, cart);
+//		cartItemDao.addCartItem(cartItem);
+//		
+//		cart.addCartItem(cartItem);
+//		
+//		userDao.updateUser(user);
+//		
+//		System.out.println(user);
 		factory.close();
 	}
 }
