@@ -49,11 +49,11 @@ public class Cart {
 	public Cart(){
 	}
 	
-	public Set getCartItems(){
+	public Set<CartItem> getCartItems(){
 		return cartItems;
 	}
 	
-	private void calculateTotal(){
+	public void calculateTotal(){
 		total = 0.0;
 		for (CartItem cartItem : cartItems){
 			double eachPrice = cartItem.getBook().getPrice();

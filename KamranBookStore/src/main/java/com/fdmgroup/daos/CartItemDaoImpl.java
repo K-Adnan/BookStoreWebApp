@@ -1,12 +1,12 @@
 package com.fdmgroup.daos;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
-import com.fdmgroup.exceptions.EntryAlreadyExistsException;
 import com.fdmgroup.shoppingcart.Cart;
 import com.fdmgroup.shoppingcart.CartItem;
 
@@ -19,20 +19,42 @@ public class CartItemDaoImpl implements CartItemDAO {
 	}
 
 	public void addCartItem(CartItem cartItem) {
-//		if (getCartItem(cartItem.getIsbn()) == null) {
-			EntityManager manager = factory.createEntityManager();
-			manager.getTransaction().begin();
+		Long newIsbn = cartItem.getIsbn();
+		
+		EntityManager manager = factory.createEntityManager();
+		manager.getTransaction().begin();
+		boolean exists = false;
+		int quantity = cartItem.getQuantity();
+		
+		int cartItemId = 0;
+		for (CartItem eachCartItem : cartItem.getCart().getCartItems()){
+			System.out.println("Book Name" + eachCartItem.getIsbn());
+			System.out.println(newIsbn);
+			if (newIsbn == eachCartItem.getIsbn()){
+				exists = true;
+				cartItemId = eachCartItem.getCartItemId();
+				break;
+			}
+		}
+		
+		if (exists == true){
+			System.out.println("exists");
+			CartItem oldCartItem = getCartItem(cartItemId);
+			oldCartItem.addToCartItem(quantity);
+			manager.merge(oldCartItem);
+			manager.getTransaction().commit();
+		}else{
 			manager.persist(cartItem);
 			manager.getTransaction().commit();
-//		} else {
-//			throw new EntryAlreadyExistsException("CartItem already exists for book with ISBN " + cartItem.getIsbn()
-//					+ ". " + "To add another quantity for this book, increase quantity of already existing CartItem");
-//		}
+			
+		}
+		
+		
 	}
 
-	public CartItem getCartItem(long isbn) {
+	public CartItem getCartItem(int id) {
 		EntityManager manager = factory.createEntityManager();
-		CartItem cartItem = manager.find(CartItem.class, isbn);
+		CartItem cartItem = manager.find(CartItem.class, id);
 
 		return cartItem;
 	}

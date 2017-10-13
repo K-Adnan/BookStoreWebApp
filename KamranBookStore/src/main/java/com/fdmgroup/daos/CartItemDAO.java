@@ -10,7 +10,7 @@ public interface CartItemDAO {
 	
 	public void addCartItem(CartItem cartItem);
 	
-	public CartItem getCartItem(long isbn);
+	public CartItem getCartItem(int id);
 	
 	public void updateCartItem(CartItem cartItem);
 	

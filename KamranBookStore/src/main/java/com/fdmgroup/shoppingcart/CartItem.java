@@ -15,6 +15,30 @@ import com.fdmgroup.entities.Book;
 @Table(name="TEST_CARTITEMS")
 public class CartItem {
 	
+	public int getCartItemId() {
+		return cartItemId;
+	}
+
+	public void setCartItemId(int cartItemId) {
+		this.cartItemId = cartItemId;
+	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+	public void setIsbn(long isbn) {
+		this.isbn = isbn;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
 	@Id
 	@GeneratedValue
 	private int cartItemId;
@@ -30,6 +54,7 @@ public class CartItem {
 	}
 	
 	public CartItem(Book book, int quantity, Cart cart) {
+		this.isbn = book.getIsbn();
 		this.book = book;
 		this.quantity = quantity;
 		this.cart = cart;
@@ -58,6 +83,21 @@ public class CartItem {
 
 	public void setSubTotal(double subTotal) {
 		this.subTotal = subTotal;
+	}
+	
+	public void addToCartItem(int qty){
+		quantity += qty;
+		calculateSubTotal();
+		cart.calculateTotal();
+	}
+	
+	private void calculateSubTotal() {
+		subTotal = book.getPrice() * quantity;
+	}
+
+	public void removeFromCartItem(int qty){
+		quantity -= qty;
+		calculateSubTotal();
 	}
 
 }

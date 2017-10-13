@@ -17,7 +17,7 @@ table, th{
 ${message}
 <a href="home"> Home </a> <br/>
 	<h2>Shopping Cart</h2>
-	<h3>Total Amount : ${cart.total}</h3><br/>
+	<h3>Total Amount : £${cart.total}</h3><br/>
 	<c:forEach items="${cart.cartItems}" var="c">
 		Title : ${c.book.title}<br/>
 		Price : £${c.book.price}<br/>
