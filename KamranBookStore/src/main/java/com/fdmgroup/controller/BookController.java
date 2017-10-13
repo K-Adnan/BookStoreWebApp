@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,7 +83,7 @@ public class BookController {
 	}
 	
 	@RequestMapping("/addBookToBasket")
-	public String doAddBookToBasket(@RequestParam Long isbn, @RequestParam Integer quantity, Model model, Principal principal){
+	public String doAddBookToBasket(@RequestParam Long isbn, @RequestParam Integer quantity, Model model, Principal principal, HttpSession session){
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
 		UserDAO userDao = new UserDaoImpl(factory);
