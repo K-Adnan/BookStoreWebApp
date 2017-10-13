@@ -24,6 +24,9 @@ ${message}
 	<h4>ISBN : ${book.isbn}</h4>
 	<h4>${book.numberOfPages} Pages</h4>
 	<h4>Price : £${book.price}</h4>
-	<h4><a href="addBookToBasket?isbn={book.isbn}">Add to Basket</a></h4>
+	<form action="addBookToBasket?isbn=${book.isbn}" method="post">
+		<input name="quantity" size="1">
+		<input type="Submit" value="Add to Basket" />
+	</form>
 </body>
 </html>

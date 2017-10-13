@@ -14,10 +14,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fdmgroup.daos.BookDAO;
 import com.fdmgroup.daos.BookDaoImpl;
+import com.fdmgroup.daos.CartDAO;
+import com.fdmgroup.daos.CartDaoImpl;
+import com.fdmgroup.daos.CartItemDAO;
+import com.fdmgroup.daos.CartItemDaoImpl;
 import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.daos.UserDaoImpl;
 import com.fdmgroup.entities.Book;
 import com.fdmgroup.entities.User;
+import com.fdmgroup.exceptions.EntryAlreadyExistsException;
 import com.fdmgroup.shoppingcart.Cart;
 import com.fdmgroup.shoppingcart.CartItem;
 
@@ -77,16 +82,30 @@ public class BookController {
 	}
 	
 	@RequestMapping("/addBookToBasket")
-	public String doAddBookToBasket(@RequestParam Long isbn, Model model, Principal principal){
+	public String doAddBookToBasket(@RequestParam Long isbn, @RequestParam Integer quantity, Model model, Principal principal){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
-		BookDAO bookDao = new BookDaoImpl(factory);
 		UserDAO userDao = new UserDaoImpl(factory);
+		BookDAO bookDao = new BookDaoImpl(factory);
+		CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
+		CartDAO cartDao = new CartDaoImpl(factory);
 		
-		User user = userDao.getUser(principal.getName());
 		Book book = bookDao.getBook(isbn);
+		User user = userDao.getUser(principal.getName());
 		
-		Cart cart = user.getCart();
-		cart.addCartItem(new CartItem(book, 1, cart));
+		Cart cart = null;
+		if (user.getCart() == null){
+			cart = new Cart();
+			cartDao.addCart(cart);
+			user.setCart(cart);
+		}else{
+			cart = user.getCart();
+		}
+
+		CartItem cartItem = new CartItem(book, quantity, cart);
+		cartItemDao.addCartItem(cartItem);
+		
+		cart.addCartItem(cartItem);
+		userDao.updateUser(user);
 		
 		model.addAttribute("book", book);
 		

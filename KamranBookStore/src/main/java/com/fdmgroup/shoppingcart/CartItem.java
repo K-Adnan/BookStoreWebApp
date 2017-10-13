@@ -29,7 +29,6 @@ public class CartItem {
 	}
 	
 	public CartItem(Book book, int quantity, Cart cart) {
-		this.isbn = book.getIsbn();
 		this.book = book;
 		this.quantity = quantity;
 		this.cart = cart;

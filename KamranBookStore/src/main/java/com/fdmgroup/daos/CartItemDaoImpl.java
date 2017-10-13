@@ -18,16 +18,16 @@ public class CartItemDaoImpl implements CartItemDAO {
 		this.factory = factory;
 	}
 
-	public void addCartItem(CartItem cartItem) throws EntryAlreadyExistsException {
-		if (getCartItem(cartItem.getIsbn()) == null) {
+	public void addCartItem(CartItem cartItem) {
+//		if (getCartItem(cartItem.getIsbn()) == null) {
 			EntityManager manager = factory.createEntityManager();
 			manager.getTransaction().begin();
 			manager.persist(cartItem);
 			manager.getTransaction().commit();
-		} else {
-			throw new EntryAlreadyExistsException("CartItem already exists for book with ISBN " + cartItem.getIsbn()
-					+ ". " + "To add another quantity for this book, increase quantity of already existing CartItem");
-		}
+//		} else {
+//			throw new EntryAlreadyExistsException("CartItem already exists for book with ISBN " + cartItem.getIsbn()
+//					+ ". " + "To add another quantity for this book, increase quantity of already existing CartItem");
+//		}
 	}
 
 	public CartItem getCartItem(long isbn) {
