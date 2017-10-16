@@ -5,6 +5,7 @@ import java.security.Principal;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,12 @@ import com.fdmgroup.entities.User;
 @Controller
 public class UserController {
 	
+	@Autowired
+	private EntityManagerFactory factory;
+	
+	@Autowired
+	private UserDAO userDao;
+	
 	@RequestMapping("/viewUser")
 	public String goToViewUser(){
 		return "admin/ViewUser";
@@ -24,9 +31,6 @@ public class UserController {
 	
 	@RequestMapping("/displayUser")
 	public String goToDisplayUser(@RequestParam String emailAddress, Model model){
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
-		
-		UserDAO userDao = new UserDaoImpl(factory);
 		User user = userDao.getUser(emailAddress);
 		model.addAttribute("user", user);
 		model.addAttribute("message", "User details for user with email address: " + emailAddress);
@@ -35,9 +39,6 @@ public class UserController {
 	
 	@RequestMapping("/editUser")
 	public String goToEditUser(Model model,@RequestParam String emailAddress){
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
-		
-		UserDAO userDao = new UserDaoImpl(factory);
 		User user = userDao.getUser(emailAddress);
 		model.addAttribute("user", user);
 		return "EditUser";
@@ -46,10 +47,8 @@ public class UserController {
 	
 	@RequestMapping("/editPersonalDetails")
 	public String goToEditPersonalDetails(Model model, Principal principal){
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
 		String emailAddress = principal.getName();
 		
-		UserDAO userDao = new UserDaoImpl(factory);
 		User user = userDao.getUser(emailAddress);
 		model.addAttribute("user", user);
 		return "EditPersonalDetails";
@@ -57,8 +56,6 @@ public class UserController {
 	
 	@RequestMapping("/updatePersonalDetails")
 	public String doUpdatePersonalDetails(User user, Principal principal, Model model){
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
-		UserDAO userDao = new UserDaoImpl(factory);
 		String emailAddress = principal.getName();
 		
 		// Retrieving old user, replacing its values with the new user's values, and then merging it.
@@ -83,8 +80,6 @@ public class UserController {
 	
 	@RequestMapping("/updateNewPassword")
 	public String doChangePassword(@RequestParam String currentPassword, @RequestParam String password, @RequestParam String confirmPassword, Principal principal, Model model){
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
-		UserDAO userDao = new UserDaoImpl(factory);
 		String emailAddress = principal.getName();
 		
 		User user = userDao.getUser(emailAddress);

@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 <style>
 table, th{
-    border: 1px solid grey;
+	text-align: left;
 }
 </style>
 </head>
@@ -21,14 +21,21 @@ ${message}
 	<h2>Shopping Cart</h2>
 	<h3>Total Amount : £${cart.total}</h3><br/>
 	<c:forEach items="${cart.cartItems}" var="c">
-		Title : ${c.book.title}<br/>
+	<table>
+		<tr>
+		<th><a href="displayBook?isbn=${c.book.isbn}"><img src="${c.book.imageUrl}" height="80" width="auto"></a></th>
+		<th>
+		Title : <a href="displayBook?isbn=${c.book.isbn}">${c.book.title}</a><br/>
 		Price : £${c.book.price}<br/>
 		Subtotal : £${c.subTotal}<br/>
 		<form action="updateQuantity?cartItemId=${c.cartItemId}" method="post">
 			<input name="quantity" size="1" value="${c.quantity}">
 			<input type="Submit" value="Update" />
 		</form>
-		<hr>
+		</th>
+		</tr>
+	</table>
 	</c:forEach>
+		<hr>
 </body>
 </html>

@@ -63,6 +63,12 @@ public class Cart {
 	}
 	
 	public double getTotal(){
+		total = 0.0;
+		for (CartItem cartItem : cartItems){
+			double eachPrice = cartItem.getBook().getPrice();
+			int quantity = cartItem.getQuantity();
+			total += eachPrice * quantity;
+		}
 		DecimalFormat f = new DecimalFormat("##.00");
 		return Double.parseDouble(f.format(total));
 	}

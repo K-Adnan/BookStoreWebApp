@@ -8,8 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <style>
-table, th{
-    border: 1px solid grey;
+tr, th{
+    border-bottom: 1px solid grey;
 }
 </style>
 </head>
@@ -18,14 +18,16 @@ table, th{
 		
 	<table>
 		<tr>
+			<th></th>
 			<th>ISBN</th>
-			<th>Author</th>
 			<th>Title</th>
+			<th>Author</th>
 			<th>Category</th>
 			<th>Price</th>
 		</tr>
 	<c:forEach items="${booksList}" var="b">
 		<tr>
+			<th><a href="displayBook?isbn=${b.isbn}"><img src="${b.imageUrl}" height="80" width="auto"></a></th>
 			<th>${b.isbn}</th>
 			<th> <a href="displayBook?isbn=${b.isbn}"> ${b.title} </a></th>
 			<th>

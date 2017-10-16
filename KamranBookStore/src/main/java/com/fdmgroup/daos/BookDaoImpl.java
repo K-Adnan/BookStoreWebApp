@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.jpa.internal.EntityManagerFactoryRegistry;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fdmgroup.entities.Author;
 import com.fdmgroup.entities.Book;
@@ -14,11 +15,15 @@ import com.fdmgroup.exceptions.EntryAlreadyExistsException;
 
 public class BookDaoImpl implements BookDAO {
 
+	@Autowired
 	private EntityManagerFactory factory;
 
 	public BookDaoImpl(EntityManagerFactory factory) {
 		super();
 		this.factory = factory;
+	}
+	
+	public BookDaoImpl(){
 	}
 
 	public void addBook(Book newBook) throws EntryAlreadyExistsException {

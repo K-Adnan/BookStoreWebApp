@@ -6,15 +6,21 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.fdmgroup.entities.User;
 
 public class UserDaoImpl implements UserDAO {
 
+	@Autowired
 	private EntityManagerFactory factory;
 
 	public UserDaoImpl(EntityManagerFactory factory) {
 		super();
 		this.factory = factory;
+	}
+	
+	public UserDaoImpl(){
 	}
 
 	public void addUser(User newUser) {

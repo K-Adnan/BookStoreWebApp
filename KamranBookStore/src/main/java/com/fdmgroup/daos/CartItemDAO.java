@@ -14,7 +14,7 @@ public interface CartItemDAO {
 	
 	public void updateCartItem(CartItem cartItem);
 	
-	public void removeCartItem(long isbn);
+	public void removeCartItem(int cartItemId);
 	
 	public List<CartItem> getAllCartItemsForCart(Cart cart);
 

@@ -16,6 +16,7 @@ table, th{
 <body>
 ${message}
 <a href="home"> Home </a> <br/>
+	<img src="${book.imageUrl}" height="300" width="auto">
 	<h2>${book.title}</h2>
 	By
 	<c:forEach items="${book.authors}" var="a">

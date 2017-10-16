@@ -3,6 +3,7 @@ package com.fdmgroup.controller;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,18 @@ import com.fdmgroup.entities.User;
 
 @Controller
 public class RegistrationController {
+	
+	@Autowired
+	private EntityManagerFactory factory;
+	
+	@Autowired
+	private UserDAO userDao;
+	
+	@Autowired
+	private AdminDAO adminDao;
+	
+	@Autowired
+	private AuthorDAO authorDao;
 	
 	@RequestMapping("/registerUser")
 	public String goToRegisterUser(Model model){
@@ -43,8 +56,6 @@ public class RegistrationController {
 	
 	@RequestMapping("/doRegisterUser")
 	public String doRegisterUser(User user, Model model){
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
-		UserDAO userDao = new UserDaoImpl(factory);
 		userDao.addUser(user);
 		model.addAttribute("message", "Signup successful, you can sign in now");
 		return "index";
@@ -52,8 +63,6 @@ public class RegistrationController {
 	
 	@RequestMapping("/doRegisterAuthor")
 	public String doRegisterAuthor(Author author, Model model){
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
-		AuthorDAO authorDao = new AuthorDaoImpl(factory);
 		author.setEmailAddress();
 		authorDao.addAuthor(author);
 		model.addAttribute("message", "Signup successful, you can sign in now");
@@ -62,8 +71,6 @@ public class RegistrationController {
 	
 	@RequestMapping("/doRegisterAdmin")
 	public String doRegisterAuthor(Admin admin, Model model){
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
-		AdminDAO adminDao = new AdminDaoImpl(factory);
 		admin.setEmailAddress();
 		adminDao.addAdmin(admin);
 		model.addAttribute("message", "Signup successful, you can sign in now");

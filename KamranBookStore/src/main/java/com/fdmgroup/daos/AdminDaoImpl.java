@@ -5,10 +5,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.fdmgroup.entities.Admin;
 
 public class AdminDaoImpl implements AdminDAO {
 
+	@Autowired
 	private EntityManagerFactory factory;
 
 	public AdminDaoImpl() {

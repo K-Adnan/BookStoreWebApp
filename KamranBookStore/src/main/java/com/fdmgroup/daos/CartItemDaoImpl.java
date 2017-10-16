@@ -7,15 +7,21 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.fdmgroup.shoppingcart.Cart;
 import com.fdmgroup.shoppingcart.CartItem;
 
 public class CartItemDaoImpl implements CartItemDAO {
 
+	@Autowired
 	private EntityManagerFactory factory;
 
 	public CartItemDaoImpl(EntityManagerFactory factory) {
 		this.factory = factory;
+	}
+	
+	public CartItemDaoImpl(){
 	}
 
 	public void addCartItem(CartItem cartItem) {
@@ -67,11 +73,11 @@ public class CartItemDaoImpl implements CartItemDAO {
 		manager.getTransaction().commit();
 	}
 
-	public void removeCartItem(long isbn) {
+	public void removeCartItem(int cartItemId) {
 		EntityManager manager = factory.createEntityManager();
 		manager.getTransaction().begin();
 
-		CartItem cartItem = manager.find(CartItem.class, isbn);
+		CartItem cartItem = manager.find(CartItem.class, cartItemId);
 		manager.remove(cartItem);
 		manager.getTransaction().commit();
 
