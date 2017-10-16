@@ -20,7 +20,7 @@ ${message}
 <a href="home"> Home </a> <br/>
 	<h2>Shopping Cart</h2>
 	<h3>Total Amount : £${cart.total}</h3><br/>
-	<c:forEach items="${cartItems}" var="c">
+	<c:forEach items="${cart.cartItems}" var="c">
 	<table>
 		<tr>
 		<th><a href="displayBook?isbn=${c.book.isbn}"><img src="${c.book.imageUrl}" height="80" width="auto"></a></th>

@@ -66,7 +66,7 @@ public class CartController {
 			
 			Cart updatedCart = cartDao.updateCart(cart);
 		}
-		model.addAttribute("cart",cartDao.getCart(cart.getCartId()));
+		model.addAttribute("cart",cart);
 		return "ViewCart";
 	}
 	
