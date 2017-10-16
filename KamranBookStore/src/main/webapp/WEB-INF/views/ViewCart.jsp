@@ -20,6 +20,8 @@ ${message}
 <a href="home"> Home </a> <br/>
 	<h2>Shopping Cart</h2>
 	<h3>Total Amount : £${cart.total}</h3><br/>
+	<c:choose>
+	<c:when test="${cart.total > '0'}">
 	<c:forEach items="${cart.cartItems}" var="c">
 	<table>
 		<tr>
@@ -37,9 +39,7 @@ ${message}
 	</table>
 		<hr>
 	</c:forEach>
-	<c:choose>
 	
-    <c:when test="${cart.total > '0'}">
 	<a href="proceedCheckout?cartId=${cart.cartId}"> Proceed to Checkout </a> <br/>
     </c:when>
 </c:choose>

@@ -55,8 +55,8 @@ public class Author extends User{
 		return sales;
 	}
 	
-	public double setSales(){
-		return sales;
+	public void setSales(double sales){
+		this.sales = sales;
 	}
 
 }

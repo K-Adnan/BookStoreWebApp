@@ -37,6 +37,7 @@ public class Book {
 	private double price;
 	private int releaseYear;
 	private String imageUrl;
+	private int sales;
 	
 	public Book(){
 		
@@ -194,6 +195,14 @@ public class Book {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	public int getSales() {
+		return sales;
+	}
+
+	public void setSales(int sales) {
+		this.sales = sales;
 	}
 
 

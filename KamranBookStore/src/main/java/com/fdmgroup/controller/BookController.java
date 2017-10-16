@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -112,4 +114,19 @@ public class BookController {
 		model.addAttribute("book", book);
 		return "ViewBook";
 	}
+	
+	@RequestMapping("/rateBook")
+	public String doRateBook(@RequestParam long isbn, Model model, HttpServletRequest request){
+		
+		int rating = Integer.parseInt(request.getParameter("rating"));
+		
+		Book book = bookDao.getBook(isbn);
+		book.addCustomerRating(rating);
+		bookDao.updateBook(book);
+		
+		model.addAttribute("book", book);
+		model.addAttribute("message", "Thank you, your rating has been successfully saved<br/>");
+		return "ViewBook";
+	}
+	
 }

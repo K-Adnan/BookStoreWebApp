@@ -11,11 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fdmgroup.daos.BookDAO;
 import com.fdmgroup.daos.CartDAO;
 import com.fdmgroup.daos.CartItemDAO;
 import com.fdmgroup.daos.OrderDAO;
 import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.entities.Author;
+import com.fdmgroup.entities.Book;
 import com.fdmgroup.entities.User;
 import com.fdmgroup.shoppingcart.Cart;
 import com.fdmgroup.shoppingcart.CartItem;
@@ -36,12 +38,20 @@ public class CartController {
 	@Autowired
 	private OrderDAO orderDao;
 	
+	@Autowired
+	private BookDAO bookDao;
+	
 	@RequestMapping("/viewCart")
 	public String goToViewCart(Model model, Principal principal){
 		User user = userDao.getUser(principal.getName());
 		
 		Cart cart = user.getCart();
+		
 		List<CartItem> listOfCartItems = new ArrayList<CartItem>();
+		
+		if (user.getCart() == null){
+			cart = new Cart();
+		}
 		
 		for (CartItem eachCartItem : cart.getCartItems()){
 			listOfCartItems.add(eachCartItem);
@@ -97,10 +107,12 @@ public class CartController {
 		orderDao.addOrder(order);
 		cartDao.unassignCart(cartId);
 		
-		for (CartItem cartItem : order.getCart().getCartItems()){
-			Set<Author> authors = cartItem.getBook().getAuthors();
-			
-			
+		for (CartItem cartItem : cart.getCartItems()){
+			Book book = cartItem.getBook();
+			int currentSales = book.getSales();
+			int newSales = book.getSales() + cartItem.getQuantity();
+			book.setSales(newSales);
+			bookDao.updateBook(book);
 		}
 		
 		return "OrderConfirmation";

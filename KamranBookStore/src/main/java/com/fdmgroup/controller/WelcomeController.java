@@ -11,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fdmgroup.daos.CartDAO;
 import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.entities.User;
+import com.fdmgroup.shoppingcart.Cart;
 
 @Controller
 public class WelcomeController {
@@ -22,6 +24,9 @@ public class WelcomeController {
 	
 	@Autowired
 	private UserDAO userDao;
+	
+	@Autowired
+	private CartDAO cartDao;
 	
 	@RequestMapping("/")
 	public String goToIndex(){
