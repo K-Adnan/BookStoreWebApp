@@ -17,5 +17,7 @@
 	<h2>Order Complete</h2>
 	
 	<h3>Congratulations! Your order has been completed!</h3>
+	
+	<h5> <a href="viewOrders">View your Orders </a></h5>
 </body>
 </html>

@@ -30,8 +30,6 @@ public class Order {
 	private int orderId;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private User user;
-	@Transient
-	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	@OneToOne(cascade=CascadeType.MERGE)
 	private Cart cart;
 	private String status;
@@ -65,14 +63,6 @@ public class Order {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	public SimpleDateFormat getDf() {
-		return df;
-	}
-
-	public void setDf(SimpleDateFormat df) {
-		this.df = df;
 	}
 
 	public Date getOrderDate() {

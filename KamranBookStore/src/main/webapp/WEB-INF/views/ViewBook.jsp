@@ -15,7 +15,8 @@ table, th {
 </head>
 <body>
 	${message}
-	<a href="home"> Home </a>
+	<a href="home"> Home </a><br/>
+	<a href="viewAllBooks"> View All Books</a>
 	<br />
 	<img src="${book.imageUrl}" height="300" width="auto">
 	<h2>${book.title}</h2>
@@ -31,7 +32,7 @@ table, th {
 	<h4>${book.numberOfPages} Pages</h4>
 	<h4>Price : £${book.price}</h4>
 	<form action="addBookToBasket?isbn=${book.isbn}" method="post">
-		<input name="quantity" size="1"> <input type="Submit"
+		<input name="quantity" size="1" value="1"> <input type="Submit"
 			value="Add to Cart" />
 	</form>
 	Add Customer Rating

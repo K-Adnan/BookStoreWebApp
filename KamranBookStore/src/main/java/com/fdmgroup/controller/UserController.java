@@ -44,7 +44,6 @@ public class UserController {
 		return "EditUser";
 	}
 	
-	
 	@RequestMapping("/editPersonalDetails")
 	public String goToEditPersonalDetails(Model model, Principal principal){
 		String emailAddress = principal.getName();

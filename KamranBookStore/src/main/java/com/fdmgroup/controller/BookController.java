@@ -61,7 +61,7 @@ public class BookController {
 	}
 	
 	@RequestMapping("/displayBook")
-	public String goToDisplayBook(@RequestParam Long isbn, Model model){
+	public String goToDisplayBook(@RequestParam Long isbn, Model model, HttpServletRequest req){
 		
 		Book book = bookDao.getBook(isbn);
 		

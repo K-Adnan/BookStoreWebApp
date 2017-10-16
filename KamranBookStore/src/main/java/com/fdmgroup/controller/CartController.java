@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fdmgroup.comparators.OrderComparator;
 import com.fdmgroup.daos.BookDAO;
 import com.fdmgroup.daos.CartDAO;
 import com.fdmgroup.daos.CartItemDAO;
@@ -124,6 +125,7 @@ public class CartController {
 		User user = userDao.getUser(principal.getName());
 		
 		List<Order> listOfOrders = orderDao.getAllOrdersForUser(user);
+		listOfOrders.sort(new OrderComparator());
 		
 		model.addAttribute("orders", listOfOrders);
 

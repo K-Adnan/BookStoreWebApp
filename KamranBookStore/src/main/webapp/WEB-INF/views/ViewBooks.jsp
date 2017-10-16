@@ -24,6 +24,7 @@ tr, th{
 			<th>Author</th>
 			<th>Category</th>
 			<th>Price</th>
+			<th>Avg. Rating</th>
 		</tr>
 	<c:forEach items="${booksList}" var="b">
 		<tr>
@@ -37,6 +38,7 @@ tr, th{
 			</th>
 			<th>${b.category}</th>
 			<th>£${b.price}</th>
+			<th>${b.avgCustomerRating} (${b.numberOfReviews})</th>
 		</tr>
 	</c:forEach>
 	</table>
