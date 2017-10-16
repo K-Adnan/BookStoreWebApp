@@ -20,7 +20,7 @@ ${message}
 <a href="home"> Home </a> <br/>
 	<h2>Shopping Cart</h2>
 	<h3>Total Amount : £${cart.total}</h3><br/>
-	<c:forEach items="${cart.cartItems}" var="c">
+	<c:forEach items="${cartItems}" var="c">
 	<table>
 		<tr>
 		<th><a href="displayBook?isbn=${c.book.isbn}"><img src="${c.book.imageUrl}" height="80" width="auto"></a></th>
@@ -35,7 +35,14 @@ ${message}
 		</th>
 		</tr>
 	</table>
-	</c:forEach>
 		<hr>
+	</c:forEach>
+	<c:choose>
+	
+    <c:when test="${cart.total > '0'}">
+	<a href="proceedCheckout?cartId=${cart.cartId}"> Proceed to Checkout </a> <br/>
+    </c:when>
+</c:choose>
+	
 </body>
 </html>

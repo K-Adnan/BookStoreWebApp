@@ -9,11 +9,15 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.fdmgroup.entities.User;
 
@@ -22,21 +26,24 @@ import com.fdmgroup.entities.User;
 public class Order {
 	
 	@Id
+	@GeneratedValue
 	private int orderId;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private User user;
+	@Transient
 	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.MERGE)
 	private Cart cart;
 	private String status;
-	private Timestamp orderDate;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date orderDate;
 	
 	public Order(){
 	}
 	
 	public Order(Cart cart){
 		this.setCart(cart);
-		this.orderDate = new Timestamp(new Date().getTime());
+		this.orderDate = new Date();
 	}
 	
 	public String getStatus(){
@@ -68,11 +75,11 @@ public class Order {
 		this.df = df;
 	}
 
-	public Timestamp getOrderDate() {
+	public Date getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(Timestamp date) {
+	public void setOrderDate(Date date) {
 		this.orderDate = date;
 	}
 

@@ -86,4 +86,11 @@ public class Cart {
 		this.user = user;
 	}
 
+	@Override
+	public String toString() {
+		return "Cart [cartId=" + cartId + ", total=" + total + "]";
+	}
+
+	
+	
 }

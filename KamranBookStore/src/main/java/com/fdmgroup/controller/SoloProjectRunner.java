@@ -9,13 +9,13 @@ import com.fdmgroup.daos.CartDAO;
 import com.fdmgroup.daos.CartDaoImpl;
 import com.fdmgroup.daos.CartItemDAO;
 import com.fdmgroup.daos.CartItemDaoImpl;
+import com.fdmgroup.daos.OrderDAO;
+import com.fdmgroup.daos.OrderDaoImpl;
 import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.daos.UserDaoImpl;
-import com.fdmgroup.entities.Book;
 import com.fdmgroup.entities.User;
-import com.fdmgroup.exceptions.EntryAlreadyExistsException;
 import com.fdmgroup.shoppingcart.Cart;
-import com.fdmgroup.shoppingcart.CartItem;
+import com.fdmgroup.shoppingcart.Order;
 
 public class SoloProjectRunner {
 	
@@ -25,27 +25,18 @@ public class SoloProjectRunner {
 		BookDAO bookDao = new BookDaoImpl(factory);
 		CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
 		CartDAO cartDao = new CartDaoImpl(factory);
+		OrderDAO orderDao = new OrderDaoImpl(factory);
 		
-		Book book = bookDao.getBook(1742208863l);
+		Cart cart = cartDao.getCart(20);
 		User user = userDao.getUser("a");
+		System.out.println(cart);
+		Order order = new Order();
+		order.setCart(cart);
+		order.setUser(user);
+		orderDao.addOrder(order);
 		
-		Cart cart = null;
-		if (user.getCart() == null){
-			cart = new Cart();
-			cartDao.addCart(cart);
-			user.setCart(cart);
-		}else{
-			cart = user.getCart();
-		}
-
-		CartItem cartItem = new CartItem(book, 1, cart);
-		cartItemDao.addCartItem(cartItem);
-//		
-		cart.addCartItem(cartItem);
-//		
-//		userDao.updateUser(user);
-//		
-//		System.out.println(user);
+//		cartDao.unassignCart(20);
+		
 		factory.close();
 	}
 }

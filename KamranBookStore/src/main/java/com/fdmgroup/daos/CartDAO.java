@@ -12,9 +12,11 @@ public interface CartDAO {
 	
 	public Cart updateCart(Cart cart);
 	
-	public void removeCart(long isbn);
+	public void removeCart(int cartId);
 	
 	public List<Cart> getAllCartsForCart(Cart cart);
+	
+	public void unassignCart(int cartId);
 
 
 }
