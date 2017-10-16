@@ -17,6 +17,6 @@ public interface OrderDAO {
 	
 	public void removeOrder(int orderId);
 	
-	public List<Order> getAllOrders();
+	public List<Order> getAllOrdersForUser(User user);
 
 }

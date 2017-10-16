@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fdmgroup.entities.User;
 import com.fdmgroup.shoppingcart.Order;
 
 public class OrderDaoImpl implements OrderDAO {
@@ -56,10 +57,11 @@ public class OrderDaoImpl implements OrderDAO {
 		manager.getTransaction().commit();
 	}
 
-	public List<Order> getAllOrders() {
+	public List<Order> getAllOrdersForUser(User user) {
 		EntityManager manager = factory.createEntityManager();
-
-		TypedQuery<Order> query = manager.createQuery("select u from Order u", Order.class);
+		
+		TypedQuery<Order> query = manager.createQuery("select o from Order as o join fetch o.user u where u.emailAddress = ?", Order.class);
+		query.setParameter(1, user.getEmailAddress());
 		List<Order> listOfAllOrders = query.getResultList();
 
 		return listOfAllOrders;

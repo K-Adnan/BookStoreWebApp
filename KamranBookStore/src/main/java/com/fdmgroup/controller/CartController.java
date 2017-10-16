@@ -3,6 +3,7 @@ package com.fdmgroup.controller;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import com.fdmgroup.daos.CartDAO;
 import com.fdmgroup.daos.CartItemDAO;
 import com.fdmgroup.daos.OrderDAO;
 import com.fdmgroup.daos.UserDAO;
+import com.fdmgroup.entities.Author;
 import com.fdmgroup.entities.User;
 import com.fdmgroup.shoppingcart.Cart;
 import com.fdmgroup.shoppingcart.CartItem;
@@ -85,16 +87,35 @@ public class CartController {
 	
 	@RequestMapping("/placeOrder")
 	public String doPlaceOrder(@RequestParam int cartId, Model model, Principal principal){
-		
+		User user = userDao.getUser(principal.getName());
 		Cart cart = cartDao.getCart(cartId);
 		
 		Order order = new Order(cart);
 		order.setStatus("Order Placed");
+		order.setUser(user);
 		
 		orderDao.addOrder(order);
 		cartDao.unassignCart(cartId);
 		
+		for (CartItem cartItem : order.getCart().getCartItems()){
+			Set<Author> authors = cartItem.getBook().getAuthors();
+			
+			
+		}
+		
 		return "OrderConfirmation";
+	}
+	
+	@RequestMapping("/viewOrders")
+	public String goToViewOrders(Model model, Principal principal){
+
+		User user = userDao.getUser(principal.getName());
+		
+		List<Order> listOfOrders = orderDao.getAllOrdersForUser(user);
+		
+		model.addAttribute("orders", listOfOrders);
+
+		return "ViewOrders";
 	}
 	
 }

@@ -1,5 +1,7 @@
 package com.fdmgroup.controller;
 
+import java.util.List;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -14,7 +16,6 @@ import com.fdmgroup.daos.OrderDaoImpl;
 import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.daos.UserDaoImpl;
 import com.fdmgroup.entities.User;
-import com.fdmgroup.shoppingcart.Cart;
 import com.fdmgroup.shoppingcart.Order;
 
 public class SoloProjectRunner {
@@ -27,15 +28,14 @@ public class SoloProjectRunner {
 		CartDAO cartDao = new CartDaoImpl(factory);
 		OrderDAO orderDao = new OrderDaoImpl(factory);
 		
-		Cart cart = cartDao.getCart(20);
 		User user = userDao.getUser("a");
-		System.out.println(cart);
-		Order order = new Order();
-		order.setCart(cart);
-		order.setUser(user);
-		orderDao.addOrder(order);
 		
-//		cartDao.unassignCart(20);
+		List<Order> list = orderDao.getAllOrdersForUser(user);
+		
+		for (Order order : list){
+			System.out.println(order.getStatus());
+		}
+		
 		
 		factory.close();
 	}
