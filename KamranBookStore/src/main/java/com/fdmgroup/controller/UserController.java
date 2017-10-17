@@ -24,12 +24,12 @@ public class UserController {
 	@Autowired
 	private UserDAO userDao;
 	
-	@RequestMapping("/viewUser")
+	@RequestMapping("/admin/viewUser")
 	public String goToViewUser(){
 		return "admin/ViewUser";
 	}
 	
-	@RequestMapping("/displayUser")
+	@RequestMapping("/admin/displayUser")
 	public String goToDisplayUser(@RequestParam String emailAddress, Model model){
 		User user = userDao.getUser(emailAddress);
 		model.addAttribute("user", user);
@@ -37,11 +37,11 @@ public class UserController {
 		return "admin/DisplayUser";
 	}
 	
-	@RequestMapping("/editUser")
-	public String goToEditUser(Model model,@RequestParam String emailAddress){
+	@RequestMapping("/admin/editUser")
+	public String goToEditUser(Model model, @RequestParam String emailAddress){
 		User user = userDao.getUser(emailAddress);
 		model.addAttribute("user", user);
-		return "EditUser";
+		return "admin/EditUser";
 	}
 	
 	@RequestMapping("/editPersonalDetails")
@@ -70,6 +70,25 @@ public class UserController {
 		
 		userDao.updateUser(oldUser);
 		return "ViewPersonalDetails";
+	}
+	
+	@RequestMapping("/admin/UpdateProfile")
+	public String doUpdateProfile(User user, Principal principal, Model model){
+		
+		// Retrieving old user, replacing its values with the new user's values, and then merging it.
+		
+		User oldUser = userDao.getUser(user.getEmailAddress());
+		
+		oldUser.setFirstName(user.getFirstName());
+		oldUser.setLastName(user.getLastName());
+		oldUser.setAddress(user.getAddress());
+		oldUser.setPhoneNumber(user.getPhoneNumber());
+		
+		model.addAttribute("message", "User details have been successfully updated");
+		
+		userDao.updateUser(oldUser);
+		model.addAttribute("user", oldUser);
+		return "admin/DisplayUser";
 	}
 	
 	@RequestMapping("/changePassword")

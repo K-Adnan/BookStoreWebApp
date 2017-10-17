@@ -129,4 +129,13 @@ public class BookController {
 		return "ViewBook";
 	}
 	
+	@RequestMapping("/author/listBook")
+	public String goToListNewBook(Model model, HttpServletRequest req){
+		
+		Book book = new Book();
+		model.addAttribute("book", book);
+		
+		return "author/ListNewBook";
+	}
+	
 }

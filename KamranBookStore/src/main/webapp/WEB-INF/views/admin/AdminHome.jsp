@@ -7,17 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3> ${emailAddress} <a href="viewPersonalDetails">Personal Details</a></h3>
-<a href="viewCart">View Cart</a>
-<h2> WELCOME TO KAMRANS BOOKSTORE </h2> 
+<h3> ${emailAddress} <a href="../viewPersonalDetails">Personal Details</a></h3>
+
+<h2>ADMIN HOME</h2>
 
 <h3> <a href="addUser"> Add New Author </a></h3>
 <h3> <a href="viewUser"> View User </a></h3>
-<h3> <a href="searchBook"> Search Book</a></h3>
-<h3> <a href="listBook"> List New Book</a></h3>
-<h3> <a href="admin/adminCheck"> Admin</a></h3>
-<h3> <a href="viewOrders"> Order History</a></h3>
-<h3> <a href="logout"> Log Out </a></h3>
+<h3> <a href="../searchBook"> Search Book</a></h3>
+<h3> <a href="../author/listBook"> List New Book</a></h3>
+<h3> <a href="../logout"> Log Out </a></h3>
 
 </body>
 </html>

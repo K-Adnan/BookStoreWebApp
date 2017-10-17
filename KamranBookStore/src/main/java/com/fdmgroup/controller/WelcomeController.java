@@ -4,6 +4,7 @@ package com.fdmgroup.controller;
 import java.security.Principal;
 
 import javax.persistence.EntityManagerFactory;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +35,25 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping("/home")
-	public String goToHome(String emailAddress, HttpSession session, Principal principal){
+	public String goToHome(String emailAddress, HttpSession session, Principal principal,HttpServletRequest request){
 		session.setAttribute("emailAddress", principal.getName());
-		return "Home";
+		if(request.isUserInRole("User")){
+			return "redirect:user/userHome";
+		}
+		else if(request.isUserInRole("Admin")){
+			return "redirect:admin/adminHome";
+		}
+		return "index";
+	}
+	
+	@RequestMapping("/admin/adminHome")
+	public String goToAdminHome(Model model, HttpSession session){
+		return "admin/AdminHome";
+	}
+	
+	@RequestMapping("/user/userHome")
+	public String goToUserHome(Model model, HttpSession session){
+		return "user/UserHome";
 	}
 	
 	@RequestMapping("/logout")
@@ -68,7 +85,7 @@ public class WelcomeController {
 		return "ViewPersonalDetails";
 	}
 	
-	@RequestMapping("/adminCheck")
+	@RequestMapping("/admin/adminCheck")
 	public String goToAdmin(Model model){
 		return "admin/AdminCheck";
 	}
