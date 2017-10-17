@@ -39,9 +39,10 @@ public class WelcomeController {
 		session.setAttribute("emailAddress", principal.getName());
 		if(request.isUserInRole("User")){
 			return "redirect:user/userHome";
-		}
-		else if(request.isUserInRole("Admin")){
+		}else if(request.isUserInRole("Admin")){
 			return "redirect:admin/adminHome";
+		}else if (request.isUserInRole("Author")){
+			return "redirect:author/authorHome";
 		}
 		return "index";
 	}
@@ -54,6 +55,11 @@ public class WelcomeController {
 	@RequestMapping("/user/userHome")
 	public String goToUserHome(Model model, HttpSession session){
 		return "user/UserHome";
+	}
+	
+	@RequestMapping("/author/authorHome")
+	public String goToAuthorHome(Model model, HttpSession session){
+		return "author/AuthorHome";
 	}
 	
 	@RequestMapping("/logout")

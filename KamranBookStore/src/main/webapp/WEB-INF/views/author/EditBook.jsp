@@ -14,12 +14,10 @@
 </head>
 <body>
 	<a href="../home"> Home </a> <br/>
-	<h2> List a new Book </h2>
+	<h2> Edit Book </h2>
 	
-	<sf:form method="post" action="doListBook" modelAttribute="book">
-		ISBN : <sf:input path="isbn" value=""/><br/>
-		Title : <sf:input path="title"/><br/>
-		Price : <sf:input path="price"/><br/>
+	<sf:form method="post" action="doEditBook?isbn=${book.isbn}" modelAttribute="book">
+		Title : <sf:input path="title" size="70"/><br/>
 		Quantity Available : <sf:input path="quantity"/><br/>
 		Release Year : <sf:input path="releaseYear" /><br/>
 		Number of Pages : <sf:input path="numberOfPages"/><br/>
@@ -33,7 +31,5 @@
 		<input type="submit" value="Go"/>
 	</sf:form>
 	
-	
-		
 </body>
 </html>

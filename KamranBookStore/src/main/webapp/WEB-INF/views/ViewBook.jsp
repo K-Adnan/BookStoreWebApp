@@ -45,5 +45,6 @@ table, th {
 			<option value="5">5</option>
 		</select> <input type="submit" value="Rate">
 	</form>
+	${editMessage}
 </body>
 </html>

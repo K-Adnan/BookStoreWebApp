@@ -1,5 +1,7 @@
 package com.fdmgroup.controller;
 
+import java.util.List;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -15,7 +17,6 @@ import com.fdmgroup.daos.OrderDAO;
 import com.fdmgroup.daos.OrderDaoImpl;
 import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.daos.UserDaoImpl;
-import com.fdmgroup.entities.Author;
 import com.fdmgroup.entities.Book;
 
 public class SoloProjectRunner {
@@ -29,21 +30,9 @@ public class SoloProjectRunner {
 		CartDAO cartDao = new CartDaoImpl(factory);
 		OrderDAO orderDao = new OrderDaoImpl(factory);
 		
-		Book book = new Book();
-		book.setIsbn(1234);
+		List<Book> list = bookDao.getBooksByAuthor("cgp.books@books4u.com");
 		
-		String authorString = "adam.kay,adolf.hitler";
-		
-		String[] authors = authorString.split(",");
-		
-		for (String authorStr : authors){
-			String emailAddress = authorStr + "@books4u.com";
-			Author author = authorDao.getAuthor(emailAddress);
-			System.out.println(author);
-			book.setAuthor(author);
-		}
-		
-		bookDao.addBook(book);
+		System.out.println(list);
 		
 		factory.close();
 	}

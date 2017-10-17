@@ -3,6 +3,7 @@ package com.fdmgroup.controller;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManagerFactory;
 import javax.servlet.http.HttpServletRequest;
@@ -65,11 +66,19 @@ public class BookController {
 	}
 	
 	@RequestMapping("/displayBook")
-	public String goToDisplayBook(@RequestParam Long isbn, Model model, HttpServletRequest req){
+	public String goToDisplayBook(@RequestParam Long isbn, Model model, Principal principal, HttpServletRequest req){
 		
 		Book book = bookDao.getBook(isbn);
 		
 		model.addAttribute("book", book);
+		
+		Set<Author> listOfAuthors = book.getAuthors();
+		
+		for (Author author : listOfAuthors){
+			if (author.getEmailAddress().equals(principal.getName())){
+				model.addAttribute("editMessage", "<a href='author/editBook?isbn=" + book.getIsbn() + "'> Edit Book <img src='https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/edit.png' height='30' width='auto'></a>");
+			}
+		}
 		
 		return "ViewBook";
 	}
@@ -134,7 +143,7 @@ public class BookController {
 	}
 	
 	@RequestMapping("/author/listBook")
-	public String goToListNewBook(Model model, HttpServletRequest req){
+	public String goToListNewBook(Model model, Principal principal, HttpServletRequest req){
 		
 		Book book = new Book();
 		List<Author> authorsList = authorDao.getAllAuthors();
@@ -144,6 +153,9 @@ public class BookController {
 			authorEmails.add(author.getEmailAddress().split("@")[0]);
 		}
 		
+		if(req.isUserInRole("Author")){
+			model.addAttribute("authorString", principal.getName().split("@")[0]);
+		}
 		
 		model.addAttribute("book", book);
 		model.addAttribute("authorsList", authorEmails);
@@ -162,10 +174,60 @@ public class BookController {
 		}
 		
 		bookDao.addBook(book);
+		
 		model.addAttribute("message", "Book '" + book.getTitle() + "' has been successfully addd");
 		
 		return "admin/AdminHome";
 		
+	}
+	
+	@RequestMapping("/author/viewSales")
+	public String goToViewSales(Model model, Principal principal){
+		
+		List<Book> listOfBooks = bookDao.getBooksByAuthor(principal.getName());
+		
+		model.addAttribute("listOfBooks", listOfBooks);
+		
+		return "author/ViewSales";
+	}
+	
+	@RequestMapping("/author/editBook")
+	public String goToEditBook(@RequestParam long isbn, Model model, Principal principal, HttpServletRequest req){
+		
+		Book book = bookDao.getBook(isbn);
+		
+		List<Author> authorsList = authorDao.getAllAuthors();
+		List<String> authorEmails = new ArrayList<String>();
+		
+		for (Author author : authorsList){
+			authorEmails.add(author.getEmailAddress().split("@")[0]);
+		}
+		
+		if(req.isUserInRole("Author")){
+			model.addAttribute("authorString", principal.getName().split("@")[0]);
+		}
+		
+		model.addAttribute("book", book);
+		model.addAttribute("authorsList", authorEmails);
+		
+		return "author/EditBook";
+	}
+	
+	@RequestMapping("/author/doEditBook")
+	public String doEditBook(Long isbn, @RequestParam String authorsString, Book book, Model model, Principal principal, HttpServletRequest req){
+		
+		Book oldBook = bookDao.getBook(isbn);
+		
+		oldBook.setTitle(book.getTitle());
+		oldBook.setCategory(book.getCategory());
+		oldBook.setNumberOfPages(book.getNumberOfPages());
+		oldBook.setReleaseYear(book.getReleaseYear());
+		oldBook.setImageUrl(book.getImageUrl());
+		oldBook.setQuantity(book.getQuantity());
+		
+		bookDao.updateBook(oldBook);
+		
+		return "redirect:viewSales";
 	}
 	
 }

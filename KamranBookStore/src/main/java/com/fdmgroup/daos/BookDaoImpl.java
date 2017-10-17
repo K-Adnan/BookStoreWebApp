@@ -94,12 +94,11 @@ public class BookDaoImpl implements BookDAO {
 		return listOfBooks;
 	}
 	
-	public List<Book> getBooksByAuthor(String name){
+	public List<Book> getBooksByAuthor(String emailAddress){
 		EntityManager manager = factory.createEntityManager();
 		
-//		TypedQuery<Book> query = manager.createQuery("select b from Book as b where :author MEMBER of b.authors", Book.class);
-		TypedQuery<Book> query = manager.createQuery("select b from Book as b join fetch b.authors a where a.firstName = :name OR a.lastName = :name", Book.class);
-		query.setParameter("name", name);
+		TypedQuery<Book> query = manager.createQuery("select b from Book as b join fetch b.authors a where a.emailAddress = ?", Book.class);
+		query.setParameter(1, emailAddress);
 		List<Book> listOfBooks = query.getResultList();
 		
 		return listOfBooks;

@@ -22,7 +22,7 @@ public interface BookDAO {
 
 	public List<Book> getBooksByYear(int year);
 
-	public List<Book> getBooksByAuthor(String firstName);
+	public List<Book> getBooksByAuthor(String emailAddress);
 	
 	public List<Book> getBooksByPrice(Double minimum, Double maximum);
 	
