@@ -42,6 +42,6 @@ tr, th{
 		</tr>
 	</c:forEach>
 	</table>
-	
+
 </body>
 </html>

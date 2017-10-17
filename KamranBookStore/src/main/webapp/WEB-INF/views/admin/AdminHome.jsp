@@ -11,10 +11,11 @@
 ${message}
 <h2>ADMIN HOME</h2>
 
-<h3> <a href="addUser"> Add New Author </a></h3>
 <h3> <a href="viewUser"> View User </a></h3>
 <h3> <a href="../searchBook"> Search Book</a></h3>
+<h3> <a href="viewAllSales"> View All Sales</a></h3>
 <h3> <a href="../author/listBook"> List New Book</a></h3>
+<h3> <a href="viewAuthorRequests"> View Author Requests </a></h3>
 <h3> <a href="../logout"> Log Out </a></h3>
 
 </body>

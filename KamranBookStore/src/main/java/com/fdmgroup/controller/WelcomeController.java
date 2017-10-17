@@ -2,6 +2,7 @@ package com.fdmgroup.controller;
 
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fdmgroup.daos.BookDAO;
 import com.fdmgroup.daos.CartDAO;
+import com.fdmgroup.daos.UnapprovedAuthorDAO;
 import com.fdmgroup.daos.UserDAO;
+import com.fdmgroup.entities.Book;
+import com.fdmgroup.entities.UnapprovedAuthor;
 import com.fdmgroup.entities.User;
-import com.fdmgroup.shoppingcart.Cart;
 
 @Controller
 public class WelcomeController {
@@ -28,6 +32,12 @@ public class WelcomeController {
 	
 	@Autowired
 	private CartDAO cartDao;
+	
+	@Autowired
+	private BookDAO bookDao;
+	
+	@Autowired
+	private UnapprovedAuthorDAO unapprovedAuthorDao;
 	
 	@RequestMapping("/")
 	public String goToIndex(){
@@ -94,6 +104,25 @@ public class WelcomeController {
 	@RequestMapping("/admin/adminCheck")
 	public String goToAdmin(Model model){
 		return "admin/AdminCheck";
+	}
+	
+	@RequestMapping("/admin/viewAuthorRequests")
+	public String goToViewAuthorRequests(Model model){
+		List<UnapprovedAuthor> list = unapprovedAuthorDao.getAllUnapprovedAuthors();
+		
+		model.addAttribute("list", list);
+		
+		return "admin/ViewAuthorRequests";
+	}
+	
+	@RequestMapping("/admin/viewAllSales")
+	public String goToViewAllSales(Model model){
+		
+		List<Book> booksList = bookDao.getAllBooks();
+		
+		model.addAttribute("booksList", booksList);
+		
+		return "admin/ViewAllSales";
 	}
 	
 	

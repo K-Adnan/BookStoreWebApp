@@ -32,6 +32,8 @@
 	<bean id="cartItemDao" class="com.fdmgroup.daos.CartItemDaoImpl" />
 	<bean id="userDao" class="com.fdmgroup.daos.UserDaoImpl" />
 	<bean id="orderDao" class="com.fdmgroup.daos.OrderDaoImpl" />
+	<bean id="unapprovedAuthorDao" class="com.fdmgroup.daos.UnapprovedAuthorDaoImpl" />
+	<bean id="rejectedUserDao" class="com.fdmgroup.daos.RejectedUserDaoImpl" />
 
 </beans>
 

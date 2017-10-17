@@ -15,9 +15,12 @@ import com.fdmgroup.daos.CartItemDAO;
 import com.fdmgroup.daos.CartItemDaoImpl;
 import com.fdmgroup.daos.OrderDAO;
 import com.fdmgroup.daos.OrderDaoImpl;
+import com.fdmgroup.daos.UnapprovedAuthorDAO;
+import com.fdmgroup.daos.UnapprovedAuthorDaoImpl;
 import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.daos.UserDaoImpl;
 import com.fdmgroup.entities.Book;
+import com.fdmgroup.entities.UnapprovedAuthor;
 
 public class SoloProjectRunner {
 	
@@ -29,10 +32,16 @@ public class SoloProjectRunner {
 		CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
 		CartDAO cartDao = new CartDaoImpl(factory);
 		OrderDAO orderDao = new OrderDaoImpl(factory);
+		UnapprovedAuthorDAO unapprovedAuthor = new UnapprovedAuthorDaoImpl(factory);
 		
-		List<Book> list = bookDao.getBooksByAuthor("cgp.books@books4u.com");
+		UnapprovedAuthor ua = new UnapprovedAuthor();
 		
-		System.out.println(list);
+		ua.setEmailAddress("abc@def.com");
+		ua.setFirstName("Tata");
+		ua.setLastName("Nano");
+		ua.setAddress("Iceland");
+		
+		unapprovedAuthor.addUnapprovedAuthor(ua);
 		
 		factory.close();
 	}

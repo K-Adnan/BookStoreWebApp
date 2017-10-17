@@ -1,9 +1,10 @@
 package com.fdmgroup.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fdmgroup.daos.AuthorDAO;
+import com.fdmgroup.daos.RejectedUserDAO;
+import com.fdmgroup.daos.UnapprovedAuthorDAO;
 import com.fdmgroup.daos.UserDAO;
-import com.fdmgroup.daos.UserDaoImpl;
+import com.fdmgroup.entities.Author;
+import com.fdmgroup.entities.RejectedUser;
+import com.fdmgroup.entities.UnapprovedAuthor;
 import com.fdmgroup.entities.User;
 
 @Controller
@@ -23,6 +29,15 @@ public class UserController {
 	
 	@Autowired
 	private UserDAO userDao;
+	
+	@Autowired
+	private UnapprovedAuthorDAO unapprovedAuthorDao;
+	
+	@Autowired
+	private RejectedUserDAO rejectedUserDao;
+	
+	@Autowired
+	private AuthorDAO authorDao;
 	
 	@RequestMapping("/admin/viewUser")
 	public String goToViewUser(){
@@ -118,6 +133,63 @@ public class UserController {
 			return "ChangePassword";
 		}
 		
+	}
+	
+	@RequestMapping("/admin/approveRequest")
+	public String doApproveRequest(Model model, String emailAddress){
+		
+		UnapprovedAuthor ua = unapprovedAuthorDao.getUnapprovedAuthor(emailAddress);
+		Author author = new Author();
+		
+		author.setEmailAddress(emailAddress);
+		author.setFirstName(ua.getFirstName());
+		author.setLastName(ua.getLastName());
+		author.setAddress(ua.getAddress());
+		author.setPassword(ua.getPassword());
+		
+		unapprovedAuthorDao.removeUnapprovedAuthor(emailAddress);
+		
+		authorDao.addAuthor(author);
+		
+		List<UnapprovedAuthor> list = unapprovedAuthorDao.getAllUnapprovedAuthors();
+		model.addAttribute("list", list);
+		
+		return "admin/ViewAuthorRequests";
+	}
+	
+	@RequestMapping("/admin/rejectRequest")
+	public String doRejectRequest(Model model, String emailAddress, HttpServletRequest request){
+		
+		UnapprovedAuthor ua = unapprovedAuthorDao.getUnapprovedAuthor(emailAddress);
+		
+		RejectedUser rj = new RejectedUser();
+		
+		rj.setEmailAddress(ua.getEmailAddress());
+		rj.setFirstName(ua.getFirstName());
+		rj.setLastName(ua.getLastName());
+		rj.setPassword(ua.getPassword());
+		rj.setAddress(ua.getAddress());
+		rj.setReasonForRejection(request.getParameter("reason"));
+		System.out.println(request.getParameter("reason"));
+		
+		unapprovedAuthorDao.removeUnapprovedAuthor(emailAddress);
+		
+		rejectedUserDao.addRejectedUser(rj);
+		
+		List<UnapprovedAuthor> list = unapprovedAuthorDao.getAllUnapprovedAuthors();
+		model.addAttribute("list", list);
+		
+		return "admin/ViewAuthorRequests";
+	}
+	
+	@RequestMapping("/admin/viewRejectedAuthors")
+	public String goToViewRejectedAuthors(Model model){
+		
+		List<RejectedUser> listOfRejectedAuthors = rejectedUserDao.getAllRejectedUsers();
+		
+		model.addAttribute("rejectedAuthors", listOfRejectedAuthors);
+		
+		return "admin/ViewRejectedAuthors";
 	}
 	
 }

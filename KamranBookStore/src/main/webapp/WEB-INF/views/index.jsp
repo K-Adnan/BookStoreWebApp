@@ -7,6 +7,7 @@
 ${message}
 <h3> Please login or register</h3>
 <h3> <a href="registerUser"> Register </a></h3>
+<h3> <a href="registerAuthor"> Register as Author </a></h3>
 
 <form action="j_security_check" method="post">
        
