@@ -35,7 +35,7 @@ public class WelcomeController {
 	}
 	
 	@RequestMapping("/home")
-	public String goToHome(String emailAddress, HttpSession session, Principal principal,HttpServletRequest request){
+	public String goToHome(String emailAddress, HttpSession session, Principal principal, HttpServletRequest request){
 		session.setAttribute("emailAddress", principal.getName());
 		if(request.isUserInRole("User")){
 			return "redirect:user/userHome";

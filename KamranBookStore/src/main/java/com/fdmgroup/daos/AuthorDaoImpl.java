@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fdmgroup.entities.Author;
+import com.fdmgroup.entities.User;
 
 public class AuthorDaoImpl implements AuthorDAO {
 
@@ -68,7 +70,10 @@ public class AuthorDaoImpl implements AuthorDAO {
 	}
 
 	public List<Author> getAllAuthors() {
-		List<Author> listOfAllAuthors = null;
+		EntityManager manager = factory.createEntityManager();
+		
+		TypedQuery<Author> query = manager.createQuery("select a from Author a", Author.class);
+		List<Author> listOfAllAuthors = query.getResultList();
 
 		return listOfAllAuthors;
 	}

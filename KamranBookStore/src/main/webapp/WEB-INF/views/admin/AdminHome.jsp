@@ -8,7 +8,7 @@
 </head>
 <body>
 <h3> ${emailAddress} <a href="../viewPersonalDetails">Personal Details</a></h3>
-
+${message}
 <h2>ADMIN HOME</h2>
 
 <h3> <a href="addUser"> Add New Author </a></h3>

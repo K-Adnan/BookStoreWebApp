@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fdmgroup.daos.AuthorDAO;
 import com.fdmgroup.daos.BookDAO;
 import com.fdmgroup.daos.CartDAO;
 import com.fdmgroup.daos.CartDaoImpl;
@@ -22,6 +22,7 @@ import com.fdmgroup.daos.CartItemDAO;
 import com.fdmgroup.daos.CartItemDaoImpl;
 import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.daos.UserDaoImpl;
+import com.fdmgroup.entities.Author;
 import com.fdmgroup.entities.Book;
 import com.fdmgroup.entities.User;
 import com.fdmgroup.shoppingcart.Cart;
@@ -35,6 +36,9 @@ public class BookController {
 	
 	@Autowired
 	private BookDAO bookDao;
+	
+	@Autowired
+	private AuthorDAO authorDao;
 	
 	@RequestMapping("/viewAllBooks")
 	public String goToViewAllBooks(Model model){
@@ -133,9 +137,35 @@ public class BookController {
 	public String goToListNewBook(Model model, HttpServletRequest req){
 		
 		Book book = new Book();
+		List<Author> authorsList = authorDao.getAllAuthors();
+		List<String> authorEmails = new ArrayList<String>();
+		
+		for (Author author : authorsList){
+			authorEmails.add(author.getEmailAddress().split("@")[0]);
+		}
+		
+		
 		model.addAttribute("book", book);
+		model.addAttribute("authorsList", authorEmails);
 		
 		return "author/ListNewBook";
+	}
+	
+	@RequestMapping("/author/doListBook")
+	public String doListNewBook(@RequestParam String authorsString, Model model, Book book, HttpServletRequest request){
+		String[] authors = authorsString.split(",");
+		
+		for (String authorStr : authors){
+			String emailAddress = authorStr + "@books4u.com";
+			Author author = authorDao.getAuthor(emailAddress);
+			book.setAuthor(author);
+		}
+		
+		bookDao.addBook(book);
+		model.addAttribute("message", "Book '" + book.getTitle() + "' has been successfully addd");
+		
+		return "admin/AdminHome";
+		
 	}
 	
 }

@@ -40,7 +40,7 @@ public class Book {
 	private int sales;
 	
 	public Book(){
-		
+		authors = new HashSet<Author>();
 	}
 	
 	public Book(long isbn){
@@ -133,6 +133,9 @@ public class Book {
 	}
 
 	public void setAuthor(Author author) {
+		if (authors == null){
+			authors = new HashSet<Author>();
+		}
 		authors.add(author);
 		author.addBook(this);
 	}

@@ -1,10 +1,10 @@
 package com.fdmgroup.controller;
 
-import java.util.List;
-
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.fdmgroup.daos.AuthorDAO;
+import com.fdmgroup.daos.AuthorDaoImpl;
 import com.fdmgroup.daos.BookDAO;
 import com.fdmgroup.daos.BookDaoImpl;
 import com.fdmgroup.daos.CartDAO;
@@ -15,8 +15,8 @@ import com.fdmgroup.daos.OrderDAO;
 import com.fdmgroup.daos.OrderDaoImpl;
 import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.daos.UserDaoImpl;
-import com.fdmgroup.entities.User;
-import com.fdmgroup.shoppingcart.Order;
+import com.fdmgroup.entities.Author;
+import com.fdmgroup.entities.Book;
 
 public class SoloProjectRunner {
 	
@@ -24,18 +24,26 @@ public class SoloProjectRunner {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
 		UserDAO userDao = new UserDaoImpl(factory);
 		BookDAO bookDao = new BookDaoImpl(factory);
+		AuthorDAO authorDao = new AuthorDaoImpl(factory);
 		CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
 		CartDAO cartDao = new CartDaoImpl(factory);
 		OrderDAO orderDao = new OrderDaoImpl(factory);
 		
-		User user = userDao.getUser("a");
+		Book book = new Book();
+		book.setIsbn(1234);
 		
-		List<Order> list = orderDao.getAllOrdersForUser(user);
+		String authorString = "adam.kay,adolf.hitler";
 		
-		for (Order order : list){
-			System.out.println(order.getStatus());
+		String[] authors = authorString.split(",");
+		
+		for (String authorStr : authors){
+			String emailAddress = authorStr + "@books4u.com";
+			Author author = authorDao.getAuthor(emailAddress);
+			System.out.println(author);
+			book.setAuthor(author);
 		}
 		
+		bookDao.addBook(book);
 		
 		factory.close();
 	}

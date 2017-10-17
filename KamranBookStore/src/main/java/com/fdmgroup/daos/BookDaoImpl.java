@@ -26,18 +26,13 @@ public class BookDaoImpl implements BookDAO {
 	public BookDaoImpl(){
 	}
 
-	public void addBook(Book newBook) throws EntryAlreadyExistsException {
+	public void addBook(Book newBook){
 		EntityManager manager = factory.createEntityManager();
-
-		if (getBook(newBook.getIsbn()) == null) {
 
 			manager.getTransaction().begin();
 			manager.persist(newBook);
 			manager.getTransaction().commit();
 			System.out.println("SUCCESS: Book added to the database: " + newBook.getTitle());
-		}else{
-			throw new EntryAlreadyExistsException("Book with ISBN " + newBook.getIsbn() + " already exists in the database");
-		}
 	}
 	
 	public void updateBook(Book newBook){

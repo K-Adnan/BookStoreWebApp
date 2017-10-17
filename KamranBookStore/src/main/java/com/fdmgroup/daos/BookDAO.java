@@ -8,7 +8,7 @@ import com.fdmgroup.exceptions.EntryAlreadyExistsException;
 
 public interface BookDAO {
 	
-	public void addBook(Book book) throws EntryAlreadyExistsException;
+	public void addBook(Book book);
 	
 	public void updateBook(Book book);
 	
