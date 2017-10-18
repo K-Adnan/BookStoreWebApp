@@ -43,6 +43,11 @@ public class BookController {
 	@Autowired
 	private AuthorDAO authorDao;
 	
+	public BookController(BookDAO bookDao, AuthorDAO authorDao){
+		this.bookDao = bookDao;
+		this.authorDao = authorDao;
+	}
+	
 	@RequestMapping("/viewAllBooks")
 	public String goToViewAllBooks(Model model){
 		

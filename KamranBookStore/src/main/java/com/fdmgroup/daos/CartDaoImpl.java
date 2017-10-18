@@ -55,17 +55,6 @@ public class CartDaoImpl implements CartDAO {
 		manager.getTransaction().commit();
 
 	}
-
-	public List<Cart> getAllCartsForCart(Cart cart) {
-		EntityManager manager = factory.createEntityManager();
-		
-		TypedQuery<Cart> query = manager.createQuery("Select c from Cart c where c.cartId = ?", Cart.class);
-		query.setParameter(1, cart);
-		
-		List<Cart> carts = query.getResultList();
-		
-		return carts;
-	}
 	
 	public void unassignCart(int cartId){
 		EntityManager manager = factory.createEntityManager();

@@ -45,7 +45,7 @@ public class TestUserDaoImpl {
 	}
 
 	@Test
-	public void test_AddDepartment_InvokesTransactionMethodAndPersist() {
+	public void test_AddUser_InvokesTransactionMethodAndPersist() {
 		User user = new User();
 		userDao.addUser(user);
 

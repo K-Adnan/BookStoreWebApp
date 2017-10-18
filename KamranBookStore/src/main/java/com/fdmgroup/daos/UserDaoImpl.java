@@ -31,11 +31,7 @@ public class UserDaoImpl implements UserDAO {
 			manager.getTransaction().begin();
 			manager.persist(newUser);
 			manager.getTransaction().commit();
-			System.out.println(
-					"SUCCESS: New user has been added: " + newUser.getFirstName() + " " + newUser.getLastName());
 		} else {
-			System.out.println("Could not add '" + newUser.getFirstName() + " " + newUser.getLastName()
-					+ "'. User already exists");
 		}
 	}
 	
@@ -62,7 +58,6 @@ public class UserDaoImpl implements UserDAO {
 
 		manager.remove(user);
 		manager.getTransaction().commit();
-		System.out.println("SUCCESS: User with email address '" + emailAddress + "' has been removed.");
 	}
 
 	public List<User> getAllUsers() {

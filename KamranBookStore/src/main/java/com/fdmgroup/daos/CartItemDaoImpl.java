@@ -34,8 +34,6 @@ public class CartItemDaoImpl implements CartItemDAO {
 		
 		int cartItemId = 0;
 		for (CartItem eachCartItem : cartItem.getCart().getCartItems()){
-			System.out.println("Book Name" + eachCartItem.getIsbn());
-			System.out.println(newIsbn);
 			if (newIsbn == eachCartItem.getIsbn()){
 				exists = true;
 				cartItemId = eachCartItem.getCartItemId();
@@ -44,7 +42,6 @@ public class CartItemDaoImpl implements CartItemDAO {
 		}
 		
 		if (exists == true){
-			System.out.println("exists");
 			CartItem oldCartItem = getCartItem(cartItemId);
 			oldCartItem.addToCartItem(quantity);
 			manager.merge(oldCartItem);

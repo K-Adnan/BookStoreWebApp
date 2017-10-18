@@ -43,6 +43,14 @@ public class CartController {
 	@Autowired
 	private BookDAO bookDao;
 	
+	public CartController(UserDAO userDao, CartDAO cartDao, CartItemDAO cartItemDao, OrderDAO orderDao, BookDAO bookDao) {
+		this.userDao = userDao;
+		this.cartDao = cartDao;
+		this.cartItemDao = cartItemDao;
+		this.orderDao = orderDao;
+		this.bookDao = bookDao;
+	}
+
 	@RequestMapping("/viewCart")
 	public String goToViewCart(Model model, Principal principal){
 		User user = userDao.getUser(principal.getName());

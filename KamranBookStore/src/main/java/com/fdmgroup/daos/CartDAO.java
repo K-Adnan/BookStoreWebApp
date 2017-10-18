@@ -14,8 +14,6 @@ public interface CartDAO {
 	
 	public void removeCart(int cartId);
 	
-	public List<Cart> getAllCartsForCart(Cart cart);
-	
 	public void unassignCart(int cartId);
 
 
