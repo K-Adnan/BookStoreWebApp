@@ -21,6 +21,8 @@ import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.daos.UserDaoImpl;
 import com.fdmgroup.entities.Book;
 import com.fdmgroup.entities.UnapprovedAuthor;
+import com.fdmgroup.exceptions.EntryAlreadyExistsException;
+import com.fdmgroup.exceptions.NoSuchEntryException;
 
 public class SoloProjectRunner {
 	
@@ -34,14 +36,11 @@ public class SoloProjectRunner {
 		OrderDAO orderDao = new OrderDaoImpl(factory);
 		UnapprovedAuthorDAO unapprovedAuthor = new UnapprovedAuthorDaoImpl(factory);
 		
-		UnapprovedAuthor ua = new UnapprovedAuthor();
-		
-		ua.setEmailAddress("abc@def.com");
-		ua.setFirstName("Tata");
-		ua.setLastName("Nano");
-		ua.setAddress("Iceland");
-		
-		unapprovedAuthor.addUnapprovedAuthor(ua);
+		try {
+			bookDao.getBook(123455);
+		} catch (NoSuchEntryException e) {
+			e.printStackTrace();
+		}
 		
 		factory.close();
 	}

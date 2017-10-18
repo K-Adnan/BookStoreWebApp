@@ -20,6 +20,7 @@ import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.entities.Author;
 import com.fdmgroup.entities.Book;
 import com.fdmgroup.entities.User;
+import com.fdmgroup.exceptions.NoSuchEntryException;
 import com.fdmgroup.shoppingcart.Cart;
 import com.fdmgroup.shoppingcart.CartItem;
 import com.fdmgroup.shoppingcart.Order;

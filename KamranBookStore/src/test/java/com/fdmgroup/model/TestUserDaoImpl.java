@@ -105,6 +105,7 @@ public class TestUserDaoImpl {
 	
 	@Test
 	public void test_CallingGetAllUsers_CallsCreateQueryMethodInManager(){
+		UserDaoImpl userDaoImpl = new UserDaoImpl();
 		when(manager.createQuery("select u from User u", User.class)).thenReturn(typedQuery);
 		
 		List<User> list = new ArrayList<User>();
@@ -114,6 +115,13 @@ public class TestUserDaoImpl {
 		
 		verify(manager, times(1)).createQuery("select u from User u", User.class);
 		assertEquals(list, userDao.getAllUsers());
+	}
+	
+	@Test
+	public void test_UpdateUser_CallsMergeMethodOnEntityManager(){
+		User user = new User();
+		userDao.updateUser(user);
+		verify(manager).merge(user);
 	}
 	
 }

@@ -22,6 +22,7 @@ import com.fdmgroup.daos.BookDAO;
 import com.fdmgroup.daos.BookDaoImpl;
 import com.fdmgroup.entities.Book;
 import com.fdmgroup.exceptions.EntryAlreadyExistsException;
+import com.fdmgroup.exceptions.NoSuchEntryException;
 
 public class TestBookDaoImpl {
 
@@ -53,33 +54,9 @@ public class TestBookDaoImpl {
 		verify(manager, times(1)).persist(book);
 		verify(transaction, times(1)).commit();
 	}
-
-	@Test
-	public void test_AddDepartment_CallsFindMethodBookMethod() throws EntryAlreadyExistsException {
-		Book book = new Book(1234567890l);
-		bookDao.addBook(book);
-
-		verify(manager).find(Book.class, 1234567890l);
-	}
-	
-	@Test(expected=EntryAlreadyExistsException.class)
-	public void test_PersistMethodIsNotCalled_WhenBookAlreadyExistsInDatabase() throws EntryAlreadyExistsException{
-		Book book = new Book(9876543210l);
-		when(manager.find(Book.class, 9876543210l)).thenReturn(new Book());
-		
-		bookDao.addBook(book);
-		
-	}
 	
 	@Test
-	public void test_CallingTheGetBookMethod_CallsFindMethodOnManager(){
-		bookDao.getBook(1234567890l);
-		
-		verify(manager, times(1)).find(Book.class, 1234567890l);
-	}
-	
-	@Test
-	public void test_CallingRemoveBookMethod_CallsGetBookMethodInManager(){
+	public void test_CallingRemoveBookMethod_CallsGetBookMethodInManager() throws NoSuchEntryException{
 		bookDao.removeBook(1234567890l);
 		
 		verify(transaction, times(1)).begin();
@@ -88,7 +65,7 @@ public class TestBookDaoImpl {
 	}
 	
 	@Test
-	public void test_CallingRemoveBookMethod_CallsRemoveMethodInManager() {
+	public void test_CallingRemoveBookMethod_CallsRemoveMethodInManager() throws NoSuchEntryException {
 		Book book = new Book();
 		
 		when(manager.find(Book.class, 1234567890l)).thenReturn(book);
@@ -118,13 +95,79 @@ public class TestBookDaoImpl {
 		verify(manager, times(1)).merge(book);
 	}
 	
+//	@Test(expected=EntryAlreadyExistsException.class)
+//	public void test_AddBookMethodForISBNThatAlreadyExists_ThrowsEntryAlreadyExistsException() throws EntryAlreadyExistsException{
+//		Book book = new Book();
+//		when(manager.persist(book)).thenThrow(new EntryAlreadyExistsException())
+//		bookDao.addBook(new Book());
+//	}
+	
 	@Test
-	public void test_RemoveBookOnABookWhichDoesNotExist_ReturnsFalse(){
-		when(manager.find(Book.class, 1234567890l)).thenThrow(IllegalArgumentException.class);
+	public void test_GetBookMethod_CallsTheFindMethodOnManager() throws NoSuchEntryException{
+		Book book = new Book(123456l);
 		
-		boolean returnStatement = bookDao.removeBook(1234567890l);
+		when(manager.find(Book.class, 123456l)).thenReturn(book);
+		bookDao.getBook(123456l);
+		verify(manager).find(Book.class, 123456l);
 		
-		assertEquals(false, returnStatement);
+		assertEquals(bookDao.getBook(123456l), book);
 	}
-
+	
+	@Test(expected=NoSuchEntryException.class)
+	public void test_GetBookMethod_ThrowsNoSuchEntryException_WhenBookDoesNotExist() throws NoSuchEntryException{
+		when(manager.find(Book.class, 123456l)).thenReturn(null);
+		bookDao.getBook(123456l);
+	}
+	
+//	@Test(expected=NoSuchEntryException.class)
+//	public void test_RemoveBookThrowsNoSuchEntryException_WhenBookDoesNotExist() throws NoSuchEntryException{
+//		when(manager.remove(new Book())).th
+//		bookDao.removeBook(1l);
+//	}
+	
+	@Test
+	public void test_GetBooksByCategory_CallsTheCreateQueryMethodInManagerClass(){
+		when(manager.createQuery("select b from Book b where b.category = ?", Book.class)).thenReturn(typedQuery);
+		
+		List<Book> list = new ArrayList<Book>();
+		when(typedQuery.getResultList()).thenReturn(list);
+		
+		bookDao.getBooksByCategory("Biography");
+		
+		verify(manager, times(1)).createQuery("select b from Book b where b.category = ?", Book.class);
+		assertEquals(list, bookDao.getBooksByCategory("Biography"));
+	}
+	
+	@Test
+	public void test_GetBooksByAuthor_CallsTheCreateQueryMethodInManagerClass(){
+		when(manager.createQuery("select b from Book as b join fetch b.authors a where a.emailAddress = ?", Book.class)).thenReturn(typedQuery);
+		
+		List<Book> list = new ArrayList<Book>();
+		when(typedQuery.getResultList()).thenReturn(list);
+		
+		bookDao.getBooksByAuthor("abc@def.com");
+		
+		verify(manager, times(1)).createQuery("select b from Book as b join fetch b.authors a where a.emailAddress = ?", Book.class);
+		assertEquals(list, bookDao.getBooksByAuthor("abc@def.com"));
+	}
+	
+	@Test
+	public void test_GetBooksByAllAttributes_ReturnsListOfBooks(){
+		
+		when(manager.createQuery("select b from Book b join fetch b.authors a where b.title like ? AND b.category like ? AND b.price < ? AND b.price > ? AND (a.firstName like ? OR a.lastName like ?)", Book.class)).thenReturn(typedQuery);
+		
+		List<Book> list = new ArrayList<Book>();
+		when(typedQuery.getResultList()).thenReturn(list);
+		
+		bookDao.getBooksByAllAttributes("Title", "Author", "Category", 0.0, 99.99);
+		
+		verify(manager, times(1)).createQuery("select b from Book b join fetch b.authors a where b.title like ? AND b.category like ? AND b.price < ? AND b.price > ? AND (a.firstName like ? OR a.lastName like ?)", Book.class);
+		assertEquals(list, bookDao.getBooksByAllAttributes("Title", "Author", "Category", 0.0, 99.99));
+	}
+	
+	@Test
+	public void test_ConstructorDoesNothing(){
+		BookDAO bookDaoImpl = new BookDaoImpl();
+	}
+	
 }

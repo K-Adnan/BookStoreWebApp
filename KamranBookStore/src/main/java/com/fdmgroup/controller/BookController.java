@@ -26,6 +26,8 @@ import com.fdmgroup.daos.UserDaoImpl;
 import com.fdmgroup.entities.Author;
 import com.fdmgroup.entities.Book;
 import com.fdmgroup.entities.User;
+import com.fdmgroup.exceptions.EntryAlreadyExistsException;
+import com.fdmgroup.exceptions.NoSuchEntryException;
 import com.fdmgroup.shoppingcart.Cart;
 import com.fdmgroup.shoppingcart.CartItem;
 
@@ -54,11 +56,15 @@ public class BookController {
 
 		List<Book> booksList;
 		if (isbn != null){
-			Book book = bookDao.getBook(isbn);
-			booksList = new ArrayList<Book>();
-			booksList.add(book);
+				Book book = null;
+				try {
+				book = bookDao.getBook(isbn);
+				} catch (NoSuchEntryException e) {
+					e.printStackTrace();
+				}
+				booksList = new ArrayList<Book>();
+				booksList.add(book);
 		}else{
-			System.out.println("Running Else part");
 			booksList = bookDao.getBooksByAllAttributes(title, author, category, min, max);
 		}
 		model.addAttribute("booksList", booksList);
@@ -68,7 +74,12 @@ public class BookController {
 	@RequestMapping("/displayBook")
 	public String goToDisplayBook(@RequestParam Long isbn, Model model, Principal principal, HttpServletRequest req){
 		
-		Book book = bookDao.getBook(isbn);
+		Book book = null;
+		try {
+			book = bookDao.getBook(isbn);
+		} catch (NoSuchEntryException e) {
+			e.printStackTrace();
+		}
 		
 		model.addAttribute("book", book);
 		
@@ -97,7 +108,12 @@ public class BookController {
 	public String doAddBookToBasket(@RequestParam Long isbn, @RequestParam Integer quantity, Model model, Principal principal, HttpSession session){
 		
 		UserDAO userDao = new UserDaoImpl(factory);
-		Book book = bookDao.getBook(isbn);
+		Book book = null;
+		try {
+			book = bookDao.getBook(isbn);
+		} catch (NoSuchEntryException e) {
+			e.printStackTrace();
+		}
 		User user = userDao.getUser(principal.getName());
 		
 		if (quantity <1){
@@ -133,7 +149,12 @@ public class BookController {
 		
 		int rating = Integer.parseInt(request.getParameter("rating"));
 		
-		Book book = bookDao.getBook(isbn);
+		Book book = null;
+		try {
+			book = bookDao.getBook(isbn);
+		} catch (NoSuchEntryException e) {
+			e.printStackTrace();
+		}
 		book.addCustomerRating(rating);
 		bookDao.updateBook(book);
 		
@@ -173,7 +194,11 @@ public class BookController {
 			book.setAuthor(author);
 		}
 		
-		bookDao.addBook(book);
+		try {
+			bookDao.addBook(book);
+		} catch (EntryAlreadyExistsException e) {
+			e.printStackTrace();
+		}
 		
 		model.addAttribute("message", "Book '" + book.getTitle() + "' has been successfully addd");
 		
@@ -194,7 +219,12 @@ public class BookController {
 	@RequestMapping("/author/editBook")
 	public String goToEditBook(@RequestParam long isbn, Model model, Principal principal, HttpServletRequest req){
 		
-		Book book = bookDao.getBook(isbn);
+		Book book = null;
+		try {
+			book = bookDao.getBook(isbn);
+		} catch (NoSuchEntryException e) {
+			e.printStackTrace();
+		}
 		
 		List<Author> authorsList = authorDao.getAllAuthors();
 		List<String> authorEmails = new ArrayList<String>();
@@ -216,7 +246,12 @@ public class BookController {
 	@RequestMapping("/author/doEditBook")
 	public String doEditBook(Long isbn, @RequestParam String authorsString, Book book, Model model, Principal principal, HttpServletRequest req){
 		
-		Book oldBook = bookDao.getBook(isbn);
+		Book oldBook = null;
+		try {
+			oldBook = bookDao.getBook(isbn);
+		} catch (NoSuchEntryException e) {
+			e.printStackTrace();
+		}
 		
 		oldBook.setTitle(book.getTitle());
 		oldBook.setCategory(book.getCategory());
@@ -224,7 +259,6 @@ public class BookController {
 		oldBook.setReleaseYear(book.getReleaseYear());
 		oldBook.setImageUrl(book.getImageUrl());
 		oldBook.setQuantity(book.getQuantity());
-		
 		bookDao.updateBook(oldBook);
 		
 		return "redirect:viewSales";

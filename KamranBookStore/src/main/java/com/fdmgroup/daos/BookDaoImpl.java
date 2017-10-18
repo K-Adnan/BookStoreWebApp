@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.jpa.internal.EntityManagerFactoryRegistry;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.fdmgroup.entities.Author;
 import com.fdmgroup.entities.Book;
 import com.fdmgroup.exceptions.EntryAlreadyExistsException;
+import com.fdmgroup.exceptions.NoSuchEntryException;
 
 public class BookDaoImpl implements BookDAO {
 
@@ -26,30 +28,40 @@ public class BookDaoImpl implements BookDAO {
 	public BookDaoImpl(){
 	}
 
-	public void addBook(Book newBook){
+	public void addBook(Book newBook) throws EntryAlreadyExistsException{
 		EntityManager manager = factory.createEntityManager();
 
-			manager.getTransaction().begin();
-			manager.persist(newBook);
-			manager.getTransaction().commit();
-			System.out.println("SUCCESS: Book added to the database: " + newBook.getTitle());
+			try {
+				manager.getTransaction().begin();
+				manager.persist(newBook);
+				manager.getTransaction().commit();
+			} catch (PersistenceException p) {
+				throw new EntryAlreadyExistsException("Book with ISBN " + newBook.getIsbn() +" already exists");
+			}
 	}
 	
 	public void updateBook(Book newBook){
 		EntityManager manager = factory.createEntityManager();
 		
-		manager.getTransaction().begin();
-		manager.merge(newBook);
-		manager.getTransaction().commit();
+			manager.getTransaction().begin();
+			manager.merge(newBook);
+			manager.getTransaction().commit();
 	}
 
-	public Book getBook(long isbn) {
+	public Book getBook(long isbn) throws NoSuchEntryException{
 		EntityManager manager = factory.createEntityManager();
-		Book book = manager.find(Book.class, isbn);
+		
+		Book book;
+		book = manager.find(Book.class, isbn);
+		
+		if (book == null){
+			throw new NoSuchEntryException("Book with ISBN " + isbn + " does not exist");
+		}
+		
 		return book;
 	}
 
-	public boolean removeBook(long isbn) {
+	public boolean removeBook(long isbn) throws NoSuchEntryException {
 		EntityManager manager = factory.createEntityManager();
 		manager.getTransaction().begin();
 		Book book = null;
@@ -57,9 +69,8 @@ public class BookDaoImpl implements BookDAO {
 		try {
 			book = manager.find(Book.class, isbn);
 			manager.remove(book);
-			System.out.println("Book has been removed");
-		} catch (IllegalArgumentException i) {
-			return false;
+		} catch (IllegalArgumentException e) {
+			throw new NoSuchEntryException("Book with ISBN " + isbn + " does not exist");
 		}
 
 		manager.getTransaction().commit();
@@ -85,15 +96,6 @@ public class BookDaoImpl implements BookDAO {
 		return listOfBooks;
 	}
 	
-	public List<Book> getBooksByYear(int year){
-		EntityManager manager = factory.createEntityManager();
-		TypedQuery<Book> query = manager.createQuery("select b from Book b where b.releaseYear =  ?", Book.class);
-		query.setParameter(1, year);
-		List<Book> listOfBooks = query.getResultList();
-		
-		return listOfBooks;
-	}
-	
 	public List<Book> getBooksByAuthor(String emailAddress){
 		EntityManager manager = factory.createEntityManager();
 		
@@ -101,39 +103,6 @@ public class BookDaoImpl implements BookDAO {
 		query.setParameter(1, emailAddress);
 		List<Book> listOfBooks = query.getResultList();
 		
-		return listOfBooks;
-	}
-	
-	public List<Book> getBooksByPrice(Double min, Double max){
-		EntityManager manager = factory.createEntityManager();
-		
-		List<Book> listOfBooks;
-		if (max == null){
-			TypedQuery<Book> query = manager.createQuery("select b from Book b where b.price > ?", Book.class);
-			query.setParameter(1, min);
-			listOfBooks = query.getResultList();
-		}else if(min == null){
-			TypedQuery<Book> query = manager.createQuery("select b from Book b where b.price < ?", Book.class);
-			query.setParameter(1, max);
-			listOfBooks = query.getResultList();
-		}else{
-			TypedQuery<Book> query = manager.createQuery("select b from Book b where b.price < ? AND b.price > ?",
-					Book.class);
-			query.setParameter(1, max);
-			query.setParameter(2, min);
-			listOfBooks = query.getResultList();
-		}
-		
-		return listOfBooks;
-	}
-	
-	public List<Book> getBooksByTitle(String title){
-		System.out.println("Start");
-		EntityManager manager = factory.createEntityManager();
-		TypedQuery<Book> query = manager.createQuery("select b from Book b where b.title like ?", Book.class);
-		query.setParameter(1, "%" + title + "%");
-		List<Book> listOfBooks = query.getResultList();
-		System.out.println(listOfBooks);
 		return listOfBooks;
 	}
 	

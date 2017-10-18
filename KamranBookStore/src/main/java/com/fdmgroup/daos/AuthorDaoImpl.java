@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fdmgroup.entities.Author;
 import com.fdmgroup.entities.User;
+import com.fdmgroup.exceptions.EntryAlreadyExistsException;
 
 public class AuthorDaoImpl implements AuthorDAO {
 
@@ -27,16 +28,10 @@ public class AuthorDaoImpl implements AuthorDAO {
 	public void addAuthor(Author newAuthor) {
 		EntityManager manager = factory.createEntityManager();
 
-		if (getAuthor(newAuthor.getEmailAddress()) == null) {
-
-			manager.getTransaction().begin();
-			manager.persist(newAuthor);
-			manager.getTransaction().commit();
-			System.out.println("SUCCESS: New author has been added: " + newAuthor);
-		} else {
-			System.out.println("Could not add '" + newAuthor.getFirstName() + " " + newAuthor.getLastName()
-					+ "'. Author already exists");
-		}
+		manager.getTransaction().begin();
+		manager.persist(newAuthor);
+		manager.getTransaction().commit();
+		System.out.println("SUCCESS: New author has been added: " + newAuthor);
 
 	}
 	

@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fdmgroup.entities.Admin;
+import com.fdmgroup.entities.Author;
 
 public class AdminDaoImpl implements AdminDAO {
 
@@ -25,16 +27,10 @@ public class AdminDaoImpl implements AdminDAO {
 	public void addAdmin(Admin newAdmin) {
 		EntityManager manager = factory.createEntityManager();
 
-		if (getAdmin(newAdmin.getEmailAddress()) == null) {
-
-			manager.getTransaction().begin();
-			manager.persist(newAdmin);
-			manager.getTransaction().commit();
-			System.out.println("SUCCESS: New admin has been added: " + newAdmin);
-		} else {
-			System.out.println("Could not add '" + newAdmin.getFirstName() + " " + newAdmin.getLastName()
-					+ "'. Admin already exists");
-		}
+		manager.getTransaction().begin();
+		manager.persist(newAdmin);
+		manager.getTransaction().commit();
+		System.out.println("SUCCESS: New admin has been added: " + newAdmin);
 
 	}
 	
@@ -68,7 +64,10 @@ public class AdminDaoImpl implements AdminDAO {
 	}
 
 	public List<Admin> getAllAdmins() {
-		List<Admin> listOfAllAdmins = null;
+		EntityManager manager = factory.createEntityManager();
+		
+		TypedQuery<Admin> query = manager.createQuery("select a from Admin a", Admin.class);
+		List<Admin> listOfAllAdmins = query.getResultList();
 
 		return listOfAllAdmins;
 	}

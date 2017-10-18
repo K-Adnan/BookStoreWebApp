@@ -5,7 +5,7 @@ import java.util.List;
 import com.fdmgroup.entities.UnapprovedAuthor;
 import com.fdmgroup.entities.User;
 import com.fdmgroup.exceptions.EntryAlreadyExistsException;
-import com.fdmgroup.exceptions.NoSuchUserException;
+import com.fdmgroup.exceptions.NoSuchEntryException;
 
 public interface UnapprovedAuthorDAO {
 	

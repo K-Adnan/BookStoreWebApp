@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.fdmgroup.entities.User;
 import com.fdmgroup.exceptions.EntryAlreadyExistsException;
-import com.fdmgroup.exceptions.NoSuchUserException;
+import com.fdmgroup.exceptions.NoSuchEntryException;
 import com.fdmgroup.shoppingcart.Order;
 
 public interface OrderDAO {
