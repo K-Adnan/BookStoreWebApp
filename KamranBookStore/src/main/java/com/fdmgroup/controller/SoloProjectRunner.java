@@ -26,24 +26,24 @@ import com.fdmgroup.exceptions.EntryAlreadyExistsException;
 import com.fdmgroup.exceptions.NoSuchEntryException;
 
 public class SoloProjectRunner {
-	
-	public static void main(String[] args) {
-		
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
-		UserDAO userDao = new UserDaoImpl(factory);
-		BookDAO bookDao = new BookDaoImpl(factory);
-		AuthorDAO authorDao = new AuthorDaoImpl(factory);
-		CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
-		CartDAO cartDao = new CartDaoImpl(factory);
-		OrderDAO orderDao = new OrderDaoImpl(factory);
-		UnapprovedAuthorDAO unapprovedAuthor = new UnapprovedAuthorDaoImpl(factory);
-		
-		try {
-			bookDao.getBook(123455);
-		} catch (NoSuchEntryException e) {
-			e.printStackTrace();
-		}
-		
-		factory.close();
-	}
+//	
+//	public static void main(String[] args) {
+//		
+//		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
+//		UserDAO userDao = new UserDaoImpl(factory);
+//		BookDAO bookDao = new BookDaoImpl(factory);
+//		AuthorDAO authorDao = new AuthorDaoImpl(factory);
+//		CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
+//		CartDAO cartDao = new CartDaoImpl(factory);
+//		OrderDAO orderDao = new OrderDaoImpl(factory);
+//		UnapprovedAuthorDAO unapprovedAuthor = new UnapprovedAuthorDaoImpl(factory);
+//		
+//		try {
+//			bookDao.getBook(123455);
+//		} catch (NoSuchEntryException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		factory.close();
+//	}
 }

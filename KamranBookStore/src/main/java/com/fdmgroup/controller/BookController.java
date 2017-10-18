@@ -38,14 +38,29 @@ public class BookController {
 	private EntityManagerFactory factory;
 	
 	@Autowired
+	private CartItemDAO cartItemDao;
+	
+	@Autowired
+	private CartDAO cartDao;
+	
+	@Autowired
 	private BookDAO bookDao;
 	
 	@Autowired
 	private AuthorDAO authorDao;
 	
-	public BookController(BookDAO bookDao, AuthorDAO authorDao){
+	@Autowired
+	private UserDAO userDao;
+	
+	public BookController(){
+	}
+	
+	public BookController(BookDAO bookDao, AuthorDAO authorDao, UserDAO userDao, CartDAO cartDao, CartItemDAO cartItemDao){
 		this.bookDao = bookDao;
 		this.authorDao = authorDao;
+		this.userDao = userDao;
+		this.cartDao = cartDao;
+		this.cartItemDao = cartItemDao;
 	}
 	
 	@RequestMapping("/viewAllBooks")
@@ -112,7 +127,6 @@ public class BookController {
 	@RequestMapping("/addBookToBasket")
 	public String doAddBookToBasket(@RequestParam Long isbn, @RequestParam Integer quantity, Model model, Principal principal, HttpSession session){
 		
-		UserDAO userDao = new UserDaoImpl(factory);
 		Book book = null;
 		try {
 			book = bookDao.getBook(isbn);
@@ -124,9 +138,6 @@ public class BookController {
 		if (quantity <1){
 			model.addAttribute("message", "Quantity must be 1 or more");
 		}else{
-			CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
-			CartDAO cartDao = new CartDaoImpl(factory);
-			
 			
 			Cart cart = null;
 			if (user.getCart() == null){

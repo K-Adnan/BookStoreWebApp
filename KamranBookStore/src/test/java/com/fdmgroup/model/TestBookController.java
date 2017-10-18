@@ -23,8 +23,9 @@ import org.springframework.ui.Model;
 import com.fdmgroup.controller.BookController;
 import com.fdmgroup.daos.AuthorDAO;
 import com.fdmgroup.daos.BookDAO;
+import com.fdmgroup.daos.CartDAO;
+import com.fdmgroup.daos.CartItemDAO;
 import com.fdmgroup.daos.UserDAO;
-import com.fdmgroup.daos.UserDaoImpl;
 import com.fdmgroup.entities.Author;
 import com.fdmgroup.entities.Book;
 import com.fdmgroup.entities.User;
@@ -34,6 +35,7 @@ public class TestBookController {
 	
 	BookController bookController;
 	long isbn;
+	String emailAddress;
 	
 	@Mock
 	BookDAO bookDao;
@@ -47,13 +49,19 @@ public class TestBookController {
 	User user;
 	EntityManagerFactory factory;
 	EntityManager manager;
+	CartDAO cartDao;
+	CartItemDAO cartItemDao;
 
 	@Before
 	public void setUp() {
 		bookDao = mock(BookDAO.class);
+		cartDao = mock(CartDAO.class);
 		authorDao = mock(AuthorDAO.class);
+		emailAddress = "abc@gmail.com";
 		model = mock(Model.class);
-		bookController = new BookController(bookDao, authorDao);
+		userDao = mock(UserDAO.class);
+		cartItemDao = mock(CartItemDAO.class);
+		bookController = new BookController(bookDao, authorDao, userDao, cartDao, cartItemDao);
 		isbn = 123;
 		principal = mock(Principal.class);
 		req = mock(HttpServletRequest.class);
@@ -63,7 +71,6 @@ public class TestBookController {
 		manager = mock(EntityManager.class);
 		factory = mock(EntityManagerFactory.class);
 		when(factory.createEntityManager()).thenReturn(manager);
-		userDao = mock(UserDAO.class);
 	}
 
 	@Test
@@ -141,6 +148,15 @@ public class TestBookController {
 	public void test_DoEditBook_ReturnsRedirectViewSales() throws NoSuchEntryException{
 		when(bookDao.getBook(isbn)).thenReturn(book);
 		assertEquals("redirect:viewSales", bookController.doEditBook(isbn, "ABC", book, model, principal, req));
+	}
+	
+	@Test
+	public void test_DoAddBookToBasket_ReturnsViewBook() throws NoSuchEntryException{
+		when(bookDao.getBook(isbn)).thenReturn(book);
+		when(principal.getName()).thenReturn(emailAddress);
+		when(userDao.getUser(emailAddress)).thenReturn(user);
+		bookController.doAddBookToBasket(isbn, 1, model, principal, session);
+		
 	}
 	
 }

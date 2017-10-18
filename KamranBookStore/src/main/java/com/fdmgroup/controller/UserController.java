@@ -30,6 +30,7 @@ public class UserController {
 	@Autowired
 	private UserDAO userDao;
 	
+
 	@Autowired
 	private UnapprovedAuthorDAO unapprovedAuthorDao;
 	
@@ -40,8 +41,20 @@ public class UserController {
 	private AuthorDAO authorDao;
 	
 	@RequestMapping("/admin/viewUser")
+	
 	public String goToViewUser(){
 		return "admin/ViewUser";
+	}
+	
+	public UserController(){
+	}
+	
+	public UserController(EntityManagerFactory factory, UserDAO userDao, UnapprovedAuthorDAO unapprovedAuthorDao, RejectedUserDAO rejectedUserDao, AuthorDAO authorDao) {
+		this.factory = factory;
+		this.userDao = userDao;
+		this.unapprovedAuthorDao = unapprovedAuthorDao;
+		this.rejectedUserDao = rejectedUserDao;
+		this.authorDao = authorDao;
 	}
 	
 	@RequestMapping("/admin/displayUser")
@@ -170,7 +183,6 @@ public class UserController {
 		rj.setPassword(ua.getPassword());
 		rj.setAddress(ua.getAddress());
 		rj.setReasonForRejection(request.getParameter("reason"));
-		System.out.println(request.getParameter("reason"));
 		
 		unapprovedAuthorDao.removeUnapprovedAuthor(emailAddress);
 		

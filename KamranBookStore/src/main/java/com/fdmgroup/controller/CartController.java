@@ -43,6 +43,9 @@ public class CartController {
 	@Autowired
 	private BookDAO bookDao;
 	
+	public CartController(){
+	}
+	
 	public CartController(UserDAO userDao, CartDAO cartDao, CartItemDAO cartItemDao, OrderDAO orderDao, BookDAO bookDao) {
 		this.userDao = userDao;
 		this.cartDao = cartDao;

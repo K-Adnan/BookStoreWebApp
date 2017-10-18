@@ -45,6 +45,17 @@ public class RegistrationController {
 		return "RegisterUser";
 	}
 	
+	public RegistrationController(){
+	}
+	
+	public RegistrationController(EntityManagerFactory factory, UserDAO userDao, AdminDAO adminDao, AuthorDAO authorDao, UnapprovedAuthorDAO unapprovedAuthorDao) {
+		this.factory = factory;
+		this.userDao = userDao;
+		this.adminDao = adminDao;
+		this.authorDao = authorDao;
+		this.unapprovedAuthorDao = unapprovedAuthorDao;
+	}
+
 	@RequestMapping("/registerAuthor")
 	public String goToRegisterAuthor(Model model){
 		UnapprovedAuthor ua = new UnapprovedAuthor();
@@ -75,7 +86,7 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping("/doRegisterAdmin")
-	public String doRegisterAuthor(Admin admin, Model model){
+	public String doRegisterAdmin(Admin admin, Model model){
 		admin.setEmailAddress();
 		adminDao.addAdmin(admin);
 		model.addAttribute("message", "Signup successful, you can sign in now");

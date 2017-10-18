@@ -39,6 +39,19 @@ public class WelcomeController {
 	@Autowired
 	private UnapprovedAuthorDAO unapprovedAuthorDao;
 	
+	public WelcomeController(){
+	}
+	
+	public WelcomeController(EntityManagerFactory factory, UserDAO userDao, CartDAO cartDao, BookDAO bookDao,
+			UnapprovedAuthorDAO unapprovedAuthorDao) {
+		super();
+		this.factory = factory;
+		this.userDao = userDao;
+		this.cartDao = cartDao;
+		this.bookDao = bookDao;
+		this.unapprovedAuthorDao = unapprovedAuthorDao;
+	}
+
 	@RequestMapping("/")
 	public String goToIndex(){
 		return "index";
@@ -99,11 +112,6 @@ public class WelcomeController {
 		model.addAttribute("user", user);
 		
 		return "ViewPersonalDetails";
-	}
-	
-	@RequestMapping("/admin/adminCheck")
-	public String goToAdmin(Model model){
-		return "admin/AdminCheck";
 	}
 	
 	@RequestMapping("/admin/viewAuthorRequests")
