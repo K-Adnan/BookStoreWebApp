@@ -10,26 +10,110 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>List a new Book</title>
+<title>Insert title here</title>
+<link href="../css/Home.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+body {
+	background-color: #1A1A1A;
+	background-image: url();
+	background-repeat: repeat-x;
+}
+th {
+	width: 600px;
+	border-bottom: 1px solid grey;
+}
+</style>
 </head>
 <body>
-	<a href="../home"> Home </a> <br/>
-	<h2> Edit Book </h2>
-	
-	<sf:form method="post" action="doEditBook?isbn=${book.isbn}" modelAttribute="book">
-		Title : <sf:input path="title" size="70"/><br/>
-		Quantity Available : <sf:input path="quantity"/><br/>
-		Release Year : <sf:input path="releaseYear" /><br/>
-		Number of Pages : <sf:input path="numberOfPages"/><br/>
-		Category : <sf:input path="category"/><br/>
-		Image (URL) : <sf:input path="imageUrl"/><br/>
-		Author(s) : <input name="authorsString" size="100" value="${authorString}"/><br/>
-		List any additional authors by adding their usernames separated by a comma (Use the list of Authors below to find authors)<br/>
-		(e.g. adam.kay,william.shakespeare)<br/>
+<div id="mainWrapper">
+  <header> 
+    <!-- This is the header content. It contains Logo and links -->
+    <div id="logo"> 
+      <!-- Company Logo text --> 
+      <a href="/KamranBookStore/home"> <img src="https://s3.amazonaws.com/media.prestontrail.org/craft/The-Bookstore-Online-Logo-600x.png?mtime=20160930115548" width="248" height="134" alt=""/> </a></div>
+    <div id="headerLinks"><a href="/KamranBookStore/logout" title="Logout">Logout</a><a href="/KamranBookStore/viewCart" title="Cart">Cart</a></div>
+    <div id="search">
+    <form action="/KamranBookStore/viewBooks" method="get">
+    <input type="text" size="40" name="searchitem" placeholder="Search for books..." type="search"; style="font-size: 14pt; margin-left: 20px; float: none; opacity: 1; position: relative; bottom: 18px">
+   	  <input id="searchButton" type="submit" value="Search"/>
+   	 </form>
+    </div>
+    <div id="nav">
+		  <ul>
+		  <li><a href="/KamranBookStore/home">Home</a>
+		  <li><a href="../viewPersonalDetails">Profile</a>
+				<ul>
+			        <li><a href="/KamranBookStore/viewPersonalDetails">View Personal Details</a></li>
+			        <li><a href="/KamranBookStore/changePassword">Change Password</a></li>
+			        <li><a href="/KamranBookStore/viewOrders">View Order History</a></li>
+			        ${authorOptions}
+	         	</ul>
+		    </li>
+		    ${adminOptions}
+		    <li><a href="viewAllBooks">Books</a>
+				<ul>
+			        <li><a href="/KamranBookStore/viewAllBooks">View All Books</a></li>
+			        <li><a href="/KamranBookStore/searchBook">Advanced Search for Books</a></li>
+	         	</ul>
+		    </li>
+		    <li><a href="/KamranBookStore/help">Help</a>
+	        </li>
+		    <li><a href="/KamranBookStore/contact">Contact Us</a>
+	      </ul>
+    </div>
+  </header>
+  <div id="content">
+    <nav class="sidebar"> 
+      <div id="menubar">
+      	<h1>Categories</h1>
+      	<div class="menu">
+          <ul>
+					<li><a href="/KamranBookStore/viewBiographyBooks">Biography</a></li>
+                	<li><a href="/KamranBookStore/viewFictionBooks">Fiction</a></li>
+                	<li><a href="/KamranBookStore/viewTechnologyBooks">Technology</a></li>
+                	<li><a href="/KamranBookStore/viewTravelBooks">Travel</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="mainContent">
+      <h1>Edit Book</h1>
+${message}
+
+<sf:form method="post" action="doEditBook?isbn=${book.isbn}" modelAttribute="book" style="text-align:left;">
+		<p>Title : <sf:input path="title" size="70"/></p>
+		<p>Quantity Available : <sf:input path="quantity"/></p>
+		<p>Release Year : <sf:input path="releaseYear" /></p>
+		<p>Number of Pages : <sf:input path="numberOfPages"/></p>
+		<p>Category : <sf:input path="category"/></p>
+		<p>Image (URL) : <sf:input path="imageUrl"/></p>
+		<p>Author(s) : <input name="authorsString" size="100" value="${authorString}"/></p>
+		<p>List any additional authors by adding their usernames separated by a comma (Use the list of Authors below to find authors)<br/>
+		(e.g. adam.kay,william.shakespeare)</p>
 		
 		<form:select path="authors" items="${authorsList}"/>
 		<input type="submit" value="Go"/>
 	</sf:form>
-	
+      
+        
+      </div>
+    </div>
+  <footer> 
+    <!-- This is the footer with default 3 divs -->
+    <div><span style="line-height: 5px"> <p><strong>Books4u</strong></p>
+      <p>Cottons Centre</p>
+      <p> Cottons Lane</p>
+      <p> London SE1 2QG</p></span>
+    </div>
+    <div id="2col">
+    	<span style="line-height: 10px"><p>Tel: 020 3141 5926</p> 
+    	<p>Email: info@books4u.com</p></span>
+    </div>
+    <div>
+      <span style="line-height: 10px"><p>&copy; 2017 Kamran Ahmed Adnan</p>
+      <p>All Rights Reserved</p></span>
+    </div>
+  </footer>
+</div>
 </body>
 </html>
