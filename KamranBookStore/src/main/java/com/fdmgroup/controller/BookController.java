@@ -107,7 +107,7 @@ public class BookController {
 		
 		for (Author author : listOfAuthors){
 			if (author.getEmailAddress().equals(principal.getName())){
-				model.addAttribute("editMessage", "<a href='author/editBook?isbn=" + book.getIsbn() + "'> Edit Book <img src='https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/edit.png' height='30' width='auto'></a>");
+				model.addAttribute("editMessage", "<a href='author/editBook?isbn=" + book.getIsbn() + "'> Edit Book </a>");
 			}
 		}
 		

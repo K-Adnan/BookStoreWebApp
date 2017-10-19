@@ -38,8 +38,10 @@ body {
 			        <li><a href="viewPersonalDetails">View Personal Details</a></li>
 			        <li><a href="changePassword">Change Password</a></li>
 			        <li><a href="viewOrders">View Order History</a></li>
+			        ${authorOptions}
 	         	</ul>
 		    </li>
+		    ${adminOptions}
 		    <li><a href="viewAllBooks">Books</a>
 				<ul>
 			        <li><a href="viewAllBooks">View All Books</a></li>

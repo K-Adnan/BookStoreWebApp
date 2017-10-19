@@ -87,16 +87,15 @@ public class UserController {
 		
 		// Retrieving old user, replacing its values with the new user's values, and then merging it.
 		User oldUser = userDao.getUser(emailAddress);
-		
 		oldUser.setFirstName(user.getFirstName());
 		oldUser.setLastName(user.getLastName());
 		oldUser.setAddress(user.getAddress());
 		oldUser.setPhoneNumber(user.getPhoneNumber());
 		
+		userDao.updateUser(oldUser);
 		model.addAttribute("message", "User details have been successfully updated");
 		model.addAttribute("user", oldUser);
 		
-		userDao.updateUser(oldUser);
 		return "ViewPersonalDetails";
 	}
 	
@@ -136,6 +135,7 @@ public class UserController {
 				user.setPassword(password);
 				userDao.updateUser(user);
 				model.addAttribute("user", user);
+				model.addAttribute("message", "Password successfully updated");
 				return "ViewPersonalDetails";
 			}else{
 				model.addAttribute("message", "Password and Confirm Password fields do not match");

@@ -1,8 +1,5 @@
 package com.fdmgroup.controller;
 
-import java.util.Calendar;
-import java.util.List;
-
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -20,10 +17,7 @@ import com.fdmgroup.daos.UnapprovedAuthorDAO;
 import com.fdmgroup.daos.UnapprovedAuthorDaoImpl;
 import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.daos.UserDaoImpl;
-import com.fdmgroup.entities.Book;
-import com.fdmgroup.entities.UnapprovedAuthor;
-import com.fdmgroup.exceptions.EntryAlreadyExistsException;
-import com.fdmgroup.exceptions.NoSuchEntryException;
+import com.fdmgroup.entities.User;
 
 public class SoloProjectRunner {
 	
@@ -38,7 +32,10 @@ public class SoloProjectRunner {
 		OrderDAO orderDao = new OrderDaoImpl(factory);
 		UnapprovedAuthorDAO unapprovedAuthor = new UnapprovedAuthorDaoImpl(factory);
 		
-		System.out.println(bookDao.getBooksByAuthor("j.k.rowling@books4u.com"));
+		User user = userDao.getUser("a");
+		
+		user.setFirstName("Arron");
+		userDao.updateUser(user);
 		
 		factory.close();
 	}

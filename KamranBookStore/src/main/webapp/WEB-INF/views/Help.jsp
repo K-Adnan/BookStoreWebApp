@@ -20,101 +20,69 @@ body {
     <!-- This is the header content. It contains Logo and links -->
     <div id="logo"> 
       <!-- Company Logo text --> 
-      <img src="https://s3.amazonaws.com/media.prestontrail.org/craft/The-Bookstore-Online-Logo-600x.png?mtime=20160930115548" width="248" height="134" alt=""/></div>
-    <div id="headerLinks"><a href="../logout" title="Logout">Logout</a><a href="../viewCart" title="Cart">Cart</a></div>
+      <a href="home"> <img src="https://s3.amazonaws.com/media.prestontrail.org/craft/The-Bookstore-Online-Logo-600x.png?mtime=20160930115548" width="248" height="134" alt=""/> </a></div>
+    <div id="headerLinks"><a href="logout" title="Logout">Logout</a><a href="viewCart" title="Cart">Cart</a></div>
     <div id="search">
-    <form action="../viewBooks" method="get">
+    <form action="viewBooks" method="get">
     <input type="text" size="40" name="searchitem" placeholder="Search for books..." type="search"; style="font-size: 14pt; margin-left: 20px; float: none; opacity: 1; position: relative; bottom: 18px">
    	  <input id="searchButton" type="submit" value="Search"/>
    	 </form>
     </div>
     <div id="nav">
 		  <ul>
+		  <li><a href="home">Home</a>
 		  <li><a href="../viewPersonalDetails">Profile</a>
 				<ul>
-			        <li><a href="../viewPersonalDetails">View Personal Details</a></li>
-			        <li><a href="../changePassword">Change Password</a></li>
-			        <li><a href="../viewOrders">View Order History</a></li>
+			        <li><a href="viewPersonalDetails">View Personal Details</a></li>
+			        <li><a href="changePassword">Change Password</a></li>
+			        <li><a href="viewOrders">View Order History</a></li>
+			        ${authorOptions}
 	         	</ul>
 		    </li>
-		    <li><a href="../viewAllBooks">Books</a>
+		    ${adminOptions}
+		    <li><a href="viewAllBooks">Books</a>
 				<ul>
-			        <li><a href="../viewAllBooks">View All Books</a></li>
-			        <li><a href="../searchBook">Advanced Search for Books</a></li>
-			        <li><a href="../viewOrders">View Order History</a></li>
+			        <li><a href="viewAllBooks">View All Books</a></li>
+			        <li><a href="searchBook">Advanced Search for Books</a></li>
 	         	</ul>
 		    </li>
-		    <li><a href="../help">Help</a>
+		    <li><a href="help">Help</a>
 	        </li>
-		    <li><a href="../contact">Contact Us</a>
+		    <li><a href="contact">Contact Us</a>
 	      </ul>
     </div>
   </header>
-  <section id="offer"> 
-    <!-- The offer section displays a banner text for promotions -->
-    <img src="http://home.aubg.edu/students/KNT140/Project2/images/banner.jpg" alt=""/>
-    </p>
-  </section>
   <div id="content">
     <nav class="sidebar"> 
       <div id="menubar">
       	<h1>Categories</h1>
       	<div class="menu">
           <ul>
-					<li><a href="../viewBiographyBooks">Biography</a></li>
-                	<li><a href="../viewFictionBooks">Fiction</a></li>
-                	<li><a href="../viewTechnologyBooks">Technology</a></li>
-                	<li><a href="../viewTravelBooks">Travel</a></li>
+					<li><a href="viewBiographyBooks">Biography</a></li>
+                	<li><a href="viewFictionBooks">Fiction</a></li>
+                	<li><a href="viewTechnologyBooks">Technology</a></li>
+                	<li><a href="viewTravelBooks">Travel</a></li>
           </ul>
         </div>
       </div>
     </nav>
     <div class="mainContent">
-      <h1>Top Selling Books</h1>
-      <div class="productRow"><!-- Each product row contains info of 3 elements -->
-        <div class="productInfo"><!-- Each individual product description -->
-          <div><img alt="sample" src="img/pbluray.jpg"></div>
-        </div>
-        <div class="productInfo"><!-- Each individual product description -->
-          <div><img alt="sample" src="img/pgo-pro-3.jpg"></div>
-        </div>
-        <div class="productInfo"> <!-- Each individual product description -->
-          <div><img alt="sample" src="img/pharddrive.jpg"></div>
-        </div>
-      </div>
-      <div class="productRow"> 
-        <!-- Each product row contains info of 3 elements -->
-        <div class="productInfo"> <!-- Each individual product description -->
-          <div><img alt="sample" src="img/phtc-one.jpg"></div>
-        </div>
-        <div class="productInfo"> <!-- Each individual product description -->
-          <div><img alt="sample" src="img/pkodak.jpg"></div>
-        </div>
-        <div class="productInfo"><!-- Each individual product description -->
-          <div><img alt="sample" src="img/plens.jpg"></div>
-        </div>
-      </div>
-      <div class="productRow">
-        <div class="productInfo"> <!-- Each individual product description -->
-          <div><img alt="sample" src="img/plogitech.jpg"></div>
-        </div>
-        <div class="productInfo"><!-- Each individual product description -->
-          <div><img alt="sample" src="img/pnikon.jpg"></div>
-        </div>
-        <div class="productInfo"><!-- Each individual product description -->
-          <div><img alt="sample" src="img/poffice.jpg"></div>
-        </div>
-      </div>
-            <div class="productRow">
-        <div class="productInfo"> <!-- Each individual product description -->
-          <div><img alt="sample" src="img/psky-plus.jpg"></div>
-        </div>
-        <div class="productInfo"><!-- Each individual product description -->
-          <div><img alt="sample" src="img/psurface-pro-3.jpg"></div>
-        </div>
-        <div class="productInfo"><!-- Each individual product description -->
-          <div><img alt="sample" src="img/ptv-mount.jpg"></div>
-        </div>
+    <div>
+                <h1><strong>Help and Frequently asked Questions</strong></h1>
+                <p>Knowing the rules and policies on fdm.bid can help you become a more successful seller. So before listing your item, make sure you read, understand, and regularly check our policies (including the rules for sellers and the fdm.bid User Agreement and all applicable laws and regulations on the sale of your item. This can help you avoid potential problems. 	          </p>
+                <p>Make sure your listing follows our guidelines. If it doesn't, it may be removed, and your buying and selling privileges could be limited.</p>
+                <a name="prohibit"></a>
+                <h3>Prohibited and restricted items</h3>
+                <p>Our policies are often based on country laws, although in some cases, they may also be based on input from our customers and our own discretion, especially for dangerous or sensitive items.</p>
+                <p>Potentially infringing items may be in violation of certain copyrights, trademarks, or other intellectual property rights. So some items aren't allowed (even though they may be legal) because they often violate copyright or trademark laws. This also applies to certain types of information that appear in listings.</p>
+                <a name="list"></a>
+                <h3>Frequently Asked Questions</h3>
+                <p>How do I buy an item?</p>
+                <p>You can search for an item using the search bar or by browsing the categories. Clicking on BID NOW will add a bid automatically.</p>
+                <p>&nbsp;</p>
+                <p>My question isn't listed?</p>
+                <p>	If your question isn't listed, please don't worry and <a href="contact">Contact Us </a>using one of the provided methods </p>
+              </div>
       </div>
     </div>
   </div>
@@ -135,7 +103,5 @@ body {
     </div>
   </footer>
 </div>
-
-
 </body>
 </html>

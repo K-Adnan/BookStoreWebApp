@@ -38,8 +38,10 @@ body {
 			        <li><a href="viewPersonalDetails">View Personal Details</a></li>
 			        <li><a href="changePassword">Change Password</a></li>
 			        <li><a href="viewOrders">View Order History</a></li>
+			        ${authorOptions}
 	         	</ul>
 		    </li>
+		    ${adminOptions}
 		    <li><a href="viewAllBooks">Books</a>
 				<ul>
 			        <li><a href="viewAllBooks">View All Books</a></li>
@@ -67,10 +69,12 @@ body {
       </div>
     </nav>
     <div class="mainContent">
-      <div class="bookDetails"><!-- Each product row contains info of 3 elements -->
+      	  <div class="message">${message}</div>
+      <div class="bookDetails">
           <div class="leftDiv">
           		<div class="bookImage"><img src="${book.imageUrl}"></div>
 				<div class="price">Price : £${book.price}</div>
+				${editMessage}
 				<form class="cartForm" action="addBookToBasket?isbn=${book.isbn}" method="post">
 					<input name="quantity" size="1" value="1"> <input type="Submit"
 					value="Add to Cart" />
@@ -80,6 +84,7 @@ body {
           		<div class="bookTitle"><h3>${book.title}</h3> <div class="year">(${book.releaseYear})</div> </div>
           <c:forEach items="${book.authors}" var="a">
 			<div class="authorBook">By: <a href="viewBooksByAuthor?author=${a.emailAddress}">${a.firstName} ${a.lastName}, </a></div>
+		  </c:forEach>
 			<div class="rating"><strong>${book.avgCustomerRating}/5</strong> (${book.numberOfReviews} Reviews)</div>
 			<div class="bookDetails">
 				<h4>Summary</h4>
@@ -97,7 +102,6 @@ body {
 					</select> <input type="submit" value="Rate">
 				</form>
 			</div>
-		  </c:forEach>
       	  </div>
       </div>
     </div>

@@ -107,6 +107,12 @@ header {
 	;
 	margin-bottom: 21px;
 }
+
+#mainWrapper img {
+	width: 99%;
+	position: relative;
+}
+
 /* Whole page content */
 #mainWrapper {
 	width: 80%;
@@ -155,6 +161,29 @@ header {
 	display: inline;
 }
 
+.message {
+	color: red;
+	font-weight: bold;
+	width: 75%;
+	padding: 5px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.imgcol {
+	width: 100px;
+}
+
+#cartImg {
+	height: auto;
+	width: auto;
+}
+
+.editButton {
+	width: 10%;
+	height: 100px;
+}
+
 .bookTitle .year {
 	display: inline;
 	margin-left: 3px;
@@ -178,9 +207,9 @@ header {
 }
 
 .leftDiv .price {
-	margin-top: 15px;
 	left: -20px;
 	position: relative;
+	display: inline;
 }
 
 .authorBook a{
@@ -202,6 +231,7 @@ header {
 
 .bookImage img {
 	left: -25px;
+	margin-bottom: 15px;
 }
 
 .leftDiv {
@@ -301,11 +331,73 @@ footer div a {
 	text-align: center;
 }
 
+.proceedCheckout {
+	display: block;
+	position: relative;
+	float: left;
+	text-align: right;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #F0F0F0;
+	color: #000000;
+}
+
+.total {
+	text-align: left;
+	font-weight: bold;
+	color: #922828;
+}
+
+.total h3 {
+	margin: 0;
+	margin-top: 20px;
+	padding: 0;
+}
+
+.proceedCheckout a {
+	margin-bottom: 50px;
+	display:block;
+	text-decoration: none;
+	color: rgba(227,227,227,1.00);
+	padding-left: 25px;
+	font-size: 14px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #313131;
+	padding-right: 25px;
+	margin-right: 10px;
+}
+
+.proceedCheckout a:hover {
+	color: #3D3D3D;
+	background-color: #C3C1B6;
+}
+
+.eachImg img {
+	width: 99%;
+	height: auto;'
+}
+
 .eachImg {
 	width: 80%;
 	height: 310px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.updateForm {
+	text-align: left;
+	margin-left: 20px;
+	margin-top: 25px;
+	margin-bottom: 5px;
+}
+
+.cartText {
+	text-align: left;
+	margin: 0px;
+	margin-left: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .eachImg img {
@@ -316,16 +408,20 @@ footer div a {
 
 /*Links in sidebar */
 .sidebar #menubar .menu ul li a {
-	color: rgba(146,146,146,1.00);
+	display: block;
+	color: black;
 	text-decoration: none;
 	top: 0px;
 	padding-top: 10px;
-	padding-bottom: 0px;
+	padding-bottom: 10px;
+	margin: 0;
+	text-align: center;
 }
 .sidebar #menubar .menu ul li a:hover {
 	color: rgba(59,54,54,1.00);
 	text-decoration: none;
 	font-weight: bold;
+	background-color: #9A9A9A; 
 }
 /* Menu headings in sidebar */
 #menubar .menu h1 {
@@ -349,7 +445,7 @@ footer .footerlinks {
 	background-color: #C3C1B6;
 	color: #3D3D3D;
 }
-#mainWrapper img {
+#offer img {
 	width: 99%;
 	position: relative;
 }
@@ -393,6 +489,7 @@ ul li a {
 	border-right-color: #C3C3C3;
 	border-right-style: solid;
 	}
+	
 	#nav a {
 	display: block;
 	padding-top: 5px;
@@ -406,6 +503,7 @@ ul li a {
 	margin-right: 10px;
 	background-color: #F0F0F0;
 	}
+	
 	#nav a:hover {
 	background-color: #9A9A9A;
 	color: #000000;
@@ -679,6 +777,38 @@ header #headerLinks a {
 	text-align: center;
 	width: 100%;
 	padding-left: 0px;
+}
+
+#pp {
+	text-align: right;
+	float: left;
+	color: blue;
+	border: 1px solid red;
+}
+
+.changePassword {
+	display: block;
+	position: relative;
+	float: left;
+	text-align: right;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #F0F0F0;
+	color: #000000;
+}
+
+.changePassword a {
+	margin-bottom: 50px;
+	display:block;
+	text-decoration: none;
+	color: rgba(227,227,227,1.00);
+	padding-left: 25px;
+	font-size: 14px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #313131;
+	padding-right: 25px;
+	margin-right: 10px;
 }
 
 }

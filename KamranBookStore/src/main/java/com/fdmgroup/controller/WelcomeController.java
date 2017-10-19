@@ -63,8 +63,10 @@ public class WelcomeController {
 		if(request.isUserInRole("User")){
 			return "redirect:user/userHome";
 		}else if(request.isUserInRole("Admin")){
+			session.setAttribute("adminOptions", "<li><a href=\"\">Admin</a><ul><li><a href=\"/KamranBookStore/admin/viewUser\">View User</a></li><li><a href=\"/KamranBookStore/admin/viewAllSales\">View All Sales</a></li><li><a href=\"/KamranBookStore/author/listBook\">List New Book</a></li><li><a href=\"/KamranBookStore/admin/viewAuthorRequests\">View Author Requests</a></li></ul></li>");
 			return "redirect:admin/adminHome";
 		}else if (request.isUserInRole("Author")){
+			session.setAttribute("authorOptions", "<li><a href=\"/KamranBookStore/author/listBook\">List New Book</a></li><li><a href=\"/KamranBookStore/author/viewSales\">View Sales</a></li>");
 			return "redirect:author/authorHome";
 		}
 		return "index";

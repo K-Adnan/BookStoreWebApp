@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <body>
-<h2>Kamran's BookStore</h2>
+<h2>Books4u</h2>
 ${message}
 <h3> Please login or register</h3>
 <h3> <a href="registerUser"> Register </a></h3>
