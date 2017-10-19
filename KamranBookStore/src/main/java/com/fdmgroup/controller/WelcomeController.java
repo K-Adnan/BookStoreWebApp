@@ -133,5 +133,15 @@ public class WelcomeController {
 		return "admin/ViewAllSales";
 	}
 	
+	@RequestMapping("/help")
+	public String goToHelp(){
+		
+		return "Help";
+	}
+	
+	@RequestMapping("/contact")
+	public String goToContact(){
+		return "Contact";
+	}
 	
 }

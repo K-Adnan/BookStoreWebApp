@@ -7,41 +7,102 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<style>
-tr, th{
-    border-bottom: 1px solid grey;
+<link href="css/Home.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+body {
+	background-color: #1A1A1A;
+	background-image: url();
+	background-repeat: repeat-x;
 }
 </style>
 </head>
 <body>
-	<h3>SEARCH RESULTS</h3>
-		
-	<table>
-		<tr>
-			<th> </th>
-			<th>ISBN</th>
-			<th>Title</th>
-			<th>Author</th>
-			<th>Category</th>
-			<th>Price</th>
-			<th>Avg. Rating</th>
-		</tr>
-	<c:forEach items="${booksList}" var="b">
-		<tr>
-			<th><a href="displayBook?isbn=${b.isbn}"><img src="${b.imageUrl}" height="80" width="auto"></a></th>
-			<th>${b.isbn}</th>
-			<th> <a href="displayBook?isbn=${b.isbn}"> ${b.title} </a> </th>
-			<th>
-				<c:forEach items="${b.authors}" var="a">
-					${a.firstName} ${a.lastName}<br/>
-				</c:forEach>
-			</th>
-			<th>${b.category}</th>
-			<th>£${b.price}</th>
-			<th>${b.avgCustomerRating} (${b.numberOfReviews})</th>
-		</tr>
-	</c:forEach>
-	</table>
-	
+<div id="mainWrapper">
+  <header> 
+    <!-- This is the header content. It contains Logo and links -->
+    <div id="logo"> 
+      <!-- Company Logo text --> 
+      <a href="home"> <img src="https://s3.amazonaws.com/media.prestontrail.org/craft/The-Bookstore-Online-Logo-600x.png?mtime=20160930115548" width="248" height="134" alt=""/> </a></div>
+    <div id="headerLinks"><a href="logout" title="Logout">Logout</a><a href="viewCart" title="Cart">Cart</a></div>
+    <div id="search">
+    <form action="viewBooks" method="get">
+    <input type="text" size="40" name="searchitem" placeholder="Search for books..." type="search"; style="font-size: 14pt; margin-left: 20px; float: none; opacity: 1; position: relative; bottom: 18px">
+   	  <input id="searchButton" type="submit" value="Search"/>
+   	 </form>
+    </div>
+    <div id="nav">
+		  <ul>
+		  <li><a href="home">Home</a>
+		  <li><a href="../viewPersonalDetails">Profile</a>
+				<ul>
+			        <li><a href="viewPersonalDetails">View Personal Details</a></li>
+			        <li><a href="changePassword">Change Password</a></li>
+			        <li><a href="viewOrders">View Order History</a></li>
+	         	</ul>
+		    </li>
+		    <li><a href="viewAllBooks">Books</a>
+				<ul>
+			        <li><a href="viewAllBooks">View All Books</a></li>
+			        <li><a href="searchBook">Advanced Search for Books</a></li>
+	         	</ul>
+		    </li>
+		    <li><a href="help">Help</a>
+	        </li>
+		    <li><a href="contact">Contact Us</a>
+	      </ul>
+    </div>
+  </header>
+  <div id="content">
+    <nav class="sidebar"> 
+      <div id="menubar">
+      	<h1>Categories</h1>
+      	<div class="menu">
+          <ul>
+					<li><a href="viewBiographyBooks">Biography</a></li>
+                	<li><a href="viewFictionBooks">Fiction</a></li>
+                	<li><a href="viewTechnologyBooks">Technology</a></li>
+                	<li><a href="viewTravelBooks">Travel</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="mainContent">
+      <h1>Top ${category} Books</h1>
+      <div class="productRow"><!-- Each product row contains info of 3 elements -->
+      
+      <c:forEach items="${booksList}" var="b">
+      
+        <div class="productInfo"><!-- Each individual product description -->
+          <div class="eachImg"><a href="displayBook?isbn=${b.isbn}"><img src="${b.imageUrl}"></a></div>
+          <div><h3><a href="displayBook?isbn=${b.isbn}">${b.title}</a></h3></div>
+          <c:forEach items="${b.authors}" var="a">
+			<div class="author"><a href="viewBooksByAuthor?author=${a.emailAddress}">${a.firstName} ${a.lastName}</a><br/></div>
+		  </c:forEach>
+          <div class="price">£${b.price}</div>
+        </div>
+        
+      </c:forEach>
+      </div>
+    </div>
+  </div>
+  <footer> 
+    <!-- This is the footer with default 3 divs -->
+    <div><span style="line-height: 5px"> <p><strong>Books4u</strong></p>
+      <p>Cottons Centre</p>
+      <p> Cottons Lane</p>
+      <p> London SE1 2QG</p></span>
+    </div>
+    <div id="2col">
+    	<span style="line-height: 10px"><p>Tel: 020 3141 5926</p> 
+    	<p>Email: info@books4u.com</p></span>
+    </div>
+    <div>
+      <span style="line-height: 10px"><p>&copy; 2017 Kamran Ahmed Adnan</p>
+      <p>All Rights Reserved</p></span>
+    </div>
+  </footer>
+</div>
+
+
 </body>
 </html>

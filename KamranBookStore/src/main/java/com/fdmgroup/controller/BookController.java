@@ -280,4 +280,70 @@ public class BookController {
 		return "redirect:viewSales";
 	}
 	
+	@RequestMapping("/viewBiographyBooks")
+	public String goToViewBiographyBooks(Model model){
+		
+		List<Book> booksList = bookDao.getBooksByCategory("Biography");
+		
+		model.addAttribute("booksList", booksList);
+		model.addAttribute("category", "Biography");
+		
+		return "ViewBooks";
+	}
+	
+	@RequestMapping("/viewFictionBooks")
+	public String goToViewFictionBooks(Model model){
+		
+		List<Book> booksList = bookDao.getBooksByCategory("Fiction");
+		
+		model.addAttribute("booksList", booksList);
+		model.addAttribute("category", "Fiction");
+		
+		return "ViewBooks";
+	}
+	
+	@RequestMapping("/viewTechnologyBooks")
+	public String goToViewTechnologyBooks(Model model){
+		
+		List<Book> booksList = bookDao.getBooksByCategory("Technology");
+		
+		model.addAttribute("booksList", booksList);
+		model.addAttribute("category", "Technology");
+		
+		return "ViewBooks";
+	}
+	
+	@RequestMapping("/viewTravelBooks")
+	public String goToViewTravelBooks(Model model){
+		
+		List<Book> booksList = bookDao.getBooksByCategory("Travel");
+		
+		model.addAttribute("booksList", booksList);
+		model.addAttribute("category", "Travel");
+		
+		return "ViewBooks";
+	}
+	
+	@RequestMapping("/viewBooks")
+	public String goToViewTravelBooks(@RequestParam String searchitem, Model model){
+		
+		List<Book> booksList = bookDao.getBooksByTitle(searchitem);
+		
+		model.addAttribute("booksList", booksList);
+		
+		return "ViewBooks";
+	}
+	
+	@RequestMapping("/viewBooksByAuthor")
+	public String goToViewBooksByAuthor(String author, Model model, Principal principal){
+		
+		List<Book> listOfBooks = bookDao.getBooksByAuthor(author);
+		Author theAuthor = authorDao.getAuthor(author);
+		
+		model.addAttribute("booksList", listOfBooks);
+		model.addAttribute("category", theAuthor.getFirstName() + " " + theAuthor.getLastName());
+		
+		return "ViewBooks";
+	}
+	
 }

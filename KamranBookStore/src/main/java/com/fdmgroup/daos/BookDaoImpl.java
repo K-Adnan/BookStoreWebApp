@@ -96,6 +96,15 @@ public class BookDaoImpl implements BookDAO {
 		return listOfBooks;
 	}
 	
+	public List<Book> getBooksByTitle(String title){
+		EntityManager manager = factory.createEntityManager();
+		TypedQuery<Book> query = manager.createQuery("select b from Book b where b.title like ?", Book.class);
+		query.setParameter(1, "%" + title + "%");
+		List<Book> listOfBooks = query.getResultList();
+		
+		return listOfBooks;
+	}
+	
 	public List<Book> getBooksByAuthor(String emailAddress){
 		EntityManager manager = factory.createEntityManager();
 		

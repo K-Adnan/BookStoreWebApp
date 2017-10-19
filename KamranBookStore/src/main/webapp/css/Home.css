@@ -1,0 +1,605 @@
+@charset "utf-8";
+/* Global Styles */
+a:hover {
+	color: rgba(255,255,255,1.00);
+}
+/*header*/
+header {
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(146,146,146,1.00);
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	clear: both;
+	background-image: url(url);
+}
+/* Logo placeholder*/
+#logo {
+	float: left;
+	width: 250px;
+	text-align: center;
+	color: rgba(255,255,255,1.00);
+}
+/* div for Links in header */
+#headerLinks {
+	float: left;
+	width: calc( 100% - 250px );
+	text-align: right;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #F0F0F0;
+	color: #000000;
+}
+/* Links in header */
+#headerLinks a {
+	text-decoration: none;
+	color: rgba(227,227,227,1.00);
+	padding-left: 25px;
+	font-size: 14px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #313131;
+	padding-right: 25px;
+	margin-right: 10px;
+}
+/* Offer text banner*/
+#offer {
+	font-family: 'Montserrat', sans-serif;
+	clear: both;
+	background-color: rgba(246,246,246,1.00);
+	color: rgba(146,146,146,1.00);
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+/* Main content of the site */
+#content {
+	clear: both;
+	overflow: auto;
+	padding-top: 29px;
+}
+/* Sidebar */
+#content .sidebar {
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(146,146,146,1.00);
+	float: left;
+	width: 20%;
+	padding-left: 3%;
+	padding-right: 3%;
+	text-align: center;
+	background-color: rgba(255,255,255,1.00);
+	padding-top: 36px;
+	height: 1050px;
+	margin-top: -30px;
+}
+/* main content of the site */
+#content .mainContent {
+	float: left;
+	width: 70%;
+	text-align: center;
+	padding-left: 4%;
+	margin-top: -20px;
+}
+/*menubar's properties for menus in sidebar */
+#content .sidebar #menubar {
+	text-align: left;
+	color: rgba(146,146,146,1.00);
+	position: relative;
+	left: 0%;
+	margin-top: -20px;
+}
+/* Search field in sidebar */
+#content .sidebar #search {
+	width: 100%;
+	border-radius: 0px;
+	height: 42px;
+	text-align: center;
+	color: rgba(208,207,207,1.00);
+	font-size: 14px;
+	;
+	margin-bottom: 21px;
+}
+/* Whole page content */
+#mainWrapper {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #F0F0F0;
+	text-align: center;
+}
+/*menu elements */
+.menu ul li {
+	list-style-type: none;
+	font-size: x-large;
+	position: relative;
+	left: -35px;
+	padding-top: 12px;
+	margin-bottom: 10px;
+}
+/* Product rows for catalog */
+#content .mainContent .productRow {
+	overflow: auto;
+	color: rgba(146,146,146,1.00);
+}
+/* Each product Information in the catalog */
+.mainContent .productRow .productInfo {
+	float: left;
+	width: 28%;
+	margin-bottom: 20px;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+/* Prices of a products in catalog */
+.productRow .productInfo .price {
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(146,146,146,1.00);
+	font-size: 18px;
+	position: relative;
+	top: -18px;
+}
+.bookTitle h3 {
+	width: 80%;
+	padding: 0px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.bookDetails {
+	margin-top: 50px;
+}
+
+.bookImage img {
+	left: -25px;
+}
+
+.leftDiv {
+	width: 30%;
+	float: left;
+	margin-right: 0;
+}
+
+.rightDiv {
+	margin-left: 0;
+	left: -20px;
+	position: relative;
+	width: 68%;
+	border:1px solid black;
+	float: right;
+	
+}
+
+/* Content holder for products in catalog*/
+.productRow .productInfo .author {
+	position: relative;
+	top: -18px;
+	font-size: 14px;
+	font-family: source-sans-pro, sans-serif;
+	font-style: normal;
+	font-weight: 200;
+	color: rgba(146,146,146,1.00);
+	white-space: pre-wrap;
+}
+/* Buy button for products in catalog */
+.productRow .productInfo .buyButton {
+	position: relative;
+	top: -48px;
+	width: 84%;
+	background-color: rgba(208,207,207,1.00);
+	height: 35px;
+	color: rgba(255,255,255,1.00);
+	border-style: none;
+	font-size: 14px;
+	text-transform: uppercase;
+	margin-top: 8px;
+}
+/* footer */
+#mainWrapper footer {
+	clear: both;
+	overflow: auto;
+	background-color: rgba(208,207,207,1.00);
+	font-family: source-sans-pro, sans-serif;
+	font-style: normal;
+	font-weight: 200;
+	line-height: 1.8;
+	padding-top: 22px;
+	padding-left: 22px;
+	text-align: center;
+	padding-bottom: 22px;
+	padding-right: 22px;
+}
+/*Each footer content */
+#mainWrapper footer div {
+	width: 27%;
+	float: left;
+	padding-left: 4%;
+	padding-right: 2%;
+	color: rgba(255,255,255,1.00);
+	text-align: center;
+}
+/* Links in footer */
+footer div a {
+	color: rgba(146,146,146,1.00);
+	display: block;
+	text-decoration: none;
+	text-align: center;
+}
+/* Product's images in catalog */
+.productInfo div eachImg{
+	width: 100%;
+}
+
+.eachImg {
+	width: 80%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*Links in sidebar */
+.sidebar #menubar .menu ul li a {
+	color: rgba(146,146,146,1.00);
+	text-decoration: none;
+	top: 0px;
+	padding-top: 10px;
+	padding-bottom: 0px;
+}
+.sidebar #menubar .menu ul li a:hover {
+	color: rgba(59,54,54,1.00);
+	text-decoration: none;
+	font-weight: bold;
+}
+/* Menu headings in sidebar */
+#menubar .menu h1 {
+	font-size: 14px;
+}
+/*Links under menus in sidebar */
+#menubar .menu ul li a {
+	font-size: 14px;
+}
+/* Menus in sidebar */
+.sidebar #menubar .menu {
+	margin-bottom: 29px;
+	line-height: normal;
+	margin-top: -20px;
+}
+/* Container for links in footer */
+footer .footerlinks {
+	margin-top: -15px;
+}
+#headerLinks a:hover {
+	background-color: #C3C1B6;
+	color: #3D3D3D;
+}
+#mainWrapper img {
+	width: 99%;
+	position: relative;
+}
+#content .mainContent h1 {
+	color: #03005F;
+}
+.sidebar #menubar h1 {
+	background-color: #F0F0F0;
+	margin-top: -40px;
+	width: 130%;
+	margin-left: -40px;
+	padding-left: 40px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+.sidebar #menubar hr {
+}
+
+ul li a {
+}
+	#nav {
+	list-style-type: none;
+	clear: both;
+	padding-left: auto;
+	padding-right: auto;
+	width: 100%;
+	}
+	#nav ul {
+		list-style-type: none;
+		padding-top: 0px;
+		padding-right: 0px;
+		padding-bottom: 0px;
+		padding-left: 0px;
+		margin-top: 0px;
+		margin-right: 0px;
+		margin-bottom: 0px;
+		margin-left: 0px;
+	}
+	#nav li {
+	float: left;
+	border-right-color: #C3C3C3;
+	border-right-style: solid;
+	}
+	#nav a {
+	display: block;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 55px;
+	padding-right: 50px;
+	color: #000000;
+	text-decoration: none;
+	font-size: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: #F0F0F0;
+	}
+	#nav a:hover {
+	background-color: #9A9A9A;
+	color: #000000;
+	}
+	#nav ul ul {
+	display: none;
+	position: absolute;
+	z-index: 100;
+	margin-left: -13px;
+
+	}
+	#nav ul li:hover > ul {
+		display: block;
+	}
+	#nav ul ul li {
+		float: none;
+	}
+#mainWrapper footer {
+	background-color: #3D3D3D;
+}
+#mainWrapper footer #2col {
+	padding-top: 50px;
+	margin-top: 0px;
+	vertical-align: bottom;
+}
+#mainWrapper #nav ul li:last-of-type {
+	border-right: none;
+}
+#mainWrapper header #search {
+	width: calc(100%-20px);
+	float: left;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 70px;
+	clear: right;
+	position: relative;
+}
+
+#mainWrapper header #search #searchButton {
+	display: inline;
+	margin-top: -40px;
+	clear: both;
+	margin-left: 40px;
+	margin-bottom: 0px;
+	position: relative;
+	bottom: 20px;
+	right: 35px;
+	width: 80px;
+	height: 28px;
+
+
+}
+#sell {
+	padding-right: 10px;
+}
+#sell p {
+	text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Media query for tablets */
+@media screen and (max-width:700px) {
+/* search field in sidebar */
+#search {
+	display: none;
+	margin-top: none;
+}
+/* sidebar */
+#content .sidebar {
+	float: none;
+	width: 100%;
+	height: auto;
+	overflow: auto;
+	padding-left: 12%;
+	padding-top: 0px;
+}
+/* horizontal separators in sidebar */
+#content .sidebar hr {
+	display: none;
+}
+/*The sidebar and maincontent of page */
+#content {
+	position: relative;
+	top: -22px;
+	width: 100%;
+	overflow: hidden;
+}
+/*menu headings in sidebar */
+#menubar .menu h1 {
+	display: inline;
+	font-size: medium;
+	padding-right: 6%;
+}
+/* Unordered List of links */
+#menubar .menu ul {
+	display: inline;
+}
+/*list elements */
+#menubar .menu ul li {
+	display: inline;
+	font-size: medium;
+	padding-left: 0%;
+	padding-right: 3%;
+	align: center;
+}
+/*The link to be hidden in tablet view */
+.sidebar #menubar .menu ul .notimp {
+	display: none;
+}
+/* menus in sidebar */
+.sidebar #menubar .menu {
+	width: 100%;
+	text-align: center;
+	position: relative;
+	top: 16px;
+}
+/*menubar in sidebar */
+#content .sidebar #menubar {
+	position: relative;
+	left: -7%;
+	overflow: hidden;
+	width: 95%;
+	padding-top: 0px;
+}
+/* offer banners content */
+#mainWrapper #offer p {
+	font-size: small;
+}
+/* main content region of page */
+#mainWrapper #content .mainContent {
+	overflow: hidden;
+	width: 95%;
+	margin-top: 40px;
+}
+/* Prices of products in catalog view */
+.productRow .productInfo .price {
+	font-size: 19px;
+}
+/* Content holders in catalog view */
+.productRow .productInfo .productContent {
+	font-size: 16px;
+}
+/* Buy buttons in catalog view */
+.productRow .productInfo .buyButton {
+	font-size: 15px;
+}
+/* Container for links in footer */
+#mainWrapper footer .footerlinks {
+	float: none;
+	width: 100%;
+	position: relative;
+	top: 17px;
+	clear: both;
+	text-align: center;
+	left: 0%;
+	padding-bottom: 19px;
+}
+/* Container for each footer divisions */
+#mainWrapper footer div {
+	width: 44%;
+	text-align: justify;
+	font-size: 15px;
+	line-height: 50%;
+}
+/* Links in footer */
+.footerlinks p a {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	display: inline;
+	padding-right: 35px;
+}
+/* Footer region */
+#mainWrapper footer {
+	padding-left: 16px;
+	overflow: hidden;
+}
+/* Links in header */
+header #headerLinks a {
+	padding-left: 0px;
+	padding-right: 30px;
+}
+/* Offer- Text banner */
+#mainWrapper #offer {
+
+}
+/* Paragraphs in footer */
+footer .footerlinks p {
+	display: inline;
+}
+}
+
+/*media query for small screen devices */
+@media screen and (max-width:480px) {
+/*Container for links in header */
+#mainWrapper header #headerLinks {
+	width: 100%;
+	text-align: center;
+	background-color: rgba(190,190,190,1.00);
+	padding-bottom: 21px;
+}
+/* Logo placeholder*/
+#mainWrapper header #logo {
+	width: 100%;
+	text-align: center;
+}
+/* Links in header */
+header #headerLinks a {
+	text-align: center;
+	padding-right: 15px;
+	padding-left: 0px;
+}
+/*Offer - Text Banner */
+#mainWrapper #offer {
+	padding-left: 0px;
+	text-align: center;
+}
+/* Menubar in sidebar */
+#content .sidebar #menubar {
+	position: relative;
+	left: -8%;
+	text-align: center;
+}
+/*Menu headings in sidebar */
+#menubar .menu h1 {
+	width: 100%;
+	display: block;
+}
+/* Each product in catalog view */
+.mainContent .productRow .productInfo {
+	width: 100%;
+	display: block;
+	padding-left: 0px;
+	padding-right: 0px;
+	position: relative;
+	left: -2%;
+}
+#mainWrapper footer div {
+	width: 100%;
+	margin-left: -16px;
+	text-align: justify;
+	padding-bottom: 16px;
+	overflow: auto;
+}
+/* Unordered list for menu elements */
+.menu ul {
+	position: relative;
+	padding-left: 24%;
+}
+/* Container for links in footer */
+#mainWrapper footer .footerlinks {
+	padding-left: 8%;
+}
+
+
+/* Main content which excludes the sidebar */
+#mainwrapper #content .mainContent {
+	margin-top: -81px;
+	text-align: center;
+	width: 100%;
+	padding-left: 0px;
+}
+
+}
