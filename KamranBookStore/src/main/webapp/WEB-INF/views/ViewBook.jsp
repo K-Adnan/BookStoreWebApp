@@ -67,22 +67,38 @@ body {
       </div>
     </nav>
     <div class="mainContent">
-      <div class="bookTitle"><h2>Book Details</h2></div>
       <div class="bookDetails"><!-- Each product row contains info of 3 elements -->
           <div class="leftDiv">
           		<div class="bookImage"><img src="${book.imageUrl}"></div>
+				<div class="price">Price : £${book.price}</div>
+				<form class="cartForm" action="addBookToBasket?isbn=${book.isbn}" method="post">
+					<input name="quantity" size="1" value="1"> <input type="Submit"
+					value="Add to Cart" />
+				</form>
       	  </div>
       	  <div class="rightDiv">
-          		<div class="bookTitle"><h3>${book.title}</h3></div>
-      	  </div>
-      
-        <div class="productInfo"><!-- Each individual product description -->
-          <div><h3><a href="displayBook?isbn=${b.isbn}">${b.title}</a></h3></div>
-          <c:forEach items="${b.authors}" var="a">
-			<div class="author"><a href="viewBooksByAuthor?author=${a.emailAddress}">${a.firstName} ${a.lastName}</a><br/></div>
+          		<div class="bookTitle"><h3>${book.title}</h3> <div class="year">(${book.releaseYear})</div> </div>
+          <c:forEach items="${book.authors}" var="a">
+			<div class="authorBook">By: <a href="viewBooksByAuthor?author=${a.emailAddress}">${a.firstName} ${a.lastName}, </a></div>
+			<div class="rating"><strong>${book.avgCustomerRating}/5</strong> (${book.numberOfReviews} Reviews)</div>
+			<div class="bookDetails">
+				<h4>Summary</h4>
+				<p class="summary">${book.summary}</p>
+				<p>Pages : ${book.numberOfPages}</p>
+				ISBN : ${book.isbn}<br/>
+				<p class="reviewForm">Add Customer Rating</p>
+				<form action="rateBook?isbn=${book.isbn}" method="post">
+					<select name="rating">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					</select> <input type="submit" value="Rate">
+				</form>
+			</div>
 		  </c:forEach>
-        </div>
-        
+      	  </div>
       </div>
     </div>
   </div>

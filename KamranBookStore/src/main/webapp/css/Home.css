@@ -1,8 +1,16 @@
 @charset "utf-8";
 /* Global Styles */
 a:hover {
-	color: rgba(255,255,255,1.00);
+	color: black;
 }
+a{
+	color: darkblue;
+}
+
+.author a{
+	color: #4B4B4B;
+}
+
 /*header*/
 header {
 	font-family: 'Montserrat', sans-serif;
@@ -125,27 +133,71 @@ header {
 .mainContent .productRow .productInfo {
 	float: left;
 	width: 28%;
+	height: 440px;
 	margin-bottom: 20px;
-	padding-left: 2%;
-	padding-right: 2%;
+	margin-left: 2%;
+	margin-right: 2%;
+	padding-bottom: -10px;
+	border-radius: 25px;
 }
 /* Prices of a products in catalog */
 .productRow .productInfo .price {
 	font-family: 'Montserrat', sans-serif;
-	color: rgba(146,146,146,1.00);
+	color: #922828;
 	font-size: 18px;
 	position: relative;
-	top: -18px;
+	top: -14px;
 }
 .bookTitle h3 {
 	width: 80%;
 	padding: 0px;
-	margin-bottom: 0px;
 	margin-top: 0px;
+	display: inline;
+}
+
+.bookTitle .year {
+	display: inline;
+	margin-left: 3px;
+	font-weight: normal;
+	font-style: italic;
+}
+
+.cartForm {
+	margin-top: 15px;
+	margin-bottom: 0;
+	padding: 0;
+	left: -20px;
+	position: relative;
+}
+
+.reviewForm {
+	margin-top: 15px;
+	margin-bottom: 0;
+	padding: 0;
+	position: relative;
+}
+
+.leftDiv .price {
+	margin-top: 15px;
+	left: -20px;
+	position: relative;
+}
+
+.authorBook a{
+	font-style: normal;
+	font-weight: bold;
+}
+
+.authorBook {
+	margin-top: 5px;
+	margin-bottom: 0px;
+	font-weight: normal;
+	font-style: italic;
 }
 
 .bookDetails {
 	margin-top: 50px;
+	text-align: left;
 }
 
 .bookImage img {
@@ -158,12 +210,37 @@ header {
 	margin-right: 0;
 }
 
+.bookDetails {
+	margin-top: 20px;
+	font-weight: bold;
+}
+
+.bookDetails h4 {
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding: 0px;
+}
+
+.bookDetails .rating {
+	font-weight: normal;
+	margin-top: 10px;
+}
+
+.summary {
+	margin-top: 5px;
+	padding: 0px;
+	font-weight: normal;
+}
+
+.bookDetails form{
+	margin-bottom: 20px;
+}
+
 .rightDiv {
 	margin-left: 0;
 	left: -20px;
 	position: relative;
 	width: 68%;
-	border:1px solid black;
 	float: right;
 	
 }
@@ -223,16 +300,18 @@ footer div a {
 	text-decoration: none;
 	text-align: center;
 }
-/* Product's images in catalog */
-.productInfo div eachImg{
-	width: 100%;
-}
 
 .eachImg {
 	width: 80%;
-	height: auto;
+	height: 310px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.eachImg img {
+	position: relative;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
 /*Links in sidebar */
