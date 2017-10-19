@@ -74,16 +74,22 @@ public class WelcomeController {
 	
 	@RequestMapping("/admin/adminHome")
 	public String goToAdminHome(Model model, HttpSession session){
+		List<Book> booksList = bookDao.getAllBooks();
+		model.addAttribute("booksList", booksList);
 		return "admin/AdminHome";
 	}
 	
 	@RequestMapping("/user/userHome")
 	public String goToUserHome(Model model, HttpSession session){
+		List<Book> booksList = bookDao.getAllBooks();
+		model.addAttribute("booksList", booksList);
 		return "user/UserHome";
 	}
 	
 	@RequestMapping("/author/authorHome")
 	public String goToAuthorHome(Model model, HttpSession session){
+		List<Book> booksList = bookDao.getAllBooks();
+		model.addAttribute("booksList", booksList);
 		return "author/AuthorHome";
 	}
 	

@@ -84,7 +84,7 @@ ${message}
 			${c.quantity}x		
 			<a href="displayBook?isbn=${c.book.isbn}">${c.book.title}</a><br/>
 		</c:forEach>
-		<bold>Total : ${o.cart.total}</bold>
+		<strong>Total : £${o.cart.total}</strong>
 	<hr>
 	</c:forEach>
 	<c:choose>

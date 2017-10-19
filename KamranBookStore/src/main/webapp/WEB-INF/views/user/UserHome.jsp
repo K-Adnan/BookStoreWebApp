@@ -77,15 +77,18 @@ body {
     <div class="mainContent">
       <h1>Top Selling Books</h1>
       <div class="productRow"><!-- Each product row contains info of 3 elements -->
-        <div class="productInfo"><!-- Each individual product description -->
-          <div><img alt="sample" src="img/pbluray.jpg"></div>
+
+		<c:forEach items="${booksList}" var="b">
+		<div class="productInfo"><!-- Each individual product description -->
+          <div class="eachImg"><a href="displayBook?isbn=${b.isbn}"><img src="${b.imageUrl}"></a></div>
+          <div><h4><a href="displayBook?isbn=${b.isbn}">${b.title}</a></h4></div>
+          <c:forEach items="${b.authors}" var="a">
+			<div class="author"><a href="viewBooksByAuthor?author=${a.emailAddress}">${a.firstName} ${a.lastName}</a><br/></div>
+		  </c:forEach>
+          <div class="price">£${b.price}</div>
         </div>
-        <div class="productInfo"><!-- Each individual product description -->
-          <div><img alt="sample" src="img/pgo-pro-3.jpg"></div>
-        </div>
-        <div class="productInfo"> <!-- Each individual product description -->
-          <div><img alt="sample" src="img/pharddrive.jpg"></div>
-        </div>
+        </c:forEach>
+
       </div>
     </div>
   </div>
