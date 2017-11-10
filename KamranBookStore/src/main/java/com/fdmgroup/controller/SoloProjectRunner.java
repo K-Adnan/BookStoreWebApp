@@ -23,19 +23,19 @@ public class SoloProjectRunner {
 	
 	public static void main(String[] args) {
 		
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DemoPersistence");
-		UserDAO userDao = new UserDaoImpl(factory);
-		BookDAO bookDao = new BookDaoImpl(factory);
-		AuthorDAO authorDao = new AuthorDaoImpl(factory);
-		CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
-		CartDAO cartDao = new CartDaoImpl(factory);
-		OrderDAO orderDao = new OrderDaoImpl(factory);
-		UnapprovedAuthorDAO unapprovedAuthor = new UnapprovedAuthorDaoImpl(factory);
-		
-		User user = userDao.getUser("a");
-		
-		user.setFirstName("Arron");
-		userDao.updateUser(user);
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("PersistenceInCreateMode");
+//		UserDAO userDao = new UserDaoImpl(factory);
+//		BookDAO bookDao = new BookDaoImpl(factory);
+//		AuthorDAO authorDao = new AuthorDaoImpl(factory);
+//		CartItemDAO cartItemDao = new CartItemDaoImpl(factory);
+//		CartDAO cartDao = new CartDaoImpl(factory);
+//		OrderDAO orderDao = new OrderDaoImpl(factory);
+//		UnapprovedAuthorDAO unapprovedAuthor = new UnapprovedAuthorDaoImpl(factory);
+//		
+//		User user = userDao.getUser("a");
+//		
+//		user.setFirstName("Arron");
+//		userDao.updateUser(user);
 		
 		factory.close();
 	}

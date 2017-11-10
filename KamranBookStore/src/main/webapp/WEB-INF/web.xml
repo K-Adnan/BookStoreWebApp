@@ -20,8 +20,8 @@
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<form-login-config>
-			<form-login-page>/WEB-INF/views/Login.jsp</form-login-page>
-			<form-error-page>/WEB-INF/views/Login.jsp</form-error-page>
+			<form-login-page>/home</form-login-page>
+			<form-error-page>/WEB-INF/views/loginFailure.jsp</form-error-page>
 		</form-login-config>
 	</login-config>
 

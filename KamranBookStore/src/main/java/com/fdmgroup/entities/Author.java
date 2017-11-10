@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -17,6 +19,7 @@ import javax.persistence.ManyToMany;
 public class Author extends User{
 	
 	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.MERGE)
+	@JoinTable(name = "TEST_BOOKS_AUTHORS", joinColumns = { @JoinColumn(name = "AUTHOR") }, inverseJoinColumns = { @JoinColumn(name = "BOOK") })
 	private Set<Book> books = new HashSet<Book>();
 	private double sales;
 	

@@ -21,12 +21,7 @@ public class Book {
 	private String title;
 	private String summary;
 	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.MERGE)
-//	@JoinTable(name = "SOLOPROJECT_AUTHORS_BOOKS",
-//    joinColumns = {@JoinColumn(table = "SOLOPROJECT_USERS",
-//                               referencedColumnName = "ISBN"),
-//                   @JoinColumn(table = "SOLOPROJECT_BOOKS",
-//                                referencedColumnName = "EMAILADDRESS", 
-//                               nullable = true)})
+	@JoinTable(name = "TEST_BOOKS_AUTHORS", joinColumns = { @JoinColumn(name = "BOOK") }, inverseJoinColumns = { @JoinColumn(name = "AUTHOR") })
 	private Set<Author> authors = new HashSet<Author>();
 
 	private String category;
