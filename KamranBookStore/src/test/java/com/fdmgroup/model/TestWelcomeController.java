@@ -90,7 +90,7 @@ public class TestWelcomeController {
 		factory = mock(EntityManagerFactory.class);
 		when(factory.createEntityManager()).thenReturn(manager);
 		userDao = mock(UserDAO.class);
-		welcomeController = new WelcomeController(factory, userDao, cartDao, bookDao, unapprovedAuthorDao);
+		welcomeController = new WelcomeController(userDao, bookDao, unapprovedAuthorDao);
 	}
 
 	@Test

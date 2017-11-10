@@ -2,6 +2,7 @@ package com.fdmgroup.controller;
 
 
 import java.security.Principal;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
@@ -25,13 +26,7 @@ import com.fdmgroup.entities.User;
 public class WelcomeController {
 	
 	@Autowired
-	private EntityManagerFactory factory;
-	
-	@Autowired
 	private UserDAO userDao;
-	
-	@Autowired
-	private CartDAO cartDao;
 	
 	@Autowired
 	private BookDAO bookDao;
@@ -42,12 +37,10 @@ public class WelcomeController {
 	public WelcomeController(){
 	}
 	
-	public WelcomeController(EntityManagerFactory factory, UserDAO userDao, CartDAO cartDao, BookDAO bookDao,
+	public WelcomeController(UserDAO userDao, BookDAO bookDao,
 			UnapprovedAuthorDAO unapprovedAuthorDao) {
 		super();
-		this.factory = factory;
 		this.userDao = userDao;
-		this.cartDao = cartDao;
 		this.bookDao = bookDao;
 		this.unapprovedAuthorDao = unapprovedAuthorDao;
 	}
@@ -75,6 +68,7 @@ public class WelcomeController {
 	@RequestMapping("/admin/adminHome")
 	public String goToAdminHome(Model model, HttpSession session){
 		List<Book> booksList = bookDao.getAllBooks();
+		Collections.sort(booksList);
 		model.addAttribute("booksList", booksList);
 		return "admin/AdminHome";
 	}
@@ -82,6 +76,7 @@ public class WelcomeController {
 	@RequestMapping("/user/userHome")
 	public String goToUserHome(Model model, HttpSession session){
 		List<Book> booksList = bookDao.getAllBooks();
+		Collections.sort(booksList);
 		model.addAttribute("booksList", booksList);
 		return "user/UserHome";
 	}
@@ -89,6 +84,7 @@ public class WelcomeController {
 	@RequestMapping("/author/authorHome")
 	public String goToAuthorHome(Model model, HttpSession session){
 		List<Book> booksList = bookDao.getAllBooks();
+		Collections.sort(booksList);
 		model.addAttribute("booksList", booksList);
 		return "author/AuthorHome";
 	}
@@ -135,7 +131,7 @@ public class WelcomeController {
 	public String goToViewAllSales(Model model){
 		
 		List<Book> booksList = bookDao.getAllBooks();
-		
+		Collections.sort(booksList);
 		model.addAttribute("booksList", booksList);
 		
 		return "admin/ViewAllSales";

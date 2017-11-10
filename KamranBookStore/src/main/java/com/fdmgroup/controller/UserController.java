@@ -25,9 +25,6 @@ import com.fdmgroup.entities.User;
 public class UserController {
 	
 	@Autowired
-	private EntityManagerFactory factory;
-	
-	@Autowired
 	private UserDAO userDao;
 	
 
@@ -49,8 +46,7 @@ public class UserController {
 	public UserController(){
 	}
 	
-	public UserController(EntityManagerFactory factory, UserDAO userDao, UnapprovedAuthorDAO unapprovedAuthorDao, RejectedUserDAO rejectedUserDao, AuthorDAO authorDao) {
-		this.factory = factory;
+	public UserController(UserDAO userDao, UnapprovedAuthorDAO unapprovedAuthorDao, RejectedUserDAO rejectedUserDao, AuthorDAO authorDao) {
 		this.userDao = userDao;
 		this.unapprovedAuthorDao = unapprovedAuthorDao;
 		this.rejectedUserDao = rejectedUserDao;

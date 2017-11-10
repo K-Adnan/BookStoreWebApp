@@ -89,7 +89,7 @@ public class TestUserController {
 		factory = mock(EntityManagerFactory.class);
 		when(factory.createEntityManager()).thenReturn(manager);
 		userDao = mock(UserDAO.class);
-		userController = new UserController(factory, userDao, unapprovedAuthorDao, rejectedUserDao, authorDao);
+		userController = new UserController(userDao, unapprovedAuthorDao, rejectedUserDao, authorDao);
 	}
 
 	@Test

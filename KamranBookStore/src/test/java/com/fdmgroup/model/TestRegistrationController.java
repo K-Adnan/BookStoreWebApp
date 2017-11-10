@@ -82,7 +82,7 @@ public class TestRegistrationController {
 		factory = mock(EntityManagerFactory.class);
 		when(factory.createEntityManager()).thenReturn(manager);
 		userDao = mock(UserDAO.class);
-		registrationController = new RegistrationController(factory, userDao, adminDao, authorDao, unapprovedAuthorDao);
+		registrationController = new RegistrationController(userDao, adminDao, authorDao, unapprovedAuthorDao);
 	}
 
 	@Test

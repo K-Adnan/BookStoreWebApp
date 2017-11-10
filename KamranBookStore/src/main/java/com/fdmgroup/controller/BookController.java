@@ -2,6 +2,8 @@ package com.fdmgroup.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -67,6 +69,7 @@ public class BookController {
 	public String goToViewAllBooks(Model model){
 		
 		List<Book> booksList = bookDao.getAllBooks();
+		Collections.sort(booksList);
 		model.addAttribute("booksList", booksList);
 		return "ViewAllBooks";
 	}
@@ -87,6 +90,7 @@ public class BookController {
 		}else{
 			booksList = bookDao.getBooksByAllAttributes(title, author, category, min, max);
 		}
+		Collections.sort(booksList);
 		model.addAttribute("booksList", booksList);
 		return "ViewBooks";
 	}
@@ -118,7 +122,7 @@ public class BookController {
 	public String goToViewBooksByCategory(@RequestParam String category, Model model){
 		
 		List<Book> booksList = bookDao.getBooksByCategory(category);
-		
+		Collections.sort(booksList);
 		model.addAttribute("booksList", booksList);
 		
 		return "ViewBooks";
@@ -284,7 +288,7 @@ public class BookController {
 	public String goToViewBiographyBooks(Model model){
 		
 		List<Book> booksList = bookDao.getBooksByCategory("Biography");
-		
+		Collections.sort(booksList);
 		model.addAttribute("booksList", booksList);
 		model.addAttribute("category", "Biography");
 		
@@ -295,7 +299,7 @@ public class BookController {
 	public String goToViewFictionBooks(Model model){
 		
 		List<Book> booksList = bookDao.getBooksByCategory("Fiction");
-		
+		Collections.sort(booksList);
 		model.addAttribute("booksList", booksList);
 		model.addAttribute("category", "Fiction");
 		
@@ -306,7 +310,7 @@ public class BookController {
 	public String goToViewTechnologyBooks(Model model){
 		
 		List<Book> booksList = bookDao.getBooksByCategory("Technology");
-		
+		Collections.sort(booksList);
 		model.addAttribute("booksList", booksList);
 		model.addAttribute("category", "Technology");
 		
@@ -317,7 +321,7 @@ public class BookController {
 	public String goToViewTravelBooks(Model model){
 		
 		List<Book> booksList = bookDao.getBooksByCategory("Travel");
-		
+		Collections.sort(booksList);
 		model.addAttribute("booksList", booksList);
 		model.addAttribute("category", "Travel");
 		
@@ -328,8 +332,9 @@ public class BookController {
 	public String goToViewTravelBooks(@RequestParam String searchitem, Model model){
 		
 		List<Book> booksList = bookDao.getBooksByTitle(searchitem);
-		
-		model.addAttribute("booksList", booksList);
+		Collections.sort(booksList);
+		List<Book> list = new ArrayList<Book>(new LinkedHashSet<Book>(booksList));
+		model.addAttribute("booksList", list);
 		
 		return "ViewBooks";
 	}
@@ -339,7 +344,7 @@ public class BookController {
 		
 		List<Book> listOfBooks = bookDao.getBooksByAuthor(author);
 		Author theAuthor = authorDao.getAuthor(author);
-		
+		Collections.sort(listOfBooks);
 		model.addAttribute("booksList", listOfBooks);
 		model.addAttribute("category", theAuthor.getFirstName() + " " + theAuthor.getLastName());
 		

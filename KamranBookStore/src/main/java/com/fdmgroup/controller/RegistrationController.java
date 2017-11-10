@@ -24,9 +24,6 @@ import com.fdmgroup.entities.User;
 public class RegistrationController {
 	
 	@Autowired
-	private EntityManagerFactory factory;
-	
-	@Autowired
 	private UserDAO userDao;
 	
 	@Autowired
@@ -48,8 +45,7 @@ public class RegistrationController {
 	public RegistrationController(){
 	}
 	
-	public RegistrationController(EntityManagerFactory factory, UserDAO userDao, AdminDAO adminDao, AuthorDAO authorDao, UnapprovedAuthorDAO unapprovedAuthorDao) {
-		this.factory = factory;
+	public RegistrationController(UserDAO userDao, AdminDAO adminDao, AuthorDAO authorDao, UnapprovedAuthorDAO unapprovedAuthorDao) {
 		this.userDao = userDao;
 		this.adminDao = adminDao;
 		this.authorDao = authorDao;

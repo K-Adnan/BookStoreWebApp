@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TEST_BOOKS")
-public class Book {
+public class Book implements Comparable<Book> {
 
 	@Id
 	private long isbn;
@@ -201,6 +201,10 @@ public class Book {
 
 	public void setSales(int sales) {
 		this.sales = sales;
+	}
+
+	public int compareTo(Book other) {
+		return title.compareTo(other.getTitle());
 	}
 
 
