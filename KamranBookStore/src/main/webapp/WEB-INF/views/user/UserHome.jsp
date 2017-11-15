@@ -42,7 +42,7 @@ body {
 		    <li><a href="../viewAllBooks">Books</a>
 				<ul>
 			        <li><a href="../viewAllBooks">View All Books</a></li>
-			        <li><a href="../searchBook">Advanced Search for Books</a></li>
+			        <li><a href="../searchBook">Advanced Search</a></li>
 	         	</ul>
 		    </li>
 		    <li><a href="../help">Help</a>

@@ -91,7 +91,8 @@ public class BookController {
 			booksList = bookDao.getBooksByAllAttributes(title, author, category, min, max);
 		}
 		Collections.sort(booksList);
-		model.addAttribute("booksList", booksList);
+		List<Book> uniqueBooksList = new ArrayList<Book>(new LinkedHashSet<Book>(booksList));
+		model.addAttribute("booksList", uniqueBooksList);
 		return "ViewBooks";
 	}
 	
@@ -331,7 +332,7 @@ public class BookController {
 	@RequestMapping("/viewBooks")
 	public String goToViewTravelBooks(@RequestParam String searchitem, Model model){
 		
-		List<Book> booksList = bookDao.getBooksByTitle(searchitem);
+		List<Book> booksList = bookDao.getBooksByAllAttributes(searchitem);
 		Collections.sort(booksList);
 		List<Book> list = new ArrayList<Book>(new LinkedHashSet<Book>(booksList));
 		model.addAttribute("booksList", list);

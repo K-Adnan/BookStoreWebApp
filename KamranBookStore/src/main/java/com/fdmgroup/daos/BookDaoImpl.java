@@ -98,8 +98,8 @@ public class BookDaoImpl implements BookDAO {
 	
 	public List<Book> getBooksByTitle(String title){
 		EntityManager manager = factory.createEntityManager();
-		TypedQuery<Book> query = manager.createQuery("select b from Book b where b.title like ?", Book.class);
-		query.setParameter(1, "%" + title + "%");
+		TypedQuery<Book> query = manager.createQuery("select b from Book b where lower(b.title) like ?", Book.class);
+		query.setParameter(1, "%" + title.toLowerCase() + "%");
 		List<Book> listOfBooks = query.getResultList();
 		
 		return listOfBooks;
@@ -117,13 +117,25 @@ public class BookDaoImpl implements BookDAO {
 	
 	public List<Book> getBooksByAllAttributes(String title, String author, String category, Double min, Double max){
 		EntityManager manager = factory.createEntityManager();
-		TypedQuery<Book> query = manager.createQuery("select b from Book b join fetch b.authors a where b.title like ? AND b.category like ? AND b.price < ? AND b.price > ? AND (a.firstName like ? OR a.lastName like ?)", Book.class);
-		query.setParameter(1, "%" + title + "%");
+		TypedQuery<Book> query = manager.createQuery("select b from Book b join fetch b.authors a where lower(b.title) like ? AND b.category like ? AND b.price < ? AND b.price > ? AND (lower(a.firstName) like ? OR lower(a.lastName) like ?)", Book.class);
+		query.setParameter(1, "%" + title.toLowerCase() + "%");
 		query.setParameter(2, "%" + category + "%");
 		query.setParameter(3, max);
 		query.setParameter(4, min);
-		query.setParameter(5, "%" + author + "%");
-		query.setParameter(6, "%" + author + "%");
+		query.setParameter(5, "%" + author.toLowerCase() + "%");
+		query.setParameter(6, "%" + author.toLowerCase() + "%");
+		List<Book> listOfBooks = query.getResultList();
+		System.out.println(listOfBooks);
+		return listOfBooks;
+	}
+	
+	public List<Book> getBooksByAllAttributes(String search){
+		EntityManager manager = factory.createEntityManager();
+		TypedQuery<Book> query = manager.createQuery("select b from Book b join fetch b.authors a where lower(b.title) like ? OR lower(b.category) like ? OR (lower(a.firstName) like ? OR lower(a.lastName) like ?)", Book.class);
+		query.setParameter(1, "%" + search.toLowerCase() + "%");
+		query.setParameter(2, "%" + search.toLowerCase() + "%");
+		query.setParameter(3, "%" + search.toLowerCase() + "%");
+		query.setParameter(4, "%" + search.toLowerCase() + "%");
 		List<Book> listOfBooks = query.getResultList();
 		System.out.println(listOfBooks);
 		return listOfBooks;

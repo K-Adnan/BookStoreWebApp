@@ -490,18 +490,34 @@ ul li a {
 	border-right-style: solid;
 	}
 	
+	#nav li ul {
+	border-bottom: 3px solid #C3C3C3;
+	border-left: 3px solid #C3C3C3;
+	border-right: 3px solid #C3C3C3;
+	width: 11.5%;
+	}
+	
+	#nav li ul li {
+	border-right: none;
+	}
+	
 	#nav a {
-	display: block;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	padding-left: 55px;
-	padding-right: 50px;
+	padding-left: 60px;
+	padding-right: 60px;
 	color: #000000;
 	text-decoration: none;
 	font-size: 20px;
-	margin-left: 10px;
-	margin-right: 10px;
 	background-color: #F0F0F0;
+	display: block;
+	}
+	#nav ul ul a {
+	font-size: 10pt;
+	display: block;
+	padding-left: 0px;
+	padding-right: 0px;
+	font-weight: bolder;
 	}
 	
 	#nav a:hover {
@@ -512,8 +528,7 @@ ul li a {
 	display: none;
 	position: absolute;
 	z-index: 100;
-	margin-left: -13px;
-
+	margin-left: -3px;
 	}
 	#nav ul li:hover > ul {
 		display: block;
