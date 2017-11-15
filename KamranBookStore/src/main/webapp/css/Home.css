@@ -72,8 +72,6 @@ header {
 	color: rgba(146,146,146,1.00);
 	float: left;
 	width: 20%;
-	padding-left: 3%;
-	padding-right: 3%;
 	text-align: center;
 	background-color: rgba(255,255,255,1.00);
 	padding-top: 36px;
@@ -83,9 +81,9 @@ header {
 /* main content of the site */
 #content .mainContent {
 	float: left;
-	width: 70%;
+	width: 78%;
 	text-align: center;
-	padding-left: 4%;
+	padding-left: 1%;
 	margin-top: -20px;
 }
 /*menubar's properties for menus in sidebar */
@@ -95,6 +93,7 @@ header {
 	position: relative;
 	left: 0%;
 	margin-top: -20px;
+	width: 110%;
 }
 /* Search field in sidebar */
 #content .sidebar #search {
@@ -115,7 +114,7 @@ header {
 
 /* Whole page content */
 #mainWrapper {
-	width: 80%;
+	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #F0F0F0;
@@ -138,7 +137,7 @@ header {
 /* Each product Information in the catalog */
 .mainContent .productRow .productInfo {
 	float: left;
-	width: 28%;
+	width: 20%;
 	height: 440px;
 	margin-bottom: 20px;
 	margin-left: 2%;
@@ -455,11 +454,10 @@ footer .footerlinks {
 .sidebar #menubar h1 {
 	background-color: #F0F0F0;
 	margin-top: -40px;
-	width: 130%;
-	margin-left: -40px;
-	padding-left: 40px;
 	padding-bottom: 10px;
 	padding-top: 10px;
+	text-align: center;
+	width: 91%;
 }
 .sidebar #menubar hr {
 }
