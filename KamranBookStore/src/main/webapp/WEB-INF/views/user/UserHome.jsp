@@ -76,8 +76,8 @@ body {
 
 		<c:forEach items="${booksList}" var="b">
 		<div class="productInfo"><!-- Each individual product description -->
-          <div class="eachImg"><a href="displayBook?isbn=${b.isbn}"><img src="${b.imageUrl}"></a></div>
-          <div><h4><a href="displayBook?isbn=${b.isbn}">${b.title}</a></h4></div>
+          <div class="eachImg"><a href="../displayBook?isbn=${b.isbn}"><img src="${b.imageUrl}"></a></div>
+          <div class="title"><h4><a href="../displayBook?isbn=${b.isbn}">${b.title}</a></h4></div>
           <c:forEach items="${b.authors}" var="a">
 			<div class="author"><a href="viewBooksByAuthor?author=${a.emailAddress}">${a.firstName} ${a.lastName}</a><br/></div>
 		  </c:forEach>

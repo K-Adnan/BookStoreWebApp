@@ -84,7 +84,7 @@ body {
           <c:forEach items="${book.authors}" var="a">
 			<div class="authorBook">By: <a href="viewBooksByAuthor?author=${a.emailAddress}">${a.firstName} ${a.lastName}, </a></div>
 		  </c:forEach>
-			<div class="rating"><strong>${book.avgCustomerRating}/5</strong> (${book.numberOfReviews} Reviews)</div>
+			<div class="rating"><strong><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${book.avgCustomerRating}" />/5</strong> (${book.numberOfReviews} Reviews)</div>
 			<div class="bookDetails">
 				<h4>Summary</h4>
 				<p class="summary">${book.summary}</p>
