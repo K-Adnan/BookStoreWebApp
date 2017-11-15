@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ include file="PageDirectives.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -76,7 +77,14 @@ body {
 	<h4>Advanced Search</h4>
 	Title : <input name="title"/><br/>
 	Author : <input name="author"/><br/>
-	Category : <input name="category"/><br/>
+	Category :
+	<select name="category">
+		<option value="" selected="selected"/>
+		<c:forEach items="${categories}" var="c">
+			<option value="${c}">${c}</option>
+		</c:forEach>
+	</select><br/>
+	
 	Price : Min <input name="min" value="0.00" type="number" step="0.01" min="0.00"/> Max <input name="max" value="1000.00" type="number" step="0.01" min="0.00"/><br/>
 	<input type="submit" value="Search"/>
       	</div>

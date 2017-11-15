@@ -2,10 +2,10 @@ package com.fdmgroup.controller;
 
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.persistence.EntityManagerFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fdmgroup.daos.BookDAO;
-import com.fdmgroup.daos.CartDAO;
 import com.fdmgroup.daos.UnapprovedAuthorDAO;
 import com.fdmgroup.daos.UserDAO;
 import com.fdmgroup.entities.Book;
@@ -104,6 +103,13 @@ public class WelcomeController {
 	
 	@RequestMapping("/searchBook")
 	public String goToSearchBook(Model model){
+		List<String> categories = new ArrayList<String>();
+		categories.add("Technology");
+		categories.add("Biography");
+		categories.add("Travel");
+		categories.add("Fiction");
+		
+		model.addAttribute("categories", categories);
 		return "SearchBook";
 	}
 	
