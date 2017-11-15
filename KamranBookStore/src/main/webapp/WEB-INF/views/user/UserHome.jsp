@@ -81,7 +81,7 @@ body {
           <c:forEach items="${b.authors}" var="a">
 			<div class="author"><a href="viewBooksByAuthor?author=${a.emailAddress}">${a.firstName} ${a.lastName}</a><br/></div>
 		  </c:forEach>
-          <div class="price">£${b.price}</div>
+          <div class="price"><fmt:formatNumber value = "${b.price}" type = "currency"/></div>
         </div>
         </c:forEach>
 

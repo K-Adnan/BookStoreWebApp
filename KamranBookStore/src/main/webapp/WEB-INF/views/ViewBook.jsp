@@ -72,7 +72,7 @@ body {
       <div class="bookDetails">
           <div class="leftDiv">
           		<div class="bookImage"><img src="${book.imageUrl}"></div>
-				<div class="price">Price : £${book.price}</div>
+				<div class="price">Price : <fmt:formatNumber value = "${book.price}" type = "currency"/></div>
 				${editMessage}
 				<form class="cartForm" action="addBookToBasket?isbn=${book.isbn}" method="post">
 					<input name="quantity" size="1" value="1"> <input type="Submit"
