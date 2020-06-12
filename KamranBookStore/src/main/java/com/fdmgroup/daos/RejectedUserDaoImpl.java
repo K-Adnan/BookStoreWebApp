@@ -1,62 +1,60 @@
 package com.fdmgroup.daos;
 
-import java.util.List;
+import com.fdmgroup.entities.RejectedUser;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.fdmgroup.entities.RejectedUser;
+import java.util.List;
 
 public class RejectedUserDaoImpl implements RejectedUserDAO {
 
-	@Autowired
-	private EntityManagerFactory factory;
+    @Autowired
+    private EntityManagerFactory factory;
 
-	public RejectedUserDaoImpl(EntityManagerFactory factory) {
-		super();
-		this.factory = factory;
-	}
-	
-	public RejectedUserDaoImpl(){
-	}
+    public RejectedUserDaoImpl(EntityManagerFactory factory) {
+        super();
+        this.factory = factory;
+    }
 
-	public void addRejectedUser(RejectedUser newRejectedUser) {
-		EntityManager manager = factory.createEntityManager();
+    public RejectedUserDaoImpl() {
+    }
 
-			manager.getTransaction().begin();
-			manager.persist(newRejectedUser);
-			manager.getTransaction().commit();
-	}
+    public void addRejectedUser(RejectedUser newRejectedUser) {
+        EntityManager manager = factory.createEntityManager();
 
-	public RejectedUser getRejectedUser(String emailAddress) {
-		EntityManager manager = factory.createEntityManager();
-		RejectedUser unApprovedAuthor = manager.find(RejectedUser.class, emailAddress);
+        manager.getTransaction().begin();
+        manager.persist(newRejectedUser);
+        manager.getTransaction().commit();
+    }
 
-		return unApprovedAuthor;
-	}
+    public RejectedUser getRejectedUser(String emailAddress) {
+        EntityManager manager = factory.createEntityManager();
+        RejectedUser unApprovedAuthor = manager.find(RejectedUser.class, emailAddress);
 
-	public void removeRejectedUser(String emailAddress) {
+        return unApprovedAuthor;
+    }
 
-		EntityManager manager = factory.createEntityManager();
+    public void removeRejectedUser(String emailAddress) {
 
-		RejectedUser unApprovedAuthor = manager.find(RejectedUser.class, emailAddress);
-		manager.getTransaction().begin();
+        EntityManager manager = factory.createEntityManager();
 
-		manager.remove(unApprovedAuthor);
-		manager.getTransaction().commit();
-		System.out.println("SUCCESS: RejectedUser with email address '" + emailAddress + "' has been removed.");
-	}
+        RejectedUser unApprovedAuthor = manager.find(RejectedUser.class, emailAddress);
+        manager.getTransaction().begin();
 
-	public List<RejectedUser> getAllRejectedUsers() {
-		EntityManager manager = factory.createEntityManager();
-		
-		TypedQuery<RejectedUser> query = manager.createQuery("select u from RejectedUser u", RejectedUser.class);
-		List<RejectedUser> listOfAllRejectedUsers = query.getResultList();
-		
-		return listOfAllRejectedUsers;
-	}
+        manager.remove(unApprovedAuthor);
+        manager.getTransaction().commit();
+        System.out.println("SUCCESS: RejectedUser with email address '" + emailAddress + "' has been removed.");
+    }
+
+    public List<RejectedUser> getAllRejectedUsers() {
+        EntityManager manager = factory.createEntityManager();
+
+        TypedQuery<RejectedUser> query = manager.createQuery("select u from RejectedUser u", RejectedUser.class);
+        List<RejectedUser> listOfAllRejectedUsers = query.getResultList();
+
+        return listOfAllRejectedUsers;
+    }
 
 }

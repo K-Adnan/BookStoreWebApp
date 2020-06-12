@@ -1,75 +1,72 @@
 package com.fdmgroup.daos;
 
-import java.util.List;
+import com.fdmgroup.entities.Admin;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.fdmgroup.entities.Admin;
-import com.fdmgroup.entities.Author;
+import java.util.List;
 
 public class AdminDaoImpl implements AdminDAO {
 
-	@Autowired
-	private EntityManagerFactory factory;
+    @Autowired
+    private EntityManagerFactory factory;
 
-	public AdminDaoImpl() {
-	}
+    public AdminDaoImpl() {
+    }
 
-	public AdminDaoImpl(EntityManagerFactory factory) {
-		super();
-		this.factory = factory;
-	}
+    public AdminDaoImpl(EntityManagerFactory factory) {
+        super();
+        this.factory = factory;
+    }
 
-	public void addAdmin(Admin newAdmin) {
-		EntityManager manager = factory.createEntityManager();
+    public void addAdmin(Admin newAdmin) {
+        EntityManager manager = factory.createEntityManager();
 
-		manager.getTransaction().begin();
-		manager.persist(newAdmin);
-		manager.getTransaction().commit();
-		System.out.println("SUCCESS: New admin has been added: " + newAdmin);
+        manager.getTransaction().begin();
+        manager.persist(newAdmin);
+        manager.getTransaction().commit();
+        System.out.println("SUCCESS: New admin has been added: " + newAdmin);
 
-	}
-	
-	public void updateAdmin(Admin admin){
-		EntityManager manager = factory.createEntityManager();
-		
-		manager.getTransaction().begin();
-		manager.merge(admin);
-		manager.getTransaction().commit();
-	}
+    }
 
-	public Admin getAdmin(String emailAddress) {
-		EntityManager manager = factory.createEntityManager();
-		manager.getTransaction().begin();
-		Admin admin = manager.find(Admin.class, emailAddress);
+    public void updateAdmin(Admin admin) {
+        EntityManager manager = factory.createEntityManager();
 
-		return admin;
-	}
+        manager.getTransaction().begin();
+        manager.merge(admin);
+        manager.getTransaction().commit();
+    }
 
-	public boolean removeAdmin(String emailAddress){
+    public Admin getAdmin(String emailAddress) {
+        EntityManager manager = factory.createEntityManager();
+        manager.getTransaction().begin();
+        Admin admin = manager.find(Admin.class, emailAddress);
 
-		EntityManager manager = factory.createEntityManager();
+        return admin;
+    }
 
-		Admin admin = manager.find(Admin.class, emailAddress);
-		manager.getTransaction().begin();
+    public boolean removeAdmin(String emailAddress) {
 
-		manager.remove(admin);
-		manager.getTransaction().commit();
-		System.out.println("Admin with email address '" + emailAddress + "' has been removed.");
-		return true;
-	}
+        EntityManager manager = factory.createEntityManager();
 
-	public List<Admin> getAllAdmins() {
-		EntityManager manager = factory.createEntityManager();
-		
-		TypedQuery<Admin> query = manager.createQuery("select a from Admin a", Admin.class);
-		List<Admin> listOfAllAdmins = query.getResultList();
+        Admin admin = manager.find(Admin.class, emailAddress);
+        manager.getTransaction().begin();
 
-		return listOfAllAdmins;
-	}
+        manager.remove(admin);
+        manager.getTransaction().commit();
+        System.out.println("Admin with email address '" + emailAddress + "' has been removed.");
+        return true;
+    }
+
+    public List<Admin> getAllAdmins() {
+        EntityManager manager = factory.createEntityManager();
+
+        TypedQuery<Admin> query = manager.createQuery("select a from Admin a", Admin.class);
+        List<Admin> listOfAllAdmins = query.getResultList();
+
+        return listOfAllAdmins;
+    }
 
 }

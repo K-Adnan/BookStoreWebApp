@@ -1,62 +1,60 @@
 package com.fdmgroup.daos;
 
-import java.util.List;
+import com.fdmgroup.entities.UnapprovedAuthor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.fdmgroup.entities.UnapprovedAuthor;
+import java.util.List;
 
 public class UnapprovedAuthorDaoImpl implements UnapprovedAuthorDAO {
 
-	@Autowired
-	private EntityManagerFactory factory;
+    @Autowired
+    private EntityManagerFactory factory;
 
-	public UnapprovedAuthorDaoImpl(EntityManagerFactory factory) {
-		super();
-		this.factory = factory;
-	}
-	
-	public UnapprovedAuthorDaoImpl(){
-	}
+    public UnapprovedAuthorDaoImpl(EntityManagerFactory factory) {
+        super();
+        this.factory = factory;
+    }
 
-	public void addUnapprovedAuthor(UnapprovedAuthor newUnapprovedAuthor) {
-		EntityManager manager = factory.createEntityManager();
+    public UnapprovedAuthorDaoImpl() {
+    }
 
-			manager.getTransaction().begin();
-			manager.persist(newUnapprovedAuthor);
-			manager.getTransaction().commit();
-	}
+    public void addUnapprovedAuthor(UnapprovedAuthor newUnapprovedAuthor) {
+        EntityManager manager = factory.createEntityManager();
 
-	public UnapprovedAuthor getUnapprovedAuthor(String emailAddress) {
-		EntityManager manager = factory.createEntityManager();
-		UnapprovedAuthor unApprovedAuthor = manager.find(UnapprovedAuthor.class, emailAddress);
+        manager.getTransaction().begin();
+        manager.persist(newUnapprovedAuthor);
+        manager.getTransaction().commit();
+    }
 
-		return unApprovedAuthor;
-	}
+    public UnapprovedAuthor getUnapprovedAuthor(String emailAddress) {
+        EntityManager manager = factory.createEntityManager();
+        UnapprovedAuthor unApprovedAuthor = manager.find(UnapprovedAuthor.class, emailAddress);
 
-	public void removeUnapprovedAuthor(String emailAddress) {
+        return unApprovedAuthor;
+    }
 
-		EntityManager manager = factory.createEntityManager();
+    public void removeUnapprovedAuthor(String emailAddress) {
 
-		UnapprovedAuthor unApprovedAuthor = manager.find(UnapprovedAuthor.class, emailAddress);
-		manager.getTransaction().begin();
+        EntityManager manager = factory.createEntityManager();
 
-		manager.remove(unApprovedAuthor);
-		manager.getTransaction().commit();
-		System.out.println("SUCCESS: UnapprovedAuthor with email address '" + emailAddress + "' has been removed.");
-	}
+        UnapprovedAuthor unApprovedAuthor = manager.find(UnapprovedAuthor.class, emailAddress);
+        manager.getTransaction().begin();
 
-	public List<UnapprovedAuthor> getAllUnapprovedAuthors() {
-		EntityManager manager = factory.createEntityManager();
-		
-		TypedQuery<UnapprovedAuthor> query = manager.createQuery("select u from UnapprovedAuthor u", UnapprovedAuthor.class);
-		List<UnapprovedAuthor> listOfAllUnapprovedAuthors = query.getResultList();
-		
-		return listOfAllUnapprovedAuthors;
-	}
+        manager.remove(unApprovedAuthor);
+        manager.getTransaction().commit();
+        System.out.println("SUCCESS: UnapprovedAuthor with email address '" + emailAddress + "' has been removed.");
+    }
+
+    public List<UnapprovedAuthor> getAllUnapprovedAuthors() {
+        EntityManager manager = factory.createEntityManager();
+
+        TypedQuery<UnapprovedAuthor> query = manager.createQuery("select u from UnapprovedAuthor u", UnapprovedAuthor.class);
+        List<UnapprovedAuthor> listOfAllUnapprovedAuthors = query.getResultList();
+
+        return listOfAllUnapprovedAuthors;
+    }
 
 }

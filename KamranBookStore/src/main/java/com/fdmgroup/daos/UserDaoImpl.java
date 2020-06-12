@@ -1,72 +1,70 @@
 package com.fdmgroup.daos;
 
-import java.util.List;
+import com.fdmgroup.entities.User;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.fdmgroup.entities.User;
+import java.util.List;
 
 public class UserDaoImpl implements UserDAO {
 
-	@Autowired
-	private EntityManagerFactory factory;
+    @Autowired
+    private EntityManagerFactory factory;
 
-	public UserDaoImpl(EntityManagerFactory factory) {
-		super();
-		this.factory = factory;
-	}
-	
-	public UserDaoImpl(){
-	}
+    public UserDaoImpl(EntityManagerFactory factory) {
+        super();
+        this.factory = factory;
+    }
 
-	public void addUser(User newUser) {
-		EntityManager manager = factory.createEntityManager();
+    public UserDaoImpl() {
+    }
 
-		if (getUser(newUser.getEmailAddress()) == null) {
+    public void addUser(User newUser) {
+        EntityManager manager = factory.createEntityManager();
 
-			manager.getTransaction().begin();
-			manager.persist(newUser);
-			manager.getTransaction().commit();
-		} else {
-		}
-	}
-	
-	public void updateUser(User user){
-		EntityManager manager = factory.createEntityManager();
-		manager.getTransaction().begin();
-		manager.merge(user);
-		manager.getTransaction().commit();
-	}
+        if (getUser(newUser.getEmailAddress()) == null) {
 
-	public User getUser(String emailAddress) {
-		EntityManager manager = factory.createEntityManager();
-		User user = manager.find(User.class, emailAddress);
+            manager.getTransaction().begin();
+            manager.persist(newUser);
+            manager.getTransaction().commit();
+        } else {
+        }
+    }
 
-		return user;
-	}
+    public void updateUser(User user) {
+        EntityManager manager = factory.createEntityManager();
+        manager.getTransaction().begin();
+        manager.merge(user);
+        manager.getTransaction().commit();
+    }
 
-	public void removeUser(String emailAddress) {
+    public User getUser(String emailAddress) {
+        EntityManager manager = factory.createEntityManager();
+        User user = manager.find(User.class, emailAddress);
 
-		EntityManager manager = factory.createEntityManager();
+        return user;
+    }
 
-		User user = manager.find(User.class, emailAddress);
-		manager.getTransaction().begin();
+    public void removeUser(String emailAddress) {
 
-		manager.remove(user);
-		manager.getTransaction().commit();
-	}
+        EntityManager manager = factory.createEntityManager();
 
-	public List<User> getAllUsers() {
-		EntityManager manager = factory.createEntityManager();
-		
-		TypedQuery<User> query = manager.createQuery("select u from User u", User.class);
-		List<User> listOfAllUsers = query.getResultList();
-		
-		return listOfAllUsers;
-	}
+        User user = manager.find(User.class, emailAddress);
+        manager.getTransaction().begin();
+
+        manager.remove(user);
+        manager.getTransaction().commit();
+    }
+
+    public List<User> getAllUsers() {
+        EntityManager manager = factory.createEntityManager();
+
+        TypedQuery<User> query = manager.createQuery("select u from User u", User.class);
+        List<User> listOfAllUsers = query.getResultList();
+
+        return listOfAllUsers;
+    }
 
 }
