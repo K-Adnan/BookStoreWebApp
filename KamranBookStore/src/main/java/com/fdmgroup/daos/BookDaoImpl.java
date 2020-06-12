@@ -117,7 +117,7 @@ public class BookDaoImpl implements BookDAO {
 	
 	public List<Book> getBooksByAllAttributes(String title, String author, String category, Double min, Double max){
 		EntityManager manager = factory.createEntityManager();
-		TypedQuery<Book> query = manager.createQuery("select b from Book b join fetch b.authors a where lower(b.title) like ? AND b.category like ? AND b.price < ? AND b.price > ? AND (lower(a.firstName) like ? OR lower(a.lastName) like ?)", Book.class);
+		TypedQuery<Book> query = manager.createQuery("select b from Book b join fetch b.authors a where b.title like ? AND b.category like ? AND b.price < ? AND b.price > ? AND (a.firstName like ? OR a.lastName like ?)", Book.class);
 		query.setParameter(1, "%" + title.toLowerCase() + "%");
 		query.setParameter(2, "%" + category + "%");
 		query.setParameter(3, max);

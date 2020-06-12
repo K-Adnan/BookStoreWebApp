@@ -23,7 +23,9 @@
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
-			<version>11.2.0</version>
+			<version>11.2.0.3</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/ojdbc6-11.2.0.3.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -50,7 +52,12 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>KamranBookStore</finalName>
