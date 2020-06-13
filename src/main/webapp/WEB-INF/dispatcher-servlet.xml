@@ -23,6 +23,7 @@
     <bean id="factory" class="javax.persistence.Persistence"
           factory-method="createEntityManagerFactory">
         <constructor-arg value="DemoPersistence"/>
+<!--        <constructor-arg value="PersistenceInCreateMode"/>-->
     </bean>
 
     <bean id="adminDao" class="com.fdmgroup.daos.AdminDaoImpl"/>
@@ -36,18 +37,3 @@
     <bean id="rejectedUserDao" class="com.fdmgroup.daos.RejectedUserDaoImpl"/>
 
 </beans>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

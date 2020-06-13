@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "TEST_BOOKS")
+@Table(name = "BOOKS")
 public class Book implements Comparable<Book> {
 
     @Id
@@ -13,7 +13,7 @@ public class Book implements Comparable<Book> {
     private String title;
     private String summary;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinTable(name = "TEST_BOOKS_AUTHORS", joinColumns = {@JoinColumn(name = "BOOK")}, inverseJoinColumns = {@JoinColumn(name = "AUTHOR")})
+    @JoinTable(name = "BOOKS_AUTHORS", joinColumns = {@JoinColumn(name = "BOOK")}, inverseJoinColumns = {@JoinColumn(name = "AUTHOR")})
     private Set<Author> authors = new HashSet<Author>();
 
     private String category;

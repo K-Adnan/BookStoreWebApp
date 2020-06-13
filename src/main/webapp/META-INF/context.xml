@@ -10,8 +10,8 @@
 
     <Realm className="org.apache.catalina.realm.DataSourceRealm"
            dataSourceName="jdbc/connection" localDataSource="true"
-           userTable="test_users" userNameCol="emailaddress" userCredCol="password"
-           userRoleTable="test_users" roleNameCol="dtype"/>
+           userTable="users" userNameCol="emailaddress" userCredCol="password"
+           userRoleTable="users" roleNameCol="dtype"/>
     <WatchedResource>WEB-INF/web.xml</WatchedResource>
     <WatchedResource>META-INF/context.xml</WatchedResource>
     <Valve className="org.apache.catalina.authenticator.FormAuthenticator" landingPage="/home"/>

@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class AdminDaoImpl implements AdminDAO {
 
@@ -28,7 +29,6 @@ public class AdminDaoImpl implements AdminDAO {
         manager.persist(newAdmin);
         manager.getTransaction().commit();
         System.out.println("SUCCESS: New admin has been added: " + newAdmin);
-
     }
 
     public void updateAdmin(Admin admin) {

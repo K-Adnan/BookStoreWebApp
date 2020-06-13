@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "TEST_CART")
+@Table(name = "CART")
 public class Cart {
 
     public int getCartId() {

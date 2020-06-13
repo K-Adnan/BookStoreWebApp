@@ -5,7 +5,7 @@ import com.fdmgroup.entities.Book;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TEST_CARTITEMS")
+@Table(name = "CARTITEMS")
 public class CartItem {
 
     public int getCartItemId() {

@@ -121,7 +121,6 @@ public class BookDaoImpl implements BookDAO {
         query.setParameter(5, "%" + author.toLowerCase() + "%");
         query.setParameter(6, "%" + author.toLowerCase() + "%");
         List<Book> listOfBooks = query.getResultList();
-        System.out.println(listOfBooks);
         return listOfBooks;
     }
 
@@ -133,8 +132,6 @@ public class BookDaoImpl implements BookDAO {
         query.setParameter(3, "%" + search.toLowerCase() + "%");
         query.setParameter(4, "%" + search.toLowerCase() + "%");
         List<Book> listOfBooks = query.getResultList();
-        System.out.println(listOfBooks);
         return listOfBooks;
     }
-
 }

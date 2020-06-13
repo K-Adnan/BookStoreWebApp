@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TEST_REJECTEDUSERS")
+@Table(name = "REJECTEDUSERS")
 public class RejectedUser {
 
     @Id

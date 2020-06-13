@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TEST_USERS")
+@Table(name = "USERS")
 @DiscriminatorValue("UnapprovedAuthor")
 public class UnapprovedAuthor extends User {
 

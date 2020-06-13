@@ -10,7 +10,7 @@ import java.util.Set;
 public class Author extends User {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinTable(name = "TEST_BOOKS_AUTHORS", joinColumns = {@JoinColumn(name = "AUTHOR")}, inverseJoinColumns = {@JoinColumn(name = "BOOK")})
+    @JoinTable(name = "BOOKS_AUTHORS", joinColumns = {@JoinColumn(name = "AUTHOR")}, inverseJoinColumns = {@JoinColumn(name = "BOOK")})
     private Set<Book> books = new HashSet<Book>();
     private double sales;
 
