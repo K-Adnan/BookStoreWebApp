@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ include file="../PageDirectives.jsp"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -73,25 +72,28 @@ th {
       </div>
     </nav>
     <div class="mainContent">
-      <h1>List New Book</h1>
+      <h1>View Sales for All Books</h1>
 ${message}
-
-<sf:form method="post" action="/KamranBookStore/author/doListBook" modelAttribute="book" style="text-align:left;">
-		<p>ISBN : <sf:input path="isbn" value=""/></p>
-		<p>Title : <sf:input path="title"/></p>
-		<p>Price : <sf:input path="price"/></p>
-		<p>Quantity Available : <sf:input path="quantity"/></p>
-		<p>Release Year : <sf:input path="releaseYear" /></p>
-		<p>Number of Pages : <sf:input path="numberOfPages"/></p>
-		<p>Category : <sf:input path="category"/></p>
-		<p>Image (URL) : <sf:input path="imageUrl"/></p>
-		<p>Author(s) : <input name="authorsString" size="100" value="${authorString}"/></p>
-		List any additional authors by adding their usernames separated by a comma (Use the list of Authors below to find authors)<br/>
-		(e.g. adam.kay,william.shakespeare)<br/>
-		
-		<form:select path="authors" items="${authorsList}"/>
-		<input type="submit" value="Go"/>
-	</sf:form>
+<table>
+		<tr>
+			<th>ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Address</th>
+			<th>Phone Number</th>
+			<th>Reason for Rejection</th>
+		</tr>
+	<c:forEach items="${rejectedAuthors}" var="rj">
+		<tr>
+			<th>${rj.id}</th>
+			<th>${rj.firstName}</th>
+			<th>${rj.lastName}</th>
+			<th>${rj.address}</th>
+			<th>${rj.phoneNumber}</th>
+			<th>${rj.reasonForRejection}</th>
+		</tr>
+	</c:forEach>
+	</table>
       
         
       </div>
