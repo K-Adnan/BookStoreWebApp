@@ -20,19 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57e8549a-12bb-4064-9f1c-4203925b1498" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/AdminDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/AdminDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/BookDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/BookDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/RejectedUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/RejectedUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/UnapprovedAuthor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/UnapprovedAuthor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/shoppingcart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fdmgroup/shoppingcart/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/shoppingcart/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fdmgroup/shoppingcart/CartItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/shoppingcart/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fdmgroup/shoppingcart/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/Contact.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/Contact.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/Help.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/Help.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +55,23 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.All in BookStoreWebApp">
+    <configuration name="All in BookStoreWebApp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BookStoreWebApp" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BSP.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BSP.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Smart Tomcat" type="com.poratu.idea.plugins.tomcat" factoryName="SMART_TOMCAT_FACTORY" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="adminPort" value="8005" />
       <option name="allowRunningInParallel" value="false" />
@@ -111,6 +116,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in BookStoreWebApp" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -129,46 +139,46 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592039530669">
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592085587667">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1592039530669" />
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1592085587667" />
     <state x="447" y="146" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1592039579324">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="447" y="146" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1440.900@0.0.1440.900" timestamp="1592039579324" />
-    <state x="121" y="27" key="CommitChangelistDialog2" timestamp="1592079851504">
+    <state x="121" y="27" key="CommitChangelistDialog2" timestamp="1592084895366">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="121" y="27" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1592079851504" />
-    <state width="1398" height="266" key="GridCell.Tab.0.bottom" timestamp="1592084086535">
+    <state x="121" y="27" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1592084895366" />
+    <state width="1398" height="266" key="GridCell.Tab.0.bottom" timestamp="1592085650413">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="266" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1592084086535" />
+    <state width="1398" height="266" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1592085650413" />
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1592040495862" />
-    <state width="1398" height="266" key="GridCell.Tab.0.center" timestamp="1592084086534">
+    <state width="1398" height="266" key="GridCell.Tab.0.center" timestamp="1592085650412">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="266" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1592084086534" />
+    <state width="1398" height="266" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1592085650412" />
     <state width="1398" height="245" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1592040495861" />
-    <state width="1398" height="266" key="GridCell.Tab.0.left" timestamp="1592084086533">
+    <state width="1398" height="266" key="GridCell.Tab.0.left" timestamp="1592085650411">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="266" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1592084086533" />
+    <state width="1398" height="266" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1592085650411" />
     <state width="1398" height="245" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1592040495860" />
-    <state width="1398" height="266" key="GridCell.Tab.0.right" timestamp="1592084086535">
+    <state width="1398" height="266" key="GridCell.Tab.0.right" timestamp="1592085650412">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="266" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1592084086535" />
+    <state width="1398" height="266" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1592085650412" />
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1592040495861" />
     <state x="208" y="31" key="SettingsEditor" timestamp="1592039419609">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="208" y="31" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1592039419609" />
-    <state x="421" y="205" width="598" height="548" key="find.popup" timestamp="1592084315142">
+    <state x="421" y="205" width="598" height="548" key="find.popup" timestamp="1592085800297">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="421" y="205" width="598" height="548" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1592084315142" />
+    <state x="421" y="205" width="598" height="548" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1592085800297" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1592083622088">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
