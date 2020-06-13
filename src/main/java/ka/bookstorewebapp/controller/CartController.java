@@ -1,6 +1,6 @@
 package ka.bookstorewebapp.controller;
 
-import ka.bookstorewebapp.comparators.OrderComparator;
+import ka.bookstorewebapp.utils.OrderComparator;
 import ka.bookstorewebapp.daos.*;
 import ka.bookstorewebapp.entities.Book;
 import ka.bookstorewebapp.entities.User;
