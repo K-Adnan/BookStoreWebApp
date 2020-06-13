@@ -48,7 +48,7 @@
 			<version>4.2.6.RELEASE</version>
 		</dependency>
 		<dependency>
-			<groupId>jstl</groupId>
+			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
@@ -58,8 +58,13 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.14</version>
+		</dependency>
 	</dependencies>
 	<build>
-		<finalName>KamranBookStore</finalName>
+		<finalName>a</finalName>
 	</build>
 </project>

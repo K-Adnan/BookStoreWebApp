@@ -6,7 +6,6 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 
     <persistence-unit name="DemoPersistence">
         <properties>
-
             <!-- Scan for annotated classes and Hibernate mapping XML files -->
             <property name="hibernate.archive.autodetection" value="class"/>
 
@@ -16,13 +15,13 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
             <property name="hibernate.use_sql_comments" value="true"/>
 
             <!-- SQL dialect -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL92Dialect"/>
 
             <!-- Connection config -->
-            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-            <property name="javax.persistence.jdbc.user" value="trainee1"/>
-            <property name="javax.persistence.jdbc.password" value="!QAZSE4"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="admin"/>
 
             <!-- validate, create, create-drop, update -->
             <property name="hibernate.hbm2ddl.auto" value="update"/>
@@ -31,7 +30,6 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 
     <persistence-unit name="PersistenceInCreateMode">
         <properties>
-
             <!-- Scan for annotated classes and Hibernate mapping XML files -->
             <property name="hibernate.archive.autodetection" value="class"/>
 
@@ -41,13 +39,13 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
             <property name="hibernate.use_sql_comments" value="true"/>
 
             <!-- SQL dialect -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL92Dialect"/>
 
             <!-- Connection config -->
-            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-            <property name="javax.persistence.jdbc.user" value="trainee1"/>
-            <property name="javax.persistence.jdbc.password" value="!QAZSE4"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="admin"/>
 
             <!-- validate, create, create-drop, update -->
             <property name="hibernate.hbm2ddl.auto" value="create"/>
