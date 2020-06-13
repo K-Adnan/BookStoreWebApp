@@ -72,7 +72,7 @@ body {
                 <h1><strong>Contact Us</strong></h1>
                 <p>If you would like to advertise on our page, provide us with any feedback, or for any other comments or queries, please use one of the following methods. </p>
                 <p>&nbsp;</p>
-                <p><strong>FDM.bid Inc.</strong></p>
+                <p><strong>KA Inc..</strong></p>
                 <p>Cottons Centre</p>
                 <p>Cottons Lane</p>
                 <p>London SE1 2QG</p>

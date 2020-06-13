@@ -70,7 +70,7 @@ body {
     <div class="mainContent">
     <div>
                 <h1><strong>Help and Frequently asked Questions</strong></h1>
-                <p>Knowing the rules and policies on fdm.bid can help you become a more successful seller. So before listing your item, make sure you read, understand, and regularly check our policies (including the rules for sellers and the fdm.bid User Agreement and all applicable laws and regulations on the sale of your item. This can help you avoid potential problems. 	          </p>
+                <p>Knowing the rules and policies on BookStoreWebApp can help you become a more successful seller. So before listing your item, make sure you read, understand, and regularly check our policies (including theï¿½rules for sellersï¿½andï¿½the BookStoreWebApp User Agreementï¿½and all applicable laws and regulations on the sale of your item. This can help you avoid potential problems. 	          </p>
                 <p>Make sure your listing follows our guidelines. If it doesn't, it may be removed, and your buying and selling privileges could be limited.</p>
                 <a name="prohibit"></a>
                 <h3>Prohibited and restricted items</h3>

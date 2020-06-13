@@ -20,64 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57e8549a-12bb-4064-9f1c-4203925b1498" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.project.facet.core.prefs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.project.facet.core.prefs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.project.facet.core.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.project.facet.core.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/comparators/OrderComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/comparators/OrderComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/controller/SoloProjectRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/SoloProjectRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/WelcomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/AdminDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/AdminDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/AdminDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/AuthorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/AuthorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/AuthorDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/AuthorDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/BookDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/BookDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/BookDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/BookDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/CartDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/CartDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/CartDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/CartDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/CartItemDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/CartItemDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/CartItemDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/CartItemDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/OrderDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/OrderDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/OrderDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/RejectedUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/RejectedUserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/RejectedUserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/RejectedUserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/UnapprovedAuthorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/UnapprovedAuthorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/UnapprovedAuthorDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/UnapprovedAuthorDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/daos/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/RejectedUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/RejectedUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/UnapprovedAuthor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/UnapprovedAuthor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/exceptions/EntryAlreadyExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/exceptions/EntryAlreadyExistsException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/exceptions/LoginAuthenticationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/exceptions/LoginAuthenticationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/exceptions/NoSuchEntryException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/exceptions/NoSuchEntryException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/shoppingcart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/shoppingcart/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/shoppingcart/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/shoppingcart/CartItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fdmgroup/shoppingcart/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/shoppingcart/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestAdminDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestAdminDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestAuthorDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestAuthorDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestBookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestBookDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestBookDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestCartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestCartDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestCartDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestCartItemDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestCartItemDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestOrderDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestOrderDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestRegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestRegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestRejectedUserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestRejectedUserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestUnapprovedAuthorDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestUnapprovedAuthorDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestUserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestUserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestWelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestWelcomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/Contact.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/Contact.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/Help.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/Help.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,10 +175,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="208" y="31" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1592039419609" />
-    <state x="421" y="205" width="598" height="548" key="find.popup" timestamp="1592085706968">
+    <state x="421" y="205" width="598" height="548" key="find.popup" timestamp="1592085800297">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="421" y="205" width="598" height="548" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1592085706968" />
+    <state x="421" y="205" width="598" height="548" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1592085800297" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1592083622088">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
