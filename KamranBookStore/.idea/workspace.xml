@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c7865a8a-dd36-40d9-bd17-772dc4e87b6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/ojdbc6-11.2.0.3.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestBookDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/fdmgroup/model/TestBookDaoImpl.java" afterDir="false" />
+    <list default="true" id="c7865a8a-dd36-40d9-bd17-772dc4e87b6a" name="Default Changelist" comment="Changed">
+      <change afterPath="$PROJECT_DIR$/../src/main/java/com/fdmgroup/controller/CartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/com/fdmgroup/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/com/fdmgroup/daos/AdminDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/com/fdmgroup/daos/BookDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/com/fdmgroup/exceptions/NoSuchEntryException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/fdmgroup/daos/OrderDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/WEB-INF/views/admin/EditUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/WEB-INF/views/admin/ViewRejectedAuthors.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/WEB-INF/views/admin/ViewAuthorRequests.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/WEB-INF/views/author/ListNewBook.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/fdmgroup/model/TestCartController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/fdmgroup/model/TestOrderDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/fdmgroup/model/TestWelcomeController.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,6 +138,13 @@
         <option name="BSP.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.All in KamranBookStore" />
+      <item itemvalue="JUnit.TestAdminDaoImpl" />
+      <item itemvalue="JUnit.TestBookDaoImpl" />
+      <item itemvalue="JUnit.TestBookDaoImpl.test_GetBooksByAllAttributes_ReturnsListOfBooks" />
+      <item itemvalue="JUnit.TestBookDaoImpl.test_GetBooksByAuthor_CallsTheCreateQueryMethodInManagerClass" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in KamranBookStore" />
@@ -165,22 +181,22 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1591985978238" />
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1591985832527">
+    <state width="1398" height="183" key="GridCell.Tab.0.bottom" timestamp="1592042406924">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1591985832527" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1591985832526">
+    <state width="1398" height="183" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1592042406924" />
+    <state width="1398" height="183" key="GridCell.Tab.0.center" timestamp="1592042406922">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1591985832526" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1591985832525">
+    <state width="1398" height="183" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1592042406922" />
+    <state width="1398" height="183" key="GridCell.Tab.0.left" timestamp="1592042406922">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1591985832525" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1591985832526">
+    <state width="1398" height="183" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1592042406922" />
+    <state width="1398" height="183" key="GridCell.Tab.0.right" timestamp="1592042406923">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1591985832526" />
+    <state width="1398" height="183" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1592042406923" />
     <state x="252" y="53" width="1024" height="824" key="SettingsEditor" timestamp="1591985263236">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

@@ -1,2 +1,2 @@
 *.jsdtscope
-*.MF
+/target/
