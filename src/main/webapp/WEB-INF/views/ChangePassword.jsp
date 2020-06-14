@@ -10,7 +10,6 @@
 <style type="text/css">
 body {
 	background-color: #1A1A1A;
-	background-image: url();
 	background-repeat: repeat-x;
 }
 </style>

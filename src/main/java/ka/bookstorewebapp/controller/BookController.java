@@ -20,6 +20,8 @@ import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.*;
 
+import static ka.bookstorewebapp.utils.Logging.*;
+
 @Controller
 public class BookController {
 
@@ -58,6 +60,7 @@ public class BookController {
         List<Book> booksList = bookDao.getAllBooks();
         Collections.sort(booksList);
         model.addAttribute("booksList", booksList);
+        info("Displaying all books");
         return "ViewAllBooks";
     }
 
@@ -102,7 +105,7 @@ public class BookController {
                 model.addAttribute("editMessage", "<a href='author/editBook?isbn=" + book.getIsbn() + "'> Edit Book </a>");
             }
         }
-
+        info("Viewing book: " + book);
         return "ViewBook";
     }
 
