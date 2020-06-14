@@ -14,7 +14,7 @@
 	<div class="message">
 		<p>${message}</p>
 	</div>
-    <img src="img/logo.png" alt="Avatar" class="avatar">
+    <img src="images/bookstore-logo.jpg" alt="Login Picture" class="avatar">
   </div>
   
 	<div class="container">

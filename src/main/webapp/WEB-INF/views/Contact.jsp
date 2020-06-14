@@ -20,7 +20,7 @@ body {
     <!-- This is the header content. It contains Logo and links -->
     <div id="logo"> 
       <!-- Company Logo text --> 
-      <a href="home"> <img src="https://s3.amazonaws.com/media.prestontrail.org/craft/The-Bookstore-Online-Logo-600x.png?mtime=20160930115548" width="248" height="134" alt=""/> </a></div>
+      <a href="home"> <img src="images/bookstore-logo.jpg" width="248" height="134" alt=""/> </a></div>
     <div id="headerLinks"><a href="logout" title="Logout">Logout</a><a href="viewCart" title="Cart">Cart</a></div>
     <div id="search">
     <form action="viewBooks" method="get">
