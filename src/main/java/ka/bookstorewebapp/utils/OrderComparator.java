@@ -1,4 +1,4 @@
-package ka.bookstorewebapp.comparators;
+package ka.bookstorewebapp.utils;
 
 import ka.bookstorewebapp.shoppingcart.Order;
 
