@@ -20,28 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57e8549a-12bb-4064-9f1c-4203925b1498" name="Default Changelist" comment="Fixed failing tests involving TypedQuery">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/SoloProjectRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/SoloProjectRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/AdminDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/AdminDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/AuthorDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/AuthorDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/BookDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/BookDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/RejectedUserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/RejectedUserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/UnapprovedAuthorDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/UnapprovedAuthorDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/daos/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/RejectedUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/RejectedUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/shoppingcart/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/shoppingcart/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/utils/Logging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ka/bookstorewebapp/utils/Logging.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestBookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestBookDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestBookDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ka/bookstorewebapp/model/TestUserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/database.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +37,9 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1dG68ZZA1bLCFPh7JJS64wjfcRA" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -278,25 +260,25 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="121" y="27" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1592155484254" />
-    <state width="1398" height="266" key="GridCell.Tab.0.bottom" timestamp="1592159483700">
+    <state width="1398" height="266" key="GridCell.Tab.0.bottom" timestamp="1592159591333">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="266" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1592159483700" />
+    <state width="1398" height="266" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1592159591333" />
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1592040495862" />
-    <state width="1398" height="266" key="GridCell.Tab.0.center" timestamp="1592159483699">
+    <state width="1398" height="266" key="GridCell.Tab.0.center" timestamp="1592159591331">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="266" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1592159483699" />
+    <state width="1398" height="266" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1592159591331" />
     <state width="1398" height="245" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1592040495861" />
-    <state width="1398" height="266" key="GridCell.Tab.0.left" timestamp="1592159483699">
+    <state width="1398" height="266" key="GridCell.Tab.0.left" timestamp="1592159591330">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="266" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1592159483699" />
+    <state width="1398" height="266" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1592159591330" />
     <state width="1398" height="245" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1592040495860" />
-    <state width="1398" height="266" key="GridCell.Tab.0.right" timestamp="1592159483700">
+    <state width="1398" height="266" key="GridCell.Tab.0.right" timestamp="1592159591332">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="266" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1592159483700" />
+    <state width="1398" height="266" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1592159591332" />
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1592040495861" />
     <state x="208" y="31" key="SettingsEditor" timestamp="1592132319777">
       <screen x="0" y="0" width="1440" height="900" />
@@ -314,10 +296,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="515" y="143" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1592159298904" />
-    <state x="421" y="205" width="598" height="548" key="find.popup" timestamp="1592155571496">
+    <state x="421" y="205" width="598" height="548" key="find.popup" timestamp="1592159581702">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="421" y="205" width="598" height="548" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1592155571496" />
+    <state x="421" y="205" width="598" height="548" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1592159581702" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1592158449237">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
