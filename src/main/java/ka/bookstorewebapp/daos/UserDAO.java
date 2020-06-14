@@ -1,12 +1,13 @@
 package ka.bookstorewebapp.daos;
 
 import ka.bookstorewebapp.entities.User;
+import ka.bookstorewebapp.exceptions.RecordAlreadyExistsException;
 
 import java.util.List;
 
 public interface UserDAO {
 
-    public void addUser(User user);
+    public void addUser(User user) throws RecordAlreadyExistsException;
 
     public void updateUser(User user);
 

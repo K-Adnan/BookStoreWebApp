@@ -3,7 +3,7 @@ package ka.bookstorewebapp.model;
 import ka.bookstorewebapp.daos.BookDAO;
 import ka.bookstorewebapp.daos.BookDaoImpl;
 import ka.bookstorewebapp.entities.Book;
-import ka.bookstorewebapp.exceptions.EntryAlreadyExistsException;
+import ka.bookstorewebapp.exceptions.RecordAlreadyExistsException;
 import ka.bookstorewebapp.exceptions.NoSuchEntryException;
 import org.junit.Assert;
 import org.junit.Before;
@@ -42,7 +42,7 @@ public class TestBookDaoImpl {
     }
 
     @Test
-    public void test_AddDepartment_InvokesTransactionMethodAndPersist() throws EntryAlreadyExistsException {
+    public void test_AddDepartment_InvokesTransactionMethodAndPersist() throws RecordAlreadyExistsException {
         Book book = new Book();
         bookDao.addBook(book);
 
@@ -91,13 +91,6 @@ public class TestBookDaoImpl {
         verify(manager, times(1)).merge(book);
     }
 
-//	@Test(expected=EntryAlreadyExistsException.class)
-//	public void test_AddBookMethodForISBNThatAlreadyExists_ThrowsEntryAlreadyExistsException() throws EntryAlreadyExistsException{
-//		Book book = new Book();
-//		when(manager.persist(book)).thenThrow(new EntryAlreadyExistsException())
-//		bookDao.addBook(new Book());
-//	}
-
     @Test
     public void test_GetBookMethod_CallsTheFindMethodOnManager() throws NoSuchEntryException {
         Book book = new Book(123456l);
@@ -115,19 +108,12 @@ public class TestBookDaoImpl {
         bookDao.getBook(123456l);
     }
 
-//	@Test(expected=NoSuchEntryException.class)
-//	public void test_RemoveBookThrowsNoSuchEntryException_WhenBookDoesNotExist() throws NoSuchEntryException{
-//		when(manager.remove(new Book())).th
-//		bookDao.removeBook(1l);
-//	}
-
     @Test
     public void test_GetBooksByCategory_CallsTheCreateQueryMethodInManagerClass() {
         when(manager.createQuery("select b from Book b where b.category = ?", Book.class)).thenReturn(typedQuery);
-
+        when(typedQuery.setParameter(any(Integer.class), any())).thenReturn(typedQuery);
         List<Book> list = new ArrayList<Book>();
         when(typedQuery.getResultList()).thenReturn(list);
-
         bookDao.getBooksByCategory("Biography");
 
         verify(manager, times(1)).createQuery("select b from Book b where b.category = ?", Book.class);
@@ -137,10 +123,9 @@ public class TestBookDaoImpl {
     @Test
     public void test_GetBooksByAuthor_CallsTheCreateQueryMethodInManagerClass() {
         when(manager.createQuery("select b from Book as b join fetch b.authors a where a.emailAddress = ?", Book.class)).thenReturn(typedQuery);
-
+        when(typedQuery.setParameter(any(Integer.class), any())).thenReturn(typedQuery);
         List<Book> list = new ArrayList<Book>();
         when(typedQuery.getResultList()).thenReturn(list);
-
         bookDao.getBooksByAuthor("abc@def.com");
 
         verify(manager, times(1)).createQuery("select b from Book as b join fetch b.authors a where a.emailAddress = ?", Book.class);
@@ -149,9 +134,8 @@ public class TestBookDaoImpl {
 
     @Test
     public void test_GetBooksByAllAttributes_ReturnsListOfBooks() {
-
         when(manager.createQuery("select b from Book b join fetch b.authors a where b.title like ? AND b.category like ? AND b.price < ? AND b.price > ? AND (a.firstName like ? OR a.lastName like ?)", Book.class)).thenReturn(typedQuery);
-
+        when(typedQuery.setParameter(any(Integer.class), any())).thenReturn(typedQuery);
         List<Book> list = new ArrayList<Book>();
         when(typedQuery.getResultList()).thenReturn(list);
 

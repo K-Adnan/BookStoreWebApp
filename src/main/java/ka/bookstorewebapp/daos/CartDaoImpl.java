@@ -29,13 +29,11 @@ public class CartDaoImpl implements CartDAO {
     public Cart getCart(int id) {
         EntityManager manager = factory.createEntityManager();
         Cart cart = manager.find(Cart.class, id);
-
         return cart;
     }
 
     public Cart updateCart(Cart cart) {
         EntityManager manager = factory.createEntityManager();
-
         manager.getTransaction().begin();
         Cart updatedCart = manager.merge(cart);
         manager.getTransaction().commit();
@@ -45,27 +43,21 @@ public class CartDaoImpl implements CartDAO {
     public void removeCart(int id) {
         EntityManager manager = factory.createEntityManager();
         manager.getTransaction().begin();
-
         Cart cart = manager.find(Cart.class, id);
         manager.remove(cart);
         manager.getTransaction().commit();
-
     }
 
     public void unassignCart(int cartId) {
         EntityManager manager = factory.createEntityManager();
         Cart cart = getCart(cartId);
-
         User user = cart.getUser();
         user.setCart(new Cart());
         cart.setUser(null);
-
         updateCart(cart);
 
         manager.getTransaction().begin();
         manager.merge(user);
         manager.getTransaction().commit();
-
     }
-
 }

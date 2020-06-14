@@ -8,10 +8,13 @@ import ka.bookstorewebapp.entities.Admin;
 import ka.bookstorewebapp.entities.Author;
 import ka.bookstorewebapp.entities.UnapprovedAuthor;
 import ka.bookstorewebapp.entities.User;
+import ka.bookstorewebapp.exceptions.RecordAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import static ka.bookstorewebapp.utils.Logging.warn;
 
 @Controller
 public class RegistrationController {
@@ -61,7 +64,12 @@ public class RegistrationController {
 
     @RequestMapping("/doRegisterUser")
     public String doRegisterUser(User user, Model model) {
-        userDao.addUser(user);
+        try {
+            userDao.addUser(user);
+        } catch(RecordAlreadyExistsException r) {
+            warn("Attempted to register user with already existing email address: " + user, getClass());
+            r.printStackTrace();
+        }
         model.addAttribute("message", "Signup successful, you can sign in now");
         return "index";
     }

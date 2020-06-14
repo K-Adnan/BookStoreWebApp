@@ -3,6 +3,7 @@ package ka.bookstorewebapp.model;
 import ka.bookstorewebapp.daos.UserDAO;
 import ka.bookstorewebapp.daos.UserDaoImpl;
 import ka.bookstorewebapp.entities.User;
+import ka.bookstorewebapp.exceptions.RecordAlreadyExistsException;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -39,7 +40,7 @@ public class TestUserDaoImpl {
     }
 
     @Test
-    public void test_AddUser_InvokesTransactionMethodAndPersist() {
+    public void test_AddUser_InvokesTransactionMethodAndPersist() throws RecordAlreadyExistsException {
         User user = new User();
         userDao.addUser(user);
 
@@ -49,25 +50,20 @@ public class TestUserDaoImpl {
     }
 
     @Test
-    public void test_AddDepartment_CallsFindMethodUserMethod() {
+    public void test_AddDepartment_CallsFindMethodUserMethod() throws RecordAlreadyExistsException {
         User user = new User();
-        user.setUserEmail("abc@hotmail.com");
+        user.setEmailAddress("abc@hotmail.com");
         userDao.addUser(user);
 
         verify(manager).find(User.class, "abc@hotmail.com");
     }
 
-    @Test
-    public void test_PersistMethodIsNotCalled_WhenUserAlreadyExistsInDatabase() {
+    @Test(expected = RecordAlreadyExistsException.class)
+    public void test_PersistMethodIsNotCalled_WhenUserAlreadyExistsInDatabase() throws RecordAlreadyExistsException {
         User user = new User();
-        user.setUserEmail("def@hotmail.com");
+        user.setEmailAddress("def@hotmail.com");
         when(manager.find(User.class, "def@hotmail.com")).thenReturn(new User());
-
         userDao.addUser(user);
-
-        verify(transaction, times(0)).begin();
-        verify(manager, times(0)).persist(user);
-        verify(transaction, times(0)).commit();
     }
 
     @Test

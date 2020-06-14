@@ -1,5 +1,8 @@
 package ka.bookstorewebapp.entities;
 
+import lombok.Builder;
+import lombok.experimental.SuperBuilder;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -7,6 +10,7 @@ import java.util.Set;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue("Author")
+@SuperBuilder
 public class Author extends User {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
@@ -20,17 +24,17 @@ public class Author extends User {
 
     public Author(String firstName, String lastName) {
         super();
-        setUserEmail(firstName.toLowerCase() + "." + lastName.toLowerCase() + "@books4u.com");
+        setEmailAddress(firstName.toLowerCase() + "." + lastName.toLowerCase() + "@books4u.com");
         setFirstName(firstName);
         setLastName(lastName);
     }
 
     public void setEmailAddress() {
-        setUserEmail(getFirstName().toLowerCase() + "." + getLastName().toLowerCase() + "@books4u.com");
+        setEmailAddress(getFirstName().toLowerCase() + "." + getLastName().toLowerCase() + "@books4u.com");
     }
 
-    public Author(String userEmail, String firstName, String password, String lastName, String address, String phoneNumber) {
-        super(userEmail, password, firstName, lastName, address, phoneNumber);
+    public Author(String emailAddress, String firstName, String password, String lastName, String address, String phoneNumber) {
+        super(emailAddress, password, firstName, lastName, address, phoneNumber);
     }
 
     public Set<Book> getBooks() {

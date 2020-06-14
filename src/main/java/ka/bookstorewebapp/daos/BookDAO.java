@@ -1,14 +1,14 @@
 package ka.bookstorewebapp.daos;
 
 import ka.bookstorewebapp.entities.Book;
-import ka.bookstorewebapp.exceptions.EntryAlreadyExistsException;
+import ka.bookstorewebapp.exceptions.RecordAlreadyExistsException;
 import ka.bookstorewebapp.exceptions.NoSuchEntryException;
 
 import java.util.List;
 
 public interface BookDAO {
 
-    public void addBook(Book book) throws EntryAlreadyExistsException;
+    public void addBook(Book book) throws RecordAlreadyExistsException;
 
     public void updateBook(Book book);
 

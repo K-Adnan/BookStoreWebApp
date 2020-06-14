@@ -1,5 +1,7 @@
 package ka.bookstorewebapp.entities;
 
+import lombok.experimental.SuperBuilder;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -8,6 +10,7 @@ import javax.persistence.InheritanceType;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue("Admin")
+@SuperBuilder(toBuilder=true)
 public class Admin extends User {
 
     public Admin() {
@@ -18,7 +21,7 @@ public class Admin extends User {
     }
 
     public void setEmailAddress() {
-        setUserEmail(getFirstName().toLowerCase() + "." + getLastName().toLowerCase() + "@books4u.com");
+        setEmailAddress(getFirstName().toLowerCase() + "." + getLastName().toLowerCase() + "@books4u.com");
     }
 
 }

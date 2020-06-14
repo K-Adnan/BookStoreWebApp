@@ -43,7 +43,7 @@ public class TestAuthorDaoImpl {
     public void test_AddAuthor_CallsFindMethodAuthorMethod() {
         AuthorDaoImpl authorDaoImpl = new AuthorDaoImpl();
         Author author = new Author();
-        author.setUserEmail("abc@hotmail.com");
+        author.setEmailAddress("abc@hotmail.com");
         authorDao.addAuthor(author);
 
         verify(manager).persist(author);
