@@ -43,7 +43,7 @@ public class TestAdminDaoImpl {
     public void test_AddAdmin_CallsFindMethodAdminMethod() {
         AdminDaoImpl adminDaoImpl = new AdminDaoImpl();
         Admin admin = new Admin();
-        admin.setUserEmail("abc@hotmail.com");
+        admin.setEmailAddress("abc@hotmail.com");
         adminDao.addAdmin(admin);
 
         verify(manager).persist(admin);

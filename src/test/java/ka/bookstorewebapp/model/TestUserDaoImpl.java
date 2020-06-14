@@ -51,7 +51,7 @@ public class TestUserDaoImpl {
     @Test
     public void test_AddDepartment_CallsFindMethodUserMethod() {
         User user = new User();
-        user.setUserEmail("abc@hotmail.com");
+        user.setEmailAddress("abc@hotmail.com");
         userDao.addUser(user);
 
         verify(manager).find(User.class, "abc@hotmail.com");
@@ -60,7 +60,7 @@ public class TestUserDaoImpl {
     @Test
     public void test_PersistMethodIsNotCalled_WhenUserAlreadyExistsInDatabase() {
         User user = new User();
-        user.setUserEmail("def@hotmail.com");
+        user.setEmailAddress("def@hotmail.com");
         when(manager.find(User.class, "def@hotmail.com")).thenReturn(new User());
 
         userDao.addUser(user);

@@ -1,6 +1,7 @@
 package ka.bookstorewebapp.shoppingcart;
 
 import ka.bookstorewebapp.entities.User;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.text.DecimalFormat;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "CART")
+@Data
 public class Cart {
 
     public int getCartId() {
@@ -40,10 +42,6 @@ public class Cart {
     public Cart() {
     }
 
-    public Set<CartItem> getCartItems() {
-        return cartItems;
-    }
-
     public void calculateTotal() {
         total = 0.0;
         for (CartItem cartItem : cartItems) {
@@ -68,19 +66,5 @@ public class Cart {
         cartItems.add(cartItem);
         calculateTotal();
     }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "Cart [cartId=" + cartId + ", total=" + total + "]";
-    }
-
 
 }

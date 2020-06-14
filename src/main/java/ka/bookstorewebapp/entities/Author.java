@@ -20,13 +20,13 @@ public class Author extends User {
 
     public Author(String firstName, String lastName) {
         super();
-        setUserEmail(firstName.toLowerCase() + "." + lastName.toLowerCase() + "@books4u.com");
+        setEmailAddress(firstName.toLowerCase() + "." + lastName.toLowerCase() + "@books4u.com");
         setFirstName(firstName);
         setLastName(lastName);
     }
 
     public void setEmailAddress() {
-        setUserEmail(getFirstName().toLowerCase() + "." + getLastName().toLowerCase() + "@books4u.com");
+        setEmailAddress(getFirstName().toLowerCase() + "." + getLastName().toLowerCase() + "@books4u.com");
     }
 
     public Author(String userEmail, String firstName, String password, String lastName, String address, String phoneNumber) {

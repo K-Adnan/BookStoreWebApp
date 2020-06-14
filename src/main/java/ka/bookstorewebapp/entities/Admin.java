@@ -18,7 +18,7 @@ public class Admin extends User {
     }
 
     public void setEmailAddress() {
-        setUserEmail(getFirstName().toLowerCase() + "." + getLastName().toLowerCase() + "@books4u.com");
+        setEmailAddress(getFirstName().toLowerCase() + "." + getLastName().toLowerCase() + "@books4u.com");
     }
 
 }
