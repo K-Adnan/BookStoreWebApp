@@ -91,6 +91,11 @@ public class WelcomeController {
         return "author/AuthorHome";
     }
 
+    @RequestMapping("/returnToHome")
+    public String returnToHome(Model model, HttpSession session) {
+        return "redirect:/";
+    }
+
     @RequestMapping("/logout")
     public String doLogOut(Model model, HttpSession session) {
         session.invalidate();
