@@ -45,6 +45,7 @@ public class TestBookController {
     EntityManager manager;
     CartDAO cartDao;
     CartItemDAO cartItemDao;
+    Book.BookBuilder bookBuilder;
 
     @Before
     public void setUp() {
@@ -65,6 +66,8 @@ public class TestBookController {
         manager = mock(EntityManager.class);
         factory = mock(EntityManagerFactory.class);
         when(factory.createEntityManager()).thenReturn(manager);
+        bookBuilder = new Book().toBuilder();
+        when(book.toBuilder()).thenReturn(bookBuilder);
     }
 
     @Test

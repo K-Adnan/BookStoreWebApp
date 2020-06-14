@@ -2,7 +2,9 @@ package ka.bookstorewebapp.entities;
 
 import ka.bookstorewebapp.shoppingcart.Cart;
 import ka.bookstorewebapp.shoppingcart.Order;
+import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,6 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name = "USERS")
 @Data
+@SuperBuilder(toBuilder=true)
 public class User {
 
     @Id
@@ -28,6 +31,7 @@ public class User {
     @JoinColumn(name = "CARTID")
     private Cart cart;
     @OneToMany(mappedBy = "user")
+    @Builder.Default
     private Set<Order> orders = new HashSet<Order>();
 
     public User() {

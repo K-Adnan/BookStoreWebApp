@@ -7,7 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 import java.util.List;
-import static ka.bookstorewebapp.utils.Logging.*;
+
+import static ka.bookstorewebapp.utils.Logging.info;
 
 public class AdminDaoImpl implements AdminDAO {
 
@@ -27,7 +28,7 @@ public class AdminDaoImpl implements AdminDAO {
         manager.getTransaction().begin();
         manager.persist(newAdmin);
         manager.getTransaction().commit();
-        info("Saved new Admin to database: " + newAdmin);
+        info("Saved new Admin to database: " + newAdmin, getClass());
     }
 
     public void updateAdmin(Admin admin) {
@@ -35,14 +36,14 @@ public class AdminDaoImpl implements AdminDAO {
         manager.getTransaction().begin();
         manager.merge(admin);
         manager.getTransaction().commit();
-        info("Admin details updated: " + admin);
+        info("Admin details updated: " + admin, getClass());
     }
 
     public Admin getAdmin(String emailAddress) {
         EntityManager manager = factory.createEntityManager();
         manager.getTransaction().begin();
         Admin admin = manager.find(Admin.class, emailAddress);
-        info("Admin retrieved from database: " + admin);
+        info("Admin retrieved from database: " + admin, getClass());
         return admin;
     }
 
@@ -52,16 +53,16 @@ public class AdminDaoImpl implements AdminDAO {
         manager.getTransaction().begin();
         manager.remove(admin);
         manager.getTransaction().commit();
-        info("Admin removed from database: " + admin);
+        info("Admin removed from database: " + admin, getClass());
         return true;
     }
 
     public List<Admin> getAllAdmins() {
-        info("Retrieving all admins...");
+        info("Retrieving all admins...", getClass());
         EntityManager manager = factory.createEntityManager();
         TypedQuery<Admin> query = manager.createQuery("select a from Admin a", Admin.class);
         List<Admin> listOfAllAdmins = query.getResultList();
-        info("Number of admins retrieved: " + listOfAllAdmins.size());
+        info("Number of admins retrieved: " + listOfAllAdmins.size(), getClass());
         return listOfAllAdmins;
     }
 

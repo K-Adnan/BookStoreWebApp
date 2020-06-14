@@ -4,8 +4,8 @@ import ka.bookstorewebapp.daos.*;
 import ka.bookstorewebapp.entities.Author;
 import ka.bookstorewebapp.entities.Book;
 import ka.bookstorewebapp.entities.User;
-import ka.bookstorewebapp.exceptions.RecordAlreadyExistsException;
 import ka.bookstorewebapp.exceptions.NoSuchEntryException;
+import ka.bookstorewebapp.exceptions.RecordAlreadyExistsException;
 import ka.bookstorewebapp.shoppingcart.Cart;
 import ka.bookstorewebapp.shoppingcart.CartItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.*;
 
-import static ka.bookstorewebapp.utils.Logging.*;
+import static ka.bookstorewebapp.utils.Logging.info;
 
 @Controller
 public class BookController {
@@ -59,7 +59,7 @@ public class BookController {
         List<Book> booksList = bookDao.getAllBooks();
         Collections.sort(booksList);
         model.addAttribute("booksList", booksList);
-        info("Displaying all books");
+        info("Displaying all books", getClass());
         return "ViewAllBooks";
     }
 
@@ -100,7 +100,7 @@ public class BookController {
                 model.addAttribute("editMessage", "<a href='author/editBook?isbn=" + book.getIsbn() + "'> Edit Book </a>");
             }
         }
-        info("Viewing book: " + book);
+        info("Viewing book: " + book, getClass());
         return "ViewBook";
     }
 
@@ -243,12 +243,14 @@ public class BookController {
             e.printStackTrace();
         }
 
-        oldBook.setTitle(book.getTitle());
-        oldBook.setCategory(book.getCategory());
-        oldBook.setNumberOfPages(book.getNumberOfPages());
-        oldBook.setReleaseYear(book.getReleaseYear());
-        oldBook.setImageUrl(book.getImageUrl());
-        oldBook.setQuantity(book.getQuantity());
+        oldBook.toBuilder()
+                .title(book.getTitle())
+                .category(book.getCategory())
+                .numberOfPages(book.getNumberOfPages())
+                .releaseYear(book.getReleaseYear())
+                .imageUrl(book.getImageUrl())
+                .quantity(book.getQuantity())
+                .build();
         bookDao.updateBook(oldBook);
         return "redirect:viewSales";
     }

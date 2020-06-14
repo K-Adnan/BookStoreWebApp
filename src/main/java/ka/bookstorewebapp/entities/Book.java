@@ -1,5 +1,7 @@
 package ka.bookstorewebapp.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import java.util.Set;
 @Entity
 @Table(name = "BOOKS")
 @Data
+@AllArgsConstructor
+@Builder(toBuilder = true)
 public class Book implements Comparable<Book> {
 
     @Id
@@ -17,6 +21,7 @@ public class Book implements Comparable<Book> {
     private String summary;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "BOOKS_AUTHORS", joinColumns = {@JoinColumn(name = "BOOK")}, inverseJoinColumns = {@JoinColumn(name = "AUTHOR")})
+    @Builder.Default
     private Set<Author> authors = new HashSet<Author>();
 
     private String category;

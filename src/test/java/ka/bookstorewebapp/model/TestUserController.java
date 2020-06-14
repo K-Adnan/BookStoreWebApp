@@ -24,6 +24,7 @@ public class TestUserController {
 
     UserController userController;
     String emailAddress;
+    User.UserBuilder userBuilder;
 
     @Mock
     BookDAO bookDao;
@@ -76,6 +77,8 @@ public class TestUserController {
         when(factory.createEntityManager()).thenReturn(manager);
         userDao = mock(UserDAO.class);
         userController = new UserController(userDao, unapprovedAuthorDao, rejectedUserDao, authorDao);
+        userBuilder = new User().toBuilder();
+        when(user.toBuilder()).thenReturn(userBuilder);
     }
 
     @Test
@@ -109,7 +112,7 @@ public class TestUserController {
     public void test_DoUpdateProfile_ReturnsAdminDisplayUser() {
         when(user.getEmailAddress()).thenReturn(emailAddress);
         when(userDao.getUser(emailAddress)).thenReturn(user);
-        assertEquals("admin/DisplayUser", userController.doUpdateProfile(user, principal, model));
+        assertEquals("admin/DisplayUser", userController.doUpdateProfile(user, model));
     }
 
     @Test

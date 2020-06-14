@@ -67,7 +67,7 @@ public class RegistrationController {
         try {
             userDao.addUser(user);
         } catch(RecordAlreadyExistsException r) {
-            warn("Attempted to register user with already existing email address: " + user);
+            warn("Attempted to register user with already existing email address: " + user, getClass());
             r.printStackTrace();
         }
         model.addAttribute("message", "Signup successful, you can sign in now");

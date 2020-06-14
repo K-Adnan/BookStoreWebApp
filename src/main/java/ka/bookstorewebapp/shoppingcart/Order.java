@@ -1,12 +1,17 @@
 package ka.bookstorewebapp.shoppingcart;
 
 import ka.bookstorewebapp.entities.User;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "ORDERS")
+@AllArgsConstructor
+@Builder
 public class Order {
 
     @Id

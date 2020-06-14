@@ -1,12 +1,12 @@
 package ka.bookstorewebapp.controller;
 
-import ka.bookstorewebapp.utils.OrderComparator;
 import ka.bookstorewebapp.daos.*;
 import ka.bookstorewebapp.entities.Book;
 import ka.bookstorewebapp.entities.User;
 import ka.bookstorewebapp.shoppingcart.Cart;
 import ka.bookstorewebapp.shoppingcart.CartItem;
 import ka.bookstorewebapp.shoppingcart.Order;
+import ka.bookstorewebapp.utils.OrderComparator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -95,15 +95,16 @@ public class CartController {
     public String doPlaceOrder(@RequestParam int cartId, Model model, Principal principal) {
         User user = userDao.getUser(principal.getName());
         Cart cart = cartDao.getCart(cartId);
-        Order order = new Order(cart);
-        order.setStatus("Order Placed");
-        order.setUser(user);
+        Order order = Order.builder()
+                .status("Order Placed")
+                .user(user)
+                .build();
+
         orderDao.addOrder(order);
         cartDao.unassignCart(cartId);
 
         for (CartItem cartItem : cart.getCartItems()) {
             Book book = cartItem.getBook();
-            int currentSales = book.getSales();
             int newSales = book.getSales() + cartItem.getQuantity();
             book.setSales(newSales);
             bookDao.updateBook(book);

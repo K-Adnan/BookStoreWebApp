@@ -68,7 +68,6 @@ public class UserController {
     @RequestMapping("/editPersonalDetails")
     public String goToEditPersonalDetails(Model model, Principal principal) {
         String emailAddress = principal.getName();
-
         User user = userDao.getUser(emailAddress);
         model.addAttribute("user", user);
         return "EditPersonalDetails";
@@ -77,35 +76,35 @@ public class UserController {
     @RequestMapping("/updatePersonalDetails")
     public String doUpdatePersonalDetails(User user, Principal principal, Model model) {
         String emailAddress = principal.getName();
-
-        // Retrieving old user, replacing its values with the new user's values, and then merging it.
         User oldUser = userDao.getUser(emailAddress);
-        oldUser.setFirstName(user.getFirstName());
-        oldUser.setLastName(user.getLastName());
-        oldUser.setAddress(user.getAddress());
-        oldUser.setPhoneNumber(user.getPhoneNumber());
+        System.out.println(oldUser);
+
+        oldUser.toBuilder()
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .address(user.getAddress())
+                .phoneNumber(user.getPhoneNumber())
+                .build();
 
         userDao.updateUser(oldUser);
         model.addAttribute("message", "User details have been successfully updated");
         model.addAttribute("user", oldUser);
-
         return "ViewPersonalDetails";
     }
 
     @RequestMapping("/admin/UpdateProfile")
-    public String doUpdateProfile(User user, Principal principal, Model model) {
-
-        // Retrieving old user, replacing its values with the new user's values, and then merging it.
-
+    public String doUpdateProfile(User user, Model model) {
         User oldUser = userDao.getUser(user.getEmailAddress());
 
-        oldUser.setFirstName(user.getFirstName());
-        oldUser.setLastName(user.getLastName());
-        oldUser.setAddress(user.getAddress());
-        oldUser.setPhoneNumber(user.getPhoneNumber());
+        oldUser.toBuilder()
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .address(user.getAddress())
+                .phoneNumber(user.getPhoneNumber())
+                .build();
+        ;
 
         model.addAttribute("message", "User details have been successfully updated");
-
         userDao.updateUser(oldUser);
         model.addAttribute("user", oldUser);
         return "admin/DisplayUser";
@@ -119,11 +118,9 @@ public class UserController {
     @RequestMapping("/updateNewPassword")
     public String doChangePassword(@RequestParam String currentPassword, @RequestParam String password, @RequestParam String confirmPassword, Principal principal, Model model) {
         String emailAddress = principal.getName();
-
         User user = userDao.getUser(emailAddress);
 
         if (currentPassword.equals(user.getPassword())) {
-
             if (password.equals(confirmPassword)) {
                 user.setPassword(password);
                 userDao.updateUser(user);
@@ -138,44 +135,39 @@ public class UserController {
             model.addAttribute("message", "Current password is incorrect");
             return "ChangePassword";
         }
-
     }
 
     @RequestMapping("/admin/approveRequest")
     public String doApproveRequest(Model model, String emailAddress) {
-
         UnapprovedAuthor ua = unapprovedAuthorDao.getUnapprovedAuthor(emailAddress);
-        Author author = new Author();
 
-        author.setEmailAddress(emailAddress);
-        author.setFirstName(ua.getFirstName());
-        author.setLastName(ua.getLastName());
-        author.setAddress(ua.getAddress());
-        author.setPassword(ua.getPassword());
+        Author author = Author.builder()
+                .emailAddress(emailAddress)
+                .firstName(ua.getFirstName())
+                .lastName(ua.getLastName())
+                .address(ua.getAddress())
+                .password(ua.getPassword())
+                .build();
 
         unapprovedAuthorDao.removeUnapprovedAuthor(emailAddress);
-
         authorDao.addAuthor(author);
-
         List<UnapprovedAuthor> list = unapprovedAuthorDao.getAllUnapprovedAuthors();
         model.addAttribute("list", list);
-
         return "admin/ViewAuthorRequests";
     }
 
     @RequestMapping("/admin/rejectRequest")
     public String doRejectRequest(Model model, String emailAddress, HttpServletRequest request) {
-
         UnapprovedAuthor ua = unapprovedAuthorDao.getUnapprovedAuthor(emailAddress);
 
-        RejectedUser rj = new RejectedUser();
-
-        rj.setEmailAddress(ua.getEmailAddress());
-        rj.setFirstName(ua.getFirstName());
-        rj.setLastName(ua.getLastName());
-        rj.setPassword(ua.getPassword());
-        rj.setAddress(ua.getAddress());
-        rj.setReasonForRejection(request.getParameter("reason"));
+        RejectedUser rj = new RejectedUser().builder()
+                .emailAddress(ua.getEmailAddress())
+                .firstName(ua.getFirstName())
+                .lastName(ua.getLastName())
+                .password(ua.getPassword())
+                .address(ua.getAddress())
+                .reasonForRejection(request.getParameter("reason"))
+                .build();
 
         unapprovedAuthorDao.removeUnapprovedAuthor(emailAddress);
 

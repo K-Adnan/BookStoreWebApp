@@ -29,7 +29,7 @@ public class AuthorDaoImpl implements AuthorDAO {
         manager.getTransaction().begin();
         manager.persist(newAuthor);
         manager.getTransaction().commit();
-        info("New author has been added: " + newAuthor);
+        info("New author has been added: " + newAuthor, getClass());
     }
 
     public void updateAuthor(Author author) {
@@ -37,14 +37,14 @@ public class AuthorDaoImpl implements AuthorDAO {
         manager.getTransaction().begin();
         manager.merge(author);
         manager.getTransaction().commit();
-        info("Author details have been updated: " + author);
+        info("Author details have been updated: " + author, getClass());
     }
 
     public Author getAuthor(String emailAddress) {
         EntityManager manager = factory.createEntityManager();
         manager.getTransaction().begin();
         Author author = manager.find(Author.class, emailAddress);
-        info("Author retrieved from database: " + author);
+        info("Author retrieved from database: " + author, getClass());
         return author;
     }
 
@@ -54,16 +54,16 @@ public class AuthorDaoImpl implements AuthorDAO {
         manager.getTransaction().begin();
         manager.remove(author);
         manager.getTransaction().commit();
-        info("Author removed from the database: " + author);
+        info("Author removed from the database: " + author, getClass());
         return true;
     }
 
     public List<Author> getAllAuthors() {
-        info("Retrieving all authors from the database...");
+        info("Retrieving all authors from the database...", getClass());
         EntityManager manager = factory.createEntityManager();
         TypedQuery<Author> query = manager.createQuery("select a from Author a", Author.class);
         List<Author> listOfAllAuthors = query.getResultList();
-        info("Total number of authors retrieved: " + listOfAllAuthors.size());
+        info("Total number of authors retrieved: " + listOfAllAuthors.size(), getClass());
         return listOfAllAuthors;
     }
 

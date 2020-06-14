@@ -8,6 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+import static ka.bookstorewebapp.utils.Logging.info;
+
 public class RejectedUserDaoImpl implements RejectedUserDAO {
 
     @Autowired
@@ -40,7 +42,7 @@ public class RejectedUserDaoImpl implements RejectedUserDAO {
         manager.getTransaction().begin();
         manager.remove(unApprovedAuthor);
         manager.getTransaction().commit();
-        System.out.println("SUCCESS: RejectedUser with email address '" + emailAddress + "' has been removed.");
+        info("SUCCESS: RejectedUser with email address '" + emailAddress + "' has been removed.", getClass());
     }
 
     public List<RejectedUser> getAllRejectedUsers() {
@@ -49,5 +51,4 @@ public class RejectedUserDaoImpl implements RejectedUserDAO {
         List<RejectedUser> listOfAllRejectedUsers = query.getResultList();
         return listOfAllRejectedUsers;
     }
-
 }

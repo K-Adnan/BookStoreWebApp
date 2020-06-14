@@ -91,13 +91,6 @@ public class TestBookDaoImpl {
         verify(manager, times(1)).merge(book);
     }
 
-//	@Test(expected=EntryAlreadyExistsException.class)
-//	public void test_AddBookMethodForISBNThatAlreadyExists_ThrowsEntryAlreadyExistsException() throws EntryAlreadyExistsException{
-//		Book book = new Book();
-//		when(manager.persist(book)).thenThrow(new EntryAlreadyExistsException())
-//		bookDao.addBook(new Book());
-//	}
-
     @Test
     public void test_GetBookMethod_CallsTheFindMethodOnManager() throws NoSuchEntryException {
         Book book = new Book(123456l);
@@ -114,12 +107,6 @@ public class TestBookDaoImpl {
         when(manager.find(Book.class, 123456l)).thenReturn(null);
         bookDao.getBook(123456l);
     }
-
-//	@Test(expected=NoSuchEntryException.class)
-//	public void test_RemoveBookThrowsNoSuchEntryException_WhenBookDoesNotExist() throws NoSuchEntryException{
-//		when(manager.remove(new Book())).th
-//		bookDao.removeBook(1l);
-//	}
 
     @Test
     public void test_GetBooksByCategory_CallsTheCreateQueryMethodInManagerClass() {
