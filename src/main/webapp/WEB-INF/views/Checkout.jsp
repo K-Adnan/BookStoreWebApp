@@ -10,7 +10,6 @@
 <style type="text/css">
 body {
 	background-color: #1A1A1A;
-	background-image: url();
 	background-repeat: repeat-x;
 }
 th {
@@ -75,7 +74,7 @@ th {
       <h1>Confirm Order</h1>
 ${message}
 
-	<h3 style="text-align: left;">Order Total : £${total}</h3>
+	<h3 style="text-align: left;">Order Total : ï¿½${total}</h3>
 	
 	<form action="placeOrder?cartId=${cart.cartId}" method="post" style="text-align: left;">
 		<p>First Name : <input name="emailAddress" value="${user.firstName}"/></p>
