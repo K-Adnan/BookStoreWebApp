@@ -1,6 +1,5 @@
 package ka.bookstorewebapp.controller;
 
-
 import ka.bookstorewebapp.daos.BookDAO;
 import ka.bookstorewebapp.daos.UnapprovedAuthorDAO;
 import ka.bookstorewebapp.daos.UserDAO;
@@ -44,6 +43,12 @@ public class WelcomeController {
 
     @RequestMapping("/")
     public String goToIndex() {
+        return "index";
+    }
+
+    @RequestMapping("/loginFailure")
+    public String loginFailure(Model model) {
+        model.addAttribute("message", "Invalid credentials entered!\nPlease try again");
         return "index";
     }
 

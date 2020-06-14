@@ -10,7 +10,7 @@ public class SoloProjectRunner {
 
     public static void main(String[] args) {
 
-        UserDAO userDAO = new UserDaoImpl(Persistence.createEntityManagerFactory("PersistenceInCreateMode"));
+        UserDAO userDAO = new UserDaoImpl(Persistence.createEntityManagerFactory("DemoPersistence"));
         User oldUser = userDAO.getUser("a");
 
         System.out.println("--------------");
