@@ -10,6 +10,7 @@
 <style type="text/css">
 body {
 	background-color: #1A1A1A;
+	background-image: url();
 	background-repeat: repeat-x;
 }
 th {
@@ -80,7 +81,7 @@ ${message}
 			${c.quantity}x		
 			<a href="displayBook?isbn=${c.book.isbn}">${c.book.title}</a><br/>
 		</c:forEach>
-		<strong>Total : ï¿½${o.cart.total}</strong>
+		<strong>Total : £${o.cart.total}</strong>
 	<hr>
 	</c:forEach>
 	<c:choose>

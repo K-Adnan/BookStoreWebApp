@@ -10,6 +10,7 @@
 <style type="text/css">
 body {
 	background-color: #1A1A1A;
+	background-image: url();
 	background-repeat: repeat-x;
 }
 </style>
@@ -78,7 +79,7 @@ body {
           <c:forEach items="${b.authors}" var="a">
 			<div class="author"><a href="viewBooksByAuthor?author=${a.emailAddress}">${a.firstName} ${a.lastName}</a><br/></div>
 		  </c:forEach>
-          <div class="price">ï¿½${b.price}</div>
+          <div class="price">£${b.price}</div>
         </div>
         
       </c:forEach>

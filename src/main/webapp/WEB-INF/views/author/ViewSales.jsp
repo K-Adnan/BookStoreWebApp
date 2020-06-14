@@ -11,6 +11,7 @@
 <style type="text/css">
 body {
 	background-color: #1A1A1A;
+	background-image: url();
 	background-repeat: repeat-x;
 }
 th {
@@ -91,7 +92,7 @@ ${message}
 			<th> <a href="../displayBook?isbn=${b.isbn}"> ${b.title} </a></th>
 			<th>${b.price * b.sales}</th>
 			<th>${b.sales}</th>
-			<th>ï¿½${b.price}</th>
+			<th>£${b.price}</th>
 			<th>${b.avgCustomerRating} (${b.numberOfReviews})</th>
 			<th> <a href="editBook?isbn=${b.isbn}"> <img src="https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/edit.png" height="50" width="3px"></a> </th>
 		</tr>

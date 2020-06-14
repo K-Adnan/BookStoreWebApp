@@ -10,16 +10,17 @@
 <style type="text/css">
 body {
 	background-color: #1A1A1A;
+	background-image: url();
 	background-repeat: repeat-x;
 }
 </style>
 </head>
 <body>
 <div id="mainWrapper">
-  <header>
+  <header> 
     <!-- This is the header content. It contains Logo and links -->
-    <div id="logo">
-      <!-- Company Logo text -->
+    <div id="logo"> 
+      <!-- Company Logo text --> 
       <a href="home"> <img src="https://s3.amazonaws.com/media.prestontrail.org/craft/The-Bookstore-Online-Logo-600x.png?mtime=20160930115548" width="248" height="134" alt=""/> </a></div>
     <div id="headerLinks"><a href="logout" title="Logout">Logout</a><a href="viewCart" title="Cart">Cart</a></div>
     <div id="search">
@@ -53,7 +54,7 @@ body {
     </div>
   </header>
   <div id="content">
-    <nav class="sidebar">
+    <nav class="sidebar"> 
       <div id="menubar">
       	<h1>Categories</h1>
       	<div class="menu">
@@ -104,7 +105,7 @@ body {
       </div>
     </div>
   </div>
-  <footer>
+  <footer> 
     <!-- This is the footer with default 3 divs -->
     <div><span style="line-height: 5px"> <p><strong>Books4u</strong></p>
       <p>Cottons Centre</p>
@@ -112,7 +113,7 @@ body {
       <p> London SE1 2QG</p></span>
     </div>
     <div id="2col">
-    	<span style="line-height: 10px"><p>Tel: 020 3141 5926</p>
+    	<span style="line-height: 10px"><p>Tel: 020 3141 5926</p> 
     	<p>Email: info@books4u.com</p></span>
     </div>
     <div>

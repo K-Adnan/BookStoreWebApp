@@ -10,6 +10,7 @@
 <style type="text/css">
 body {
 	background-color: #1A1A1A;
+	background-image: url();
 	background-repeat: repeat-x;
 }
 </style>
@@ -76,8 +77,8 @@ body {
 		<th class="imgcol"><a href="displayBook?isbn=${c.book.isbn}"><img id="cartImg" src="${c.book.imageUrl}" height="12px" width="30px"></a></th>
 		<th>
 		<p class="cartText">Title : <a href="displayBook?isbn=${c.book.isbn}">${c.book.title}</a></p>
-		<p class="cartText">Price : ï¿½${c.book.price}</p>
-		<p class="cartText">Subtotal : ï¿½${c.subTotal}</p>
+		<p class="cartText">Price : £${c.book.price}</p>
+		<p class="cartText">Subtotal : £${c.subTotal}</p>
 		<form class="updateForm" action="updateQuantity?cartItemId=${c.cartItemId}" method="post">
 			<input name="quantity" size="1" value="${c.quantity}">
 			<input type="Submit" value="Update" />
@@ -87,7 +88,7 @@ body {
 	</table>
 		<hr>
 	</c:forEach>
-	<div class="total"><h3>Total : ï¿½${cart.total}</h3></div>
+	<div class="total"><h3>Total : £${cart.total}</h3></div>
 	<div class="proceedCheckout"><a href="proceedCheckout?cartId=${cart.cartId}"> Proceed to Checkout </a></div>
     </c:when>
     <c:otherwise>
