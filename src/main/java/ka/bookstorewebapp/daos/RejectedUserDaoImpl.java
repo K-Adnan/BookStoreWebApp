@@ -23,7 +23,6 @@ public class RejectedUserDaoImpl implements RejectedUserDAO {
 
     public void addRejectedUser(RejectedUser newRejectedUser) {
         EntityManager manager = factory.createEntityManager();
-
         manager.getTransaction().begin();
         manager.persist(newRejectedUser);
         manager.getTransaction().commit();
@@ -32,17 +31,13 @@ public class RejectedUserDaoImpl implements RejectedUserDAO {
     public RejectedUser getRejectedUser(String emailAddress) {
         EntityManager manager = factory.createEntityManager();
         RejectedUser unApprovedAuthor = manager.find(RejectedUser.class, emailAddress);
-
         return unApprovedAuthor;
     }
 
     public void removeRejectedUser(String emailAddress) {
-
         EntityManager manager = factory.createEntityManager();
-
         RejectedUser unApprovedAuthor = manager.find(RejectedUser.class, emailAddress);
         manager.getTransaction().begin();
-
         manager.remove(unApprovedAuthor);
         manager.getTransaction().commit();
         System.out.println("SUCCESS: RejectedUser with email address '" + emailAddress + "' has been removed.");
@@ -50,10 +45,8 @@ public class RejectedUserDaoImpl implements RejectedUserDAO {
 
     public List<RejectedUser> getAllRejectedUsers() {
         EntityManager manager = factory.createEntityManager();
-
         TypedQuery<RejectedUser> query = manager.createQuery("select u from RejectedUser u", RejectedUser.class);
         List<RejectedUser> listOfAllRejectedUsers = query.getResultList();
-
         return listOfAllRejectedUsers;
     }
 

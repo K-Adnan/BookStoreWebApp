@@ -1,12 +1,15 @@
 package ka.bookstorewebapp.daos;
 
 import ka.bookstorewebapp.entities.User;
+import ka.bookstorewebapp.exceptions.RecordAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 import java.util.List;
+
+import static ka.bookstorewebapp.utils.Logging.warn;
 
 public class UserDaoImpl implements UserDAO {
 
@@ -21,7 +24,7 @@ public class UserDaoImpl implements UserDAO {
     public UserDaoImpl() {
     }
 
-    public void addUser(User newUser) {
+    public void addUser(User newUser) throws RecordAlreadyExistsException {
         EntityManager manager = factory.createEntityManager();
 
         if (getUser(newUser.getEmailAddress()) == null) {
@@ -30,6 +33,8 @@ public class UserDaoImpl implements UserDAO {
             manager.persist(newUser);
             manager.getTransaction().commit();
         } else {
+            warn("User with email address '" + newUser.getEmailAddress() + "' already exists in database");
+            throw new RecordAlreadyExistsException("User with email address '" + newUser.getEmailAddress() + "' already exists in database");
         }
     }
 

@@ -3,7 +3,7 @@ package ka.bookstorewebapp.model;
 import ka.bookstorewebapp.daos.BookDAO;
 import ka.bookstorewebapp.daos.BookDaoImpl;
 import ka.bookstorewebapp.entities.Book;
-import ka.bookstorewebapp.exceptions.EntryAlreadyExistsException;
+import ka.bookstorewebapp.exceptions.RecordAlreadyExistsException;
 import ka.bookstorewebapp.exceptions.NoSuchEntryException;
 import org.junit.Assert;
 import org.junit.Before;
@@ -42,7 +42,7 @@ public class TestBookDaoImpl {
     }
 
     @Test
-    public void test_AddDepartment_InvokesTransactionMethodAndPersist() throws EntryAlreadyExistsException {
+    public void test_AddDepartment_InvokesTransactionMethodAndPersist() throws RecordAlreadyExistsException {
         Book book = new Book();
         bookDao.addBook(book);
 

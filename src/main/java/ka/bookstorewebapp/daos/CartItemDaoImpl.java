@@ -23,13 +23,12 @@ public class CartItemDaoImpl implements CartItemDAO {
 
     public void addCartItem(CartItem cartItem) {
         Long newIsbn = cartItem.getIsbn();
-
         EntityManager manager = factory.createEntityManager();
         manager.getTransaction().begin();
         boolean exists = false;
         int quantity = cartItem.getQuantity();
-
         int cartItemId = 0;
+        
         for (CartItem eachCartItem : cartItem.getCart().getCartItems()) {
             if (newIsbn == eachCartItem.getIsbn()) {
                 exists = true;
@@ -46,22 +45,17 @@ public class CartItemDaoImpl implements CartItemDAO {
         } else {
             manager.persist(cartItem);
             manager.getTransaction().commit();
-
         }
-
-
     }
 
     public CartItem getCartItem(int id) {
         EntityManager manager = factory.createEntityManager();
         CartItem cartItem = manager.find(CartItem.class, id);
-
         return cartItem;
     }
 
     public void updateCartItem(CartItem cartItem) {
         EntityManager manager = factory.createEntityManager();
-
         manager.getTransaction().begin();
         manager.merge(cartItem);
         manager.getTransaction().commit();
@@ -70,21 +64,16 @@ public class CartItemDaoImpl implements CartItemDAO {
     public void removeCartItem(int cartItemId) {
         EntityManager manager = factory.createEntityManager();
         manager.getTransaction().begin();
-
         CartItem cartItem = manager.find(CartItem.class, cartItemId);
         manager.remove(cartItem);
         manager.getTransaction().commit();
-
     }
 
     public List<CartItem> getAllCartItemsForCart(Cart cart) {
         EntityManager manager = factory.createEntityManager();
-
-        TypedQuery<CartItem> query = manager.createQuery("Select c from CartItem c where c.cartId = ?", CartItem.class);
-        query.setParameter(1, cart);
-
+        TypedQuery<CartItem> query = manager.createQuery("Select c from CartItem c where c.cartId = ?", CartItem.class)
+                .setParameter(1, cart);
         List<CartItem> cartItems = query.getResultList();
-
         return cartItems;
     }
 

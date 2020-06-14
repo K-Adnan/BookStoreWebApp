@@ -4,7 +4,7 @@ import ka.bookstorewebapp.daos.*;
 import ka.bookstorewebapp.entities.Author;
 import ka.bookstorewebapp.entities.Book;
 import ka.bookstorewebapp.entities.User;
-import ka.bookstorewebapp.exceptions.EntryAlreadyExistsException;
+import ka.bookstorewebapp.exceptions.RecordAlreadyExistsException;
 import ka.bookstorewebapp.exceptions.NoSuchEntryException;
 import ka.bookstorewebapp.shoppingcart.Cart;
 import ka.bookstorewebapp.shoppingcart.CartItem;
@@ -56,7 +56,6 @@ public class BookController {
 
     @RequestMapping("/viewAllBooks")
     public String goToViewAllBooks(Model model) {
-
         List<Book> booksList = bookDao.getAllBooks();
         Collections.sort(booksList);
         model.addAttribute("booksList", booksList);
@@ -66,7 +65,6 @@ public class BookController {
 
     @RequestMapping("/displayBooks")
     public String goToDisplayBooks(@RequestParam Long isbn, @RequestParam String title, @RequestParam String author, @RequestParam String category, @RequestParam Double min, @RequestParam Double max, Model model) {
-
         List<Book> booksList;
         if (isbn != null) {
             Book book = null;
@@ -88,7 +86,6 @@ public class BookController {
 
     @RequestMapping("/displayBook")
     public String goToDisplayBook(@RequestParam Long isbn, Model model, Principal principal, HttpServletRequest req) {
-
         Book book = null;
         try {
             book = bookDao.getBook(isbn);
@@ -97,9 +94,7 @@ public class BookController {
         }
 
         model.addAttribute("book", book);
-
         Set<Author> listOfAuthors = book.getAuthors();
-
         for (Author author : listOfAuthors) {
             if (author.getEmailAddress().equals(principal.getName())) {
                 model.addAttribute("editMessage", "<a href='author/editBook?isbn=" + book.getIsbn() + "'> Edit Book </a>");
@@ -111,17 +106,14 @@ public class BookController {
 
     @RequestMapping("/viewBooksByCategory")
     public String goToViewBooksByCategory(@RequestParam String category, Model model) {
-
         List<Book> booksList = bookDao.getBooksByCategory(category);
         Collections.sort(booksList);
         model.addAttribute("booksList", booksList);
-
         return "ViewBooks";
     }
 
     @RequestMapping("/addBookToBasket")
     public String doAddBookToBasket(@RequestParam Long isbn, @RequestParam Integer quantity, Model model, Principal principal, HttpSession session) {
-
         Book book = null;
         try {
             book = bookDao.getBook(isbn);
@@ -145,10 +137,8 @@ public class BookController {
 
             CartItem cartItem = new CartItem(book, quantity, cart);
             cartItemDao.addCartItem(cartItem);
-
             cart.addCartItem(cartItem);
             userDao.updateUser(user);
-
             model.addAttribute("message", "<h4>Successfully added to <a href='viewCart'>Shopping Cart</a><h4>");
         }
         model.addAttribute("book", book);
@@ -157,18 +147,17 @@ public class BookController {
 
     @RequestMapping("/rateBook")
     public String doRateBook(@RequestParam long isbn, Model model, HttpServletRequest request) {
-
         int rating = Integer.parseInt(request.getParameter("rating"));
-
         Book book = null;
+
         try {
             book = bookDao.getBook(isbn);
         } catch (NoSuchEntryException e) {
             e.printStackTrace();
         }
+
         book.addCustomerRating(rating);
         bookDao.updateBook(book);
-
         model.addAttribute("book", book);
         model.addAttribute("message", "Thank you, your rating has been successfully saved<br/>");
         return "ViewBook";
@@ -176,7 +165,6 @@ public class BookController {
 
     @RequestMapping("/author/listBook")
     public String goToListNewBook(Model model, Principal principal, HttpServletRequest req) {
-
         Book book = new Book();
         List<Author> authorsList = authorDao.getAllAuthors();
         List<String> authorEmails = new ArrayList<String>();
@@ -191,14 +179,12 @@ public class BookController {
 
         model.addAttribute("book", book);
         model.addAttribute("authorsList", authorEmails);
-
         return "author/ListNewBook";
     }
 
     @RequestMapping("/author/doListBook")
     public String doListNewBook(@RequestParam String authorsString, Model model, Book book, HttpServletRequest request) {
         String[] authors = authorsString.split(",");
-
         for (String authorStr : authors) {
             String emailAddress = authorStr + "@books4u.com";
             Author author = authorDao.getAuthor(emailAddress);
@@ -207,30 +193,25 @@ public class BookController {
 
         try {
             bookDao.addBook(book);
-        } catch (EntryAlreadyExistsException e) {
+        } catch (RecordAlreadyExistsException e) {
             e.printStackTrace();
         }
 
         model.addAttribute("message", "Book '" + book.getTitle() + "' has been successfully addd");
-
         return "admin/AdminHome";
-
     }
 
     @RequestMapping("/author/viewSales")
     public String goToViewSales(Model model, Principal principal) {
-
         List<Book> listOfBooks = bookDao.getBooksByAuthor(principal.getName());
-
         model.addAttribute("listOfBooks", listOfBooks);
-
         return "author/ViewSales";
     }
 
     @RequestMapping("/author/editBook")
     public String goToEditBook(@RequestParam long isbn, Model model, Principal principal, HttpServletRequest req) {
-
         Book book = null;
+
         try {
             book = bookDao.getBook(isbn);
         } catch (NoSuchEntryException e) {
@@ -250,13 +231,11 @@ public class BookController {
 
         model.addAttribute("book", book);
         model.addAttribute("authorsList", authorEmails);
-
         return "author/EditBook";
     }
 
     @RequestMapping("/author/doEditBook")
     public String doEditBook(Long isbn, @RequestParam String authorsString, Book book, Model model, Principal principal, HttpServletRequest req) {
-
         Book oldBook = null;
         try {
             oldBook = bookDao.getBook(isbn);
@@ -271,74 +250,61 @@ public class BookController {
         oldBook.setImageUrl(book.getImageUrl());
         oldBook.setQuantity(book.getQuantity());
         bookDao.updateBook(oldBook);
-
         return "redirect:viewSales";
     }
 
     @RequestMapping("/viewBiographyBooks")
     public String goToViewBiographyBooks(Model model) {
-
         List<Book> booksList = bookDao.getBooksByCategory("Biography");
         Collections.sort(booksList);
         model.addAttribute("booksList", booksList);
         model.addAttribute("category", "Biography");
-
         return "ViewBooks";
     }
 
     @RequestMapping("/viewFictionBooks")
     public String goToViewFictionBooks(Model model) {
-
         List<Book> booksList = bookDao.getBooksByCategory("Fiction");
         Collections.sort(booksList);
         model.addAttribute("booksList", booksList);
         model.addAttribute("category", "Fiction");
-
         return "ViewBooks";
     }
 
     @RequestMapping("/viewTechnologyBooks")
     public String goToViewTechnologyBooks(Model model) {
-
         List<Book> booksList = bookDao.getBooksByCategory("Technology");
         Collections.sort(booksList);
         model.addAttribute("booksList", booksList);
         model.addAttribute("category", "Technology");
-
         return "ViewBooks";
     }
 
     @RequestMapping("/viewTravelBooks")
     public String goToViewTravelBooks(Model model) {
-
         List<Book> booksList = bookDao.getBooksByCategory("Travel");
         Collections.sort(booksList);
         model.addAttribute("booksList", booksList);
         model.addAttribute("category", "Travel");
-
         return "ViewBooks";
     }
 
     @RequestMapping("/viewBooks")
     public String goToViewTravelBooks(@RequestParam String searchitem, Model model) {
-
         List<Book> booksList = bookDao.getBooksByAllAttributes(searchitem);
         Collections.sort(booksList);
         List<Book> list = new ArrayList<Book>(new LinkedHashSet<Book>(booksList));
         model.addAttribute("booksList", list);
-
         return "ViewBooks";
     }
 
     @RequestMapping("/viewBooksByAuthor")
     public String goToViewBooksByAuthor(String author, Model model, Principal principal) {
-
         List<Book> listOfBooks = bookDao.getBooksByAuthor(author);
         Author theAuthor = authorDao.getAuthor(author);
         Collections.sort(listOfBooks);
         model.addAttribute("booksList", listOfBooks);
         model.addAttribute("category", theAuthor.getFirstName() + " " + theAuthor.getLastName());
-
         return "ViewBooks";
     }
 
