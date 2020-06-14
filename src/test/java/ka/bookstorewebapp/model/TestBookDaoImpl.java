@@ -124,10 +124,9 @@ public class TestBookDaoImpl {
     @Test
     public void test_GetBooksByCategory_CallsTheCreateQueryMethodInManagerClass() {
         when(manager.createQuery("select b from Book b where b.category = ?", Book.class)).thenReturn(typedQuery);
-
+        when(typedQuery.setParameter(any(Integer.class), any())).thenReturn(typedQuery);
         List<Book> list = new ArrayList<Book>();
         when(typedQuery.getResultList()).thenReturn(list);
-
         bookDao.getBooksByCategory("Biography");
 
         verify(manager, times(1)).createQuery("select b from Book b where b.category = ?", Book.class);
@@ -137,10 +136,9 @@ public class TestBookDaoImpl {
     @Test
     public void test_GetBooksByAuthor_CallsTheCreateQueryMethodInManagerClass() {
         when(manager.createQuery("select b from Book as b join fetch b.authors a where a.emailAddress = ?", Book.class)).thenReturn(typedQuery);
-
+        when(typedQuery.setParameter(any(Integer.class), any())).thenReturn(typedQuery);
         List<Book> list = new ArrayList<Book>();
         when(typedQuery.getResultList()).thenReturn(list);
-
         bookDao.getBooksByAuthor("abc@def.com");
 
         verify(manager, times(1)).createQuery("select b from Book as b join fetch b.authors a where a.emailAddress = ?", Book.class);
@@ -149,9 +147,8 @@ public class TestBookDaoImpl {
 
     @Test
     public void test_GetBooksByAllAttributes_ReturnsListOfBooks() {
-
         when(manager.createQuery("select b from Book b join fetch b.authors a where b.title like ? AND b.category like ? AND b.price < ? AND b.price > ? AND (a.firstName like ? OR a.lastName like ?)", Book.class)).thenReturn(typedQuery);
-
+        when(typedQuery.setParameter(any(Integer.class), any())).thenReturn(typedQuery);
         List<Book> list = new ArrayList<Book>();
         when(typedQuery.getResultList()).thenReturn(list);
 

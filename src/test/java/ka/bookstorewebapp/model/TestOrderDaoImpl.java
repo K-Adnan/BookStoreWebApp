@@ -72,6 +72,7 @@ public class TestOrderDaoImpl {
         List<Order> orders = new ArrayList<Order>();
 
         when(manager.createQuery("select o from Order as o join fetch o.user u where u.emailAddress = ?", Order.class)).thenReturn(typedQuery);
+        when(typedQuery.setParameter(any(Integer.class), any(String.class))).thenReturn(typedQuery);
         when(typedQuery.getResultList()).thenReturn(orders);
 
         orderDao.getAllOrdersForUser(user);

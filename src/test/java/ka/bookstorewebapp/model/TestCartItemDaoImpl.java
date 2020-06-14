@@ -72,6 +72,7 @@ public class TestCartItemDaoImpl {
 
         List<User> list = new ArrayList<User>();
         when(manager.createQuery("Select c from CartItem c where c.cartId = ?", CartItem.class)).thenReturn(typedQuery);
+        when(typedQuery.setParameter(any(Integer.class), any())).thenReturn(typedQuery);
         when(typedQuery.getResultList()).thenReturn(cartItems);
 
         cartItemDao.getAllCartItemsForCart(cart);

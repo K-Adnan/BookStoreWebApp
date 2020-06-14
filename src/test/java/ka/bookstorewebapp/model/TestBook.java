@@ -44,13 +44,6 @@ public class TestBook {
     }
 
     @Test
-    public void test_CallingTheToStringMethodOnBook_ReturnsBookAsString() {
-        Book book = new Book(12345l, "Title", "Category", 100, 2017, 9.99);
-        String toString = "[isbn=" + 12345l + ", title=" + "Title" + ", author=[]" + ", price=" + 9.99 + ", pages=" + 100 + "]";
-        assertEquals(book.toString(), toString);
-    }
-
-    @Test
     public void test_SetAuthorOnBook_AddsAuthorToSetOfAuthors() {
         Author author = new Author();
         book.setAuthor(author);
